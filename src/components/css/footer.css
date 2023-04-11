@@ -1,0 +1,25 @@
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(3, 47, 57);
+    color: #fff;
+    padding: 8%;
+}
+
+.footer-logo img {
+    height: 80px;
+    width: 50px;
+}
+
+.socialLogo li {
+    display: inline-block;
+    margin-right: 10px;
+    opacity: 80%;
+}
+
+.socialLogo li:last-child {
+    margin-right: 0;
+}
+

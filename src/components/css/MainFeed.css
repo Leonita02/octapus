@@ -1,0 +1,14 @@
+div{
+    display: "inline-flex";
+    justify-content: "center";
+    align-Items: "center";
+    min-Height: "100vh";
+}
+div>Card{
+    display: inline-flex;
+    justify-items: center;
+    column-gap: 30px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    position: relative;
+}
