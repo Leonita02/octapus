@@ -2,8 +2,10 @@ import '../css/cards.css';
 import Card  from '../js/cards';
 import '../css/MainFeed.css';
 function MainF(){
-  return  <div>
+  return  <div class='cards'>
     
+    <Card></Card>
+    <Card></Card>
     <Card></Card>
     <Card></Card>
     <Card></Card>
@@ -11,7 +13,6 @@ function MainF(){
     <Card></Card>
     <Card></Card>
 
-    
     </div>
 }
 

@@ -1,5 +1,5 @@
 import '../css/cards.css';
-import foto from '../ImagesOfProject/libri.avif';
+import foto from '../ImagesOfProject/c1.jpg';
 function card(){
     return <>   
     <div className="flip-card">

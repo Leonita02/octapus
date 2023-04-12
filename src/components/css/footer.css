@@ -5,7 +5,8 @@
     align-items: center;
     background-color: rgb(3, 47, 57);
     color: #fff;
-    padding: 8%;
+    padding:8%;
+    margin:0;
 }
 
 .footer-logo img {

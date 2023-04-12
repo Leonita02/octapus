@@ -11,4 +11,9 @@ div>Card{
     margin-top: 5%;
     margin-bottom: 3%;
     position: relative;
+   
+}
+
+.cards{
+    margin-right:8%;
 }
