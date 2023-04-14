@@ -1,19 +1,20 @@
 import '../css/cards.css';
 import Card  from '../js/cards';
 import '../css/MainFeed.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 function MainF(){
-  return  <div class='cards'>
-    
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-
+  return  <div className="container">
+  <div className="row justify-content-center">
+    <div className="col-lg-14 divi">
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
     </div>
+  </div>
+</div>
 }
 
 export default MainF;
