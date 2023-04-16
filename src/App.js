@@ -2,8 +2,9 @@ import HomePage from "./components/js/HomePage";
 import './App.css';
 import Feed from './components/js/feed'
 import Dashboard from './components/js/dashboard';
+import ProfilePage from './components/js/profilePage';
 function App() {
-  return <Dashboard></Dashboard>
+  return <ProfilePage></ProfilePage>
 }
 
 export default App;
