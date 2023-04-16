@@ -1,0 +1,19 @@
+form{
+    margin-top:7%;
+}
+form>input{
+    width:500px;
+    height: 40px;
+    border-radius: 30px;
+    border: solid 1px black;
+}
+form>button{
+    height: 30px;
+    margin-left: 5px;
+    background-color: #013C4D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    padding-bottom: 2%;
+}
