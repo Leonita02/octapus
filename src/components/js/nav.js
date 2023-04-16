@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import '../css/nav.css';
-import logo from '../ImagesOfProject/logo.png';
-// import profile from './images/p7.png';
+//import logo from '../ImagesOfProject/logo.png';
+ //import profile from './images/p7.png';
+ import profile from '../ImagesOfProject/favicon.png';
 function nav(){
     return  <header>
     <nav id="navi">
@@ -11,7 +12,7 @@ function nav(){
               <li><a  href="C:\Users\Altina\Desktop\fk\WEB\Projekti\html\HP.html">Home</a></li>
               <li><a href="#">Contact</a></li>
               <li><a href="#">About Us</a></li>
-              <li><img src={logo}></img></li>
+              <li><img src={profile}></img></li>
             </div>
         </ul>
     </nav>
