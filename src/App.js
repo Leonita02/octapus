@@ -10,7 +10,6 @@ function App() {
     <>
      <FirstView />
      <MainFeed/>
-     <Cards />
      <Footer />
      </>
   );

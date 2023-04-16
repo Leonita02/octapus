@@ -1,9 +1,9 @@
 import React from "react";
-import logo from '../ImagesOfProject/logo.png';
+import logo from '../ImagesOfProject/instagram_profile_image.png';
 import '../css/footer.css';
-import fbLogo from '../ImagesOfProject/fbIcon.png';
-import instaLogo from '../ImagesOfProject/instaLogo.png';
-import twitterLogo from '../ImagesOfProject/twitter.jpg';
+import fbLogo from '../ImagesOfProject/facebook.png';
+import instaLogo from '../ImagesOfProject/instagram.png';
+import twitterLogo from '../ImagesOfProject/twitter.png';
 
 
 function footer(){

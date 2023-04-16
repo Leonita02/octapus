@@ -4,14 +4,16 @@ import '../css/MainFeed.css';
 function MainF(){
   return  <div class='cards'>
     
+    <div><Card></Card>
     <Card></Card>
+    <Card></Card></div>
+    <div><Card></Card>
     <Card></Card>
+    <Card></Card></div>
+    <div><Card></Card>
     <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
-    <Card></Card>
+    <Card></Card></div>
+    
 
     </div>
 }
