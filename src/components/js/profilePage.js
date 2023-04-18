@@ -20,17 +20,18 @@ function profilePage(){
         <div className='userProfile'>
             <img src={fotoProfili} id='fotoProfili' alt='foto'></img>
            
-            <h2 id='userName'>John Doe</h2>
-            <div className='comp'>
+            <h1 id='userName'>John Doe</h1>
+          
             <img src ={fotoFeed} id='fotoFeed' alt='foto'></img>
             <img src ={fotoFavs} id='fotoFavs' alt='foto' ></img>
             <img src ={addWishList} id='fotoWishL' alt='foto'></img>
-            </div>
-            </div>
-            <hr id='line'></hr>
+            <hr id='line'/>
             <div className="Logout">
             <img src ={logout} id='fotoLogout' alt='foto' ></img>
             </div>
+            </div>
+           
+           
         
         
         <div className='cards'>
