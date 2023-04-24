@@ -9,16 +9,20 @@ import twitterLogo from '../ImagesOfProject/twitter.png';
 function footer(){
     return(
 
-    <div class="footer">
-        <div class="footer-logo">
-            <li><img src={logo}></img></li>
+        <footer>
+        <div class="footer">
+          <div class="footer-logo">
+            <img src={logo} alt="logo"/>
+          </div>
+          <div class="socialLogo">
+            <ul>
+              <li><img src={fbLogo} alt="Facebook"/></li>
+              <li><img src={instaLogo} alt="Instagram"/></li>
+              <li><img src={twitterLogo} alt="Twitter"/></li>
+            </ul>
+          </div>
         </div>
-        <div class="socialLogo">
-            <li><img src={fbLogo}></img></li>
-            <li><img src={instaLogo}></img></li>
-            <li><img src={twitterLogo}></img></li>
-        </div>
-    </div>
+      </footer>
 
 
     );
