@@ -1,12 +1,13 @@
- import HomePage from "./components/js/HomePage";
-// import './App.css';
+ //import HomePage from "./components/js/HomePage";
+import './App.css';
 // import Feed from './components/js/feed'
 // import Dashboard from './components/js/dashboard';
-// import ProfilePage from './components/js/profilePage';
-import BookPage from "./components/js/bookPage";
+ import ProfilePage from './components/js/profilePage';
+//import BookPage from "./components/js/bookPage";
+//import AddBook from './components/js/addBook';
 
 function App() {
-  return <HomePage></HomePage>
+  return <ProfilePage></ProfilePage>
     
 }
 
