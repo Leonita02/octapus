@@ -1,46 +1,44 @@
 import '../css/profilePage.css';
-import foto from '../ImagesOfProject/fotoM.jpeg';
+//import foto from '../ImagesOfProject/fotoM.jpeg';
 import fotoProfili from '../ImagesOfProject/prodilePiic.png';
-import fotoFeed from '../ImagesOfProject/feedImg.png';
+
 import fotoFavs from '../ImagesOfProject/fotoFav.png';
-import Card from './cards';
+import WishCard from './WishCard';
 import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
+import Nav from './nav';
 
 
 
 function profilePage(){
     return (
         <>
-        <div className='image'>
-           <img src={foto} id='foto' alt='foto' ></img>
-           
-        </div>
+        <div>
+       <Nav></Nav>
+       </div>
         
         <div className='userProfile'>
             <img src={fotoProfili} id='fotoProfili' alt='foto'></img>
            
             <h1 id='userName'>John Doe</h1>
           
-            <img src ={fotoFeed} id='fotoFeed' alt='foto'></img>
-            <img src ={fotoFavs} id='fotoFavs' alt='foto' ></img>
-            <img src ={addWishList} id='fotoWishL' alt='foto'></img>
+            <img src ={fotoFavs} id='fotoLogout' alt='foto'></img>
+            <img src ={addWishList} id='fotoFavs' alt='foto' ></img>
+            <img src ={logout} id='fotoWishL' alt='foto'></img>
             <hr id='line'/>
-            <div className="Logout">
-            <img src ={logout} id='fotoLogout' alt='foto' ></img>
-            </div>
+            
             </div>
            
            
         
         
         <div className='cards'>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        <WishCard></WishCard>
+        <WishCard></WishCard>
+        <WishCard></WishCard>
+       
+        
+
         </div>
         </>
         

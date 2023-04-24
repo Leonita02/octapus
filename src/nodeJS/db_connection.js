@@ -25,33 +25,33 @@
 
 
 
-const mysql = require('mysql');
+// const mysql = require('mysql');
+// Menyra e dyte
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'octopus',
+// });
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'octopus',
-});
+// connection.connect((err) => {
+//   if (err) throw err;
 
-connection.connect((err) => {
-  if (err) throw err;
+//   console.log('Connected to MySQL server.');
 
-  console.log('Connected to MySQL server.');
+//   // The code below closes the connection to MySQL server
 
-  // The code below closes the connection to MySQL server
+//   connection.end((err) => {
+//     if (err) throw err;
 
-  connection.end((err) => {
-    if (err) throw err;
+//     console.log('Connection to MySQL server closed.');
+//   });
+// });
 
-    console.log('Connection to MySQL server closed.');
-  });
-});
-
-  con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT * FROM biblioteka", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
+//   con.connect(function(err) {
+//     if (err) throw err;
+//     con.query("SELECT * FROM biblioteka", function (err, result, fields) {
+//       if (err) throw err;
+//       console.log(result);
+//     });
+//   });
