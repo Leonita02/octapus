@@ -35,7 +35,10 @@
 
 }
  .cards{
-  margin-left:12%;
+    margin:5%;
+    display: flex;
+    justify-content: space-between;
+    
 
     
 
