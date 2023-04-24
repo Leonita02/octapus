@@ -6,7 +6,7 @@ import './App.css';
 import ProfilePage from './components/js/profilePage';
 import BookPage from "./components/js/bookPage";
 
- import ProfilePage from './components/js/profilePage';
+;
 //import BookPage from "./components/js/bookPage";
 //import AddBook from './components/js/addBook';
 // d227e9f173a6f9063cd8b5a43d1958494bc7a033

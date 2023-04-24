@@ -45,8 +45,8 @@
 } 
 #line{
     color: rgb(0, 0, 0);
-    width: 13%;
-   border-style: solid;
+    width: 14%;
+   background-color: black;
    border-width:2px;
    margin-top:1%;
    
