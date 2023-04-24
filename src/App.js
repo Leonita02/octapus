@@ -5,7 +5,7 @@ import './App.css';
 //import ProfilePage from './components/js/profilePage';
 import BookPage from "./components/js/bookPage";
 function App() {
-  return <BookPage></BookPage>
+  return <ProfilePage></ProfilePage>
 }
 
 export default App;
