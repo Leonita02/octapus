@@ -1,0 +1,73 @@
+body{
+     background-image: url('../ImagesOfProject/addBook.jpg'); 
+     background-position: center; /* Center the image */
+     background-repeat: no-repeat; /* Do not repeat the image */
+     background-size: cover;
+     
+    
+}
+.addBook{
+    /* display: block-flex; */
+    align-items: center;
+    justify-content: center;
+    width:450px;
+    height:910px;
+    margin:auto;
+    background-color:rgb(216, 216, 216); 
+    border-radius: 6%;
+  margin-top:5%;
+    border:5px solid #013C4D;
+    padding-right: 15px;
+    margin-bottom:5%;
+  
+    
+}
+.titulli>h1{
+   text-align: center;
+}
+
+form{
+    padding: 5%;
+}
+
+form label{
+    display: flex;
+    margin-top:20px;
+    font-size:18px;
+    
+}
+form input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border:1px solid gray;
+    border-radius:6px;
+    outline:none;
+    
+}
+form textarea{
+    width: 100%;
+    padding:10px;
+    border:none;
+    border:1px solid gray;
+    border-radius:6px;
+    outline:none;
+}
+
+#add{
+    width:100px;
+    height:35px;
+  margin-top:10px;
+    border:none;
+    background: #013C4D;
+    color:white;
+    font-size:18px;
+    margin-left: 40%;
+    cursor: pointer;
+
+}
+#firstHr{
+    height: 2px;
+    color: black;
+    background-color: black;
+}

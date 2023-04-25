@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import '../css/nav.css';
 //import logo from '../ImagesOfProject/logo.png';
  //import profile from './images/p7.png';
- import profile from '../ImagesOfProject/favicon.png';
+ import profile from '../ImagesOfProject/p7.png';
 function nav(){
     return  <header>
     <nav id="navi">

@@ -1,9 +1,9 @@
 import '../css/profilePage.css';
 //import foto from '../ImagesOfProject/fotoM.jpeg';
 import fotoProfili from '../ImagesOfProject/prodilePiic.png';
-import fotoFeed from '../ImagesOfProject/feedImg.png';
+
 import fotoFavs from '../ImagesOfProject/fotoFav.png';
-import Card from './cards';
+import WishCard from './WishCard';
 import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
@@ -33,12 +33,12 @@ function profilePage(){
         
         
         <div className='cards'>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        <WishCard></WishCard>
+        <WishCard></WishCard>
+        <WishCard></WishCard>
+       
+        
+
         </div>
         </>
         
