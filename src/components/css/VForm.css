@@ -1,0 +1,71 @@
+body {
+    background-color: #013C4D;
+}
+
+.kerkesaP {
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    height: 600px;
+    margin: auto;
+    background-color: white;
+    border-radius: 5%;
+    margin-top: 5%;
+    border: 5px solid grey;
+    padding-right: 20px;
+    margin-bottom: 5%;
+
+
+}
+
+.titulli>h1 {
+    text-align: center;
+}
+
+form {
+    padding: 2% 5%;
+}
+
+form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+
+#add {
+    width: 100px;
+    height: 35px;
+    margin-top: 25px;
+    border: none;
+    background: rgba(213, 68, 28, 1);
+    color: rgb(251, 251, 251);
+    font-size: 18px;
+    margin-left: 40%;
+    cursor: pointer;
+}
+
+#firstHr {
+    height: 2px;
+    color: rgb(0, 0, 0);
+    background-color: black;
+}
