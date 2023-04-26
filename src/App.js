@@ -11,8 +11,9 @@ import './App.css';
 import BookPage from "./components/js/bookPage";
 import WishList from './components/js/wishList';
 import Porosia from './components/js/porosia';
+import Pagesa from './components/js/pagesa';
 function App() {
-  return <Porosia/>
+  return <Pagesa/>
  
 }
 
