@@ -9,29 +9,25 @@ function wishL() {
             <div><Nav /></div>
             <br />
             <br />
-            <hr />
-            <div>
+            
+            <div className='first'>
                 <div id="wishBanner">
-                    <h1>Lista juaj e deshirave:</h1>
+                    <center>
+                         <h1>Lista juaj e deshirave:</h1>
+                    </center>
                 </div>
                 <div class="labels">
                     <form>
-                        <label>Emri:
+                        <label>Autori:
                             <input type="text" />
                         </label>
-                        <label>Mbiemri:
-                            <input type="text" />
-                        </label>
-                        <label>Id:
-                            <input type="text" />
-                        </label>
-                        <label>Libri:
+                        <label>Titulli:
                             <input type="text" />
                         </label>
                         <div>
-                            <button>Shto më shumë libra</button>
+                            {/* <button>Shto më shumë libra</button> */}
                             <br></br>
-                            <button id="vazhdo">Vazhdo</button>
+                            <button id="vazhdo">Shto Librin!</button>
                         </div>
                     </form>
 

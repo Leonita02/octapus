@@ -1,30 +1,48 @@
-  #wishBanner {
-    background-color: #844949;
-    margin-left: 20%;
-    margin-right: 20%;
+  
+  body{
+    background-color: rgb(255, 255, 255);
+    font-family: Arial,Helvetica,sans-serif;
+       
+   }
+   
+   
+
+   #wishBanner {
+    background-color:rgb(162, 160, 160);
+    /* margin-left: 35%;
+    margin-right: 35%; */
+    margin:5% 35%;
     text-align: center;
     padding: 1%;
+    width: 30%;
+    /* border: solid 1px black; */
+    border-radius: 10px;
   }
 
-body{
-  background-image: url("../ImagesOfProject/foto23.jpg");
-  background-repeat: no-repeat;
-  background-size:100%;
-  
-}
+ 
 
   #wishBanner h1 {
-    color: #fcfcfc;
+    color: black;
     font-family:Arial, Helvetica, sans-serif;
    
   }
-  
+ 
+  .labels{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px rgb(162, 160, 160);
+    width: 30%;
+    margin: 5% 35%;
+    padding: 1%;
+    border-radius: 10px;
+  }
+
 .labels form {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  
 }
 
 .labels label {
@@ -32,21 +50,24 @@ body{
   flex-direction: column;
   margin-bottom: 10px;
   font-size: 18px;
-  color: #ffffff;
+  color: black;
+
 }
 
 .labels input {
-  background-color: #dfc9c9;
+  background-color: #706b6b;
   margin-top: 5px;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border: solid 2px rgb(162, 160, 160);
+  background-color: white;
+  box-shadow: 0px 1px 3px rgba(171, 171, 171, 0.1);
 }
 
 
 .labels button {
-  background-color:#844949;
+  background-color:rgba(213, 68, 28, 1);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -61,5 +82,5 @@ body{
 }
 
 #vazhdo{
-  margin-left: 30%;
+  /* margin-left: 30%; */
 }
