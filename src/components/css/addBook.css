@@ -1,73 +1,71 @@
-body{
-     background-image: url('../ImagesOfProject/addBook.jpg'); 
-     background-position: center; /* Center the image */
-     background-repeat: no-repeat; /* Do not repeat the image */
-     background-size: cover;
-     
-    
+body {
+    background-color: #013C4D;
 }
-.addBook{
-    /* display: block-flex; */
+
+.addBook {
     align-items: center;
     justify-content: center;
-    width:450px;
-    height:910px;
-    margin:auto;
-    background-color:rgb(216, 216, 216); 
-    border-radius: 6%;
-  margin-top:5%;
-    border:5px solid #013C4D;
-    padding-right: 15px;
-    margin-bottom:5%;
-  
-    
-}
-.titulli>h1{
-   text-align: center;
+    width: 450px;
+    height: 985px;
+    margin: auto;
+    background-color: white;
+    border-radius: 5%;
+    margin-top: 5%;
+    border: 5px solid grey;
+    padding-right: 20px;
+    margin-bottom: 5%;
+
+
 }
 
-form{
-    padding: 5%;
+.titulli>h1 {
+    text-align: center;
 }
 
-form label{
+form {
+    padding: 2% 5%;
+}
+
+form label {
     display: flex;
-    margin-top:20px;
-    font-size:18px;
-    
-}
-form input{
-    width:100%;
-    padding:10px;
-    border:none;
-    border:1px solid gray;
-    border-radius:6px;
-    outline:none;
-    
-}
-form textarea{
-    width: 100%;
-    padding:10px;
-    border:none;
-    border:1px solid gray;
-    border-radius:6px;
-    outline:none;
+    margin-top: 20px;
+    font-size: 18px;
+
 }
 
-#add{
-    width:100px;
-    height:35px;
-  margin-top:10px;
-    border:none;
-    background: #013C4D;
-    color:white;
-    font-size:18px;
+form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+
+#add {
+    width: 100px;
+    height: 35px;
+    margin-top: 25px;
+    border: none;
+    background: rgba(213, 68, 28, 1);
+    color: rgb(251, 251, 251);
+    font-size: 18px;
     margin-left: 40%;
     cursor: pointer;
-
 }
-#firstHr{
+
+#firstHr {
     height: 2px;
-    color: black;
+    color: rgb(0, 0, 0);
     background-color: black;
 }

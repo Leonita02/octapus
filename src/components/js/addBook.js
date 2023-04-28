@@ -3,8 +3,7 @@ import Nav from './nav';
 function addBook(){
  return(
     <>
-    <Nav></Nav>
-    <br></br>
+    
 <div class="addBook">
       
       <div class="titulli">
@@ -14,25 +13,29 @@ function addBook(){
     <div >
       <div>
         <form action="">
+        <div>
+            <label for="">ISBN :</label>
+            <input type="number" name="isbn"></input>
+          </div>
           <div>
             <label for="">Titulli:</label>
-            <input type="text" name="Name"></input>
+            <input type="text" name="Titulli"></input>
           </div>
           <div>
             <label for="">Autori:</label>
-            <input type="text" name="Name"></input>
+            <input type="text" name="Autori"></input>
           </div>
           <div>
             <label for="">Viti Botimit:</label>
-            <input type="date" name="Name"></input>
+            <input type="number" name="vitiBotimit"></input>
           </div>
           <div>
             <label for="">Shtepia Botimit:</label>
-            <input type="text" name="Name"></input>
+            <input type="text" name="shtepiaBotimit"></input>
           </div>
           <div>
             <label for="">Numri Kopjeve :</label>
-            <input type="number" name="Name"></input>
+            <input type="number" name="nrKopjeve"></input>
           </div>
           <div>
             <label for="">Kopertina url :</label>
@@ -44,11 +47,11 @@ function addBook(){
           </div>
           <div>
             <label for="">Zhanri:</label>
-            <input type="text" name="Name"></input>
+            <input type="text" name="Zhanri"></input>
           </div>
           <div>
             <label for="">Rafti:</label>
-            <input type="number" name="Price"></input>
+            <input type="number" name="Rafti"></input>
           </div>
             <div>
             <button type="submit" id='add' name="submit" >SHTO!</button>
