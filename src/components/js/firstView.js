@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/firstView.css';
 import View1 from '../ImagesOfProject/twitter_header_photo_1.png';
 import View2 from '../ImagesOfProject/1.jpeg';
+import {Link} from 'react-router-dom';
 
 function View() {
   return (
@@ -11,7 +12,7 @@ function View() {
       <div className="leftImage">
          <img id='foto1' src={View1} alt="View 1" />
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-        <button><a href="#">Log In</a></button>
+        <button><Link to='/logIn'>Log in</Link></button>
          </div>
       <div className="rightImage"><img src={View2} alt="View 2" /></div>
     </div>

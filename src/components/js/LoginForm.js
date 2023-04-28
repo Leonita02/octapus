@@ -1,6 +1,7 @@
 import React from 'react'
 import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
+import {Link } from 'react-router-dom';
 export default function Form() {
     return (
         <section>
@@ -12,7 +13,7 @@ export default function Form() {
                         <input type="text" placeholder='Username' />
                         <input type="text" placeholder='Password' />
 
-                        <button className='btn'>Log In</button>
+                        <button className='btn'><Link to='/feed'>Log In</Link></button>
                     </form>
                 </div>
                 <div className='col-2'>

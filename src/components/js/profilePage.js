@@ -7,10 +7,16 @@ import WishCard from './WishCard';
 import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
+import { useNavigate } from 'react-router';
 
 
 
-function profilePage(){
+function ProfilePage(){
+    const navigate = useNavigate(); // funksioni per me te dergu me add-> wishLista 
+    const navigateToWishList = () => {
+        // 👇️ navigate to /contacts
+        navigate('/wishList');
+    }
     return (
         <>
         <div>
@@ -18,12 +24,12 @@ function profilePage(){
        </div>
         
         <div className='userProfile'>
-            <img src={fotoProfili} id='fotoProfili' alt='foto'></img>
+            <img src={fotoProfili} id='fotoProfili' alt='foto' ></img>
            
             <h1 id='userName'>John Doe</h1>
           
             <img src ={fotoFavs} id='fotoLogout' alt='foto'></img>
-            <img src ={addWishList} id='fotoFavs' alt='foto' ></img>
+            <img src ={addWishList} id='fotoFavs' alt='foto' onClick={navigateToWishList} ></img>
             <img src ={logout} id='fotoWishL' alt='foto'></img>
             <hr id='line'/>
             
@@ -54,4 +60,4 @@ function profilePage(){
 
 
 }
-export default profilePage;
+export default ProfilePage;
