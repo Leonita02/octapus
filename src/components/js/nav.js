@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Nav(){
     const navigate = useNavigate(); // funksioni per me te dergu te profile page prej fotos se profilit 
-    const navigateToProfilePage = () => {
+    function navigateToProfilePage(){
         // navigate to profilePage
         navigate('/profilePage');
       };

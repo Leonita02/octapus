@@ -13,8 +13,7 @@ import { useNavigate } from 'react-router';
 
 function ProfilePage(){
     const navigate = useNavigate(); // funksioni per me te dergu me add-> wishLista 
-    const navigateToWishList = () => {
-        // 👇️ navigate to /contacts
+    function navigateToWishList() {
         navigate('/wishList');
     }
     return (
@@ -42,6 +41,7 @@ function ProfilePage(){
         <WishCard></WishCard>
         <WishCard></WishCard>
         <WishCard></WishCard>
+        
        
         
 
