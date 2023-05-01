@@ -6,12 +6,12 @@ import {useState} from 'react';
 
 
 
-
 export default function Form() {
     const [emri,setEmri]=useState("")
     const [mbiemri,setMbiemri]=useState("")
     const [email,setEmail]=useState("")
     const [datelindja,setDatelindja]=useState("")
+    const[qyteti,setQyteti] = useState("")
     const [paga,setPaga]=useState(0)
     const [nrTelefonit,setNrTelefonit]=useState(0)
     const [qendra,setQendra]=useState(0)
@@ -20,7 +20,7 @@ export default function Form() {
 
     function handleSubmit(event){
         event.preventDefault();
-        axios.post("http://localhost:8081/create",{emri,mbiemri,email,datelindja,paga,nrTelefonit,qendra})
+        axios.post("http://localhost:8081/create",{emri,mbiemri,email,datelindja,qyteti,paga,nrTelefonit,qendra})
         .then(res =>{
             console.log(res);
             // navigate('/dashboard'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
@@ -41,6 +41,7 @@ export default function Form() {
                         <input type="text" placeholder='Mbiemri' id='mbiemri' onChange={e=>setMbiemri(e.target.value)} />
                         <input type="text" placeholder='Email' id='email' onChange={e=>setEmail(e.target.value)}/>
                         <input type="text" placeholder='Datelindja' id='datelindja' onChange={e=>setDatelindja(e.target.value)}/>
+                        <input type="text" placeholder='Qyteti' id='qyteti' onChange={e=>setQyteti(e.target.value)}/>
                         <input type="text" placeholder='Paga' id='paga'  onChange={e=>setPaga(e.target.value)}/>
                         <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' onChange={e=>setNrTelefonit(e.target.value)} />
                         <input type="text" placeholder='Qendra' id='qendra' onChange={e=>setQendra(e.target.value)} />

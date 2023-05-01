@@ -28,25 +28,16 @@ const connection = mysql.createConnection({
   ) // me i marr te dehnat nga tabelat -->per dashboard mi qit
 
   app.post("/create",(req,res)=>{
-    const sql = "INSERT INTO  personi (`Personi_ID`, `Emri`, `Mbiemri`, `Email`, `Datelindja`, `Qyteti`, `Paga`, `Nr_Tel`, `Biblioteka_ID`) VALUES (?)"
-    const values = [
-      req.body.emri,
-      req.body.mbiemri,
-      req.body.email,
-      req.body.datelindja,
-      req.body.qyteti,
-      req.body.paga,
-      req.body.nrTelefonit,
-      req.body.qendra
-    ]
-    connection.query(sql,[values],(err,data )=>{
-      if(err) return res.json("Error");
+    const sql = `INSERT INTO personi (Emri, Mbiemri, Email, Datelindja, Qyteti, Paga, Nr_Tel, Biblioteka_ID) VALUES ('${req.body.emri}','${req.body.mbiemri}','${req.body.email}','${req.body.datelindja}','${req.body.qyteti}','${req.body.paga}','${req.body.nrTelefonit}','${req.body.qendra}')`;
+    connection.query(sql, (err, data) => {
+      if (err) return res.json("Error");
       return res.json(data);
-    })
+    });
+   
   }
   ) //per me i insertu te dhena ne tabele
-  app.put('/update/:id',(req,res)=>{
-    const sql = "update  personi set  'Emri'= ? , 'Mbiemri'= ? ,'Email'= ? ,'Datelindja'= ? ,'Qyteti'= ? ,'Paga'= ? ,'Nr_Tel'= ? ,'Biblioteka_ID'= ? where Personi_ID = ?";
+  app.put('/update/:id', (req, res) => {
+    const sql = "UPDATE personi SET `Emri` = ?, `Mbiemri` = ?, `Email` = ?, `Datelindja` = ?, `Qyteti` = ?, `Paga` = ?, `Nr_Tel` = ?, `Biblioteka_ID` = ? WHERE `Personi_ID` = ?";
     const values = [
       req.body.emri,
       req.body.mbiemri,
@@ -55,15 +46,16 @@ const connection = mysql.createConnection({
       req.body.qyteti,
       req.body.paga,
       req.body.nrTelefonit,
-      req.body.qendra
-    ]
-    const id = req.params.id;
-    connection.query(sql,[...values,id],(err,data )=>{
-      if(err) return res.json("Error");
+      req.body.qendra,
+      req.params.id
+    ];
+    connection.query(sql, values, (err, data) => {
+      if (err) return res.json("Error");
       return res.json(data);
-    })
-  }
-  ) // me update ni row
+    });
+  }); // me update ni row
+
+  
 
   app.delete('/personi/:id',(req,res)=>{
     const sql = "DELETE FROM personi WHERE Personi_ID=?";
