@@ -15,23 +15,27 @@ import WishList from './components/js/wishList';
 //import AddBook from './components/js/addBook';
 // import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
+import UpdatePerson from './components/js/updatePerson';
 function App() {
-  return  <Dashboard></Dashboard>
-//   <Router>
-//   <Routes>
-//     <Route path="feed" element={<Feed />}></Route>
-//     <Route index element={<HomePage />} />
-//     <Route path="logIn" element={<LoginForm/>}></Route>
-//     <Route path="Feed" element={<Feed/>}></Route>
-//     <Route path='profilePage' element = {<ProfilePage/>}></Route>
-//     <Route path='wishList' element = {<WishList></WishList>}></Route>
-//     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
+  return ( 
+   <Router>
+   <Routes>
+     <Route path="feed" element={<Feed />}></Route>
+     <Route index element={<Dashboard />} />
+     <Route path="logIn" element={<LoginForm/>}></Route>
+     <Route path="Feed" element={<Feed/>}></Route>
+    <Route path='profilePage' element = {<ProfilePage/>}></Route>
+    <Route path='wishList' element = {<WishList></WishList>}></Route>
+    <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
+    <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
+    <Route path='/update/:Personi_ID' element={<UpdatePerson />} />
 
       
      
    
-//   </Routes>
-// </Router>
+ </Routes>
+ </Router>
+  )
  
 }
 

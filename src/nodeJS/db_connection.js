@@ -36,6 +36,7 @@ const connection = mysql.createConnection({
    
   }
   ) //per me i insertu te dhena ne tabele
+  
   app.put('/update/:id', (req, res) => {
     const sql = "UPDATE personi SET `Emri` = ?, `Mbiemri` = ?, `Email` = ?, `Datelindja` = ?, `Qyteti` = ?, `Paga` = ?, `Nr_Tel` = ?, `Biblioteka_ID` = ? WHERE `Personi_ID` = ?";
     const values = [

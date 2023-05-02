@@ -13,6 +13,15 @@ import { useContext } from "react";
     .catch(err => console.log(err));
 
   })
+
+  const handleDelete = async(Personi_ID)=>{
+    try{
+      await axios.delete('http://localhost:8081/personi/' + Personi_ID)
+      window.location.reload()
+    }catch(err){
+      console.log(err);
+    }
+  }
     return  <tbody>
       {personi.map((data,i)=>{ // me i printu qato te dhena
        return(<tr key={i}>
@@ -26,9 +35,9 @@ import { useContext } from "react";
                   <td>{data.Nr_Tel}</td>
                   <td>{data.Biblioteka_ID}</td>
                   <td>
-                    <button className='btn btn-primary' >Update</button> 
+                    <button className='btn btn-primary' ><Link to ={ `update/${data.Personi_ID}`} >Update</Link></button> 
                      {/* <Link to={'update/${data.id}}'}></Link> */}
-                    <button className = 'btn btn-danger'>Delete</button>
+                    <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button>
                   </td>
                 </tr>)
              })   
