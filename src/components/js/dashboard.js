@@ -1,16 +1,20 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Row from './row';
-// import { useEffect } from "react";
-// import axios from "axios";
-// import { Link } from "react-router-dom";
-// import {useState} from 'react';
-// import { useContext } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
-function Dashboard(){
-  
-  
+function dashboard(){
+  const [personi,setPersoni] = useState([]) // me i marr te dhenat prej tabeles personi nga url i node file-it
+  useEffect(()=>{
+    axios.get('http://localhost:8081/')
+    .then(res => setPersoni(res.data))
+    .catch(err => console.log(err));
+
+  }
+  )
     return <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
