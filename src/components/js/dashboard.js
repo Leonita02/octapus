@@ -3,10 +3,11 @@ import Row from './row';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 
-function dashboard(){
+function Dashboard(){
   const [personi,setPersoni] = useState([]) // me i marr te dhenat prej tabeles personi nga url i node file-it
   useEffect(()=>{
     axios.get('http://localhost:8081/')
@@ -68,4 +69,4 @@ function dashboard(){
   </div>
 }
 
-export default dashboard;
+export default Dashboard;
