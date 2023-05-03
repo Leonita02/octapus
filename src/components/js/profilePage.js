@@ -3,7 +3,7 @@ import '../css/profilePage.css';
 import fotoProfili from '../ImagesOfProject/prodilePiic.png';
 
 import fotoFavs from '../ImagesOfProject/fotoFav.png';
-import WishCard from './WishCard';
+import WishCard from './wishCard';
 import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
