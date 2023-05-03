@@ -3,10 +3,10 @@ import Row from './row';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
-
-function dashboard(){
+function Dashboard(){
   const [personi,setPersoni] = useState([]) // me i marr te dhenat prej tabeles personi nga url i node file-it
   useEffect(()=>{
     axios.get('http://localhost:8081/')
@@ -23,7 +23,7 @@ function dashboard(){
     </div>
     <div className="row">
       <div className="col-md-12">
-        {/* <Link to='/SignupForm'>Add new </Link> */}
+        <Link to='/SignupForm'>Add new </Link>
         <table className="table table-hover">
           <thead>
             <tr>

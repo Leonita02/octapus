@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
+const { default: axios } = require('axios');
 const app = express();
 
 app.use(cors());
@@ -27,6 +28,8 @@ const connection = mysql.createConnection({
   }
   ) // me i marr te dehnat nga tabelat -->per dashboard mi qit
 
+  
+
   app.post("/create",(req,res)=>{
     const sql = `INSERT INTO personi (Emri, Mbiemri, Email, Datelindja, Qyteti, Paga, Nr_Tel, Biblioteka_ID) VALUES ('${req.body.emri}','${req.body.mbiemri}','${req.body.email}','${req.body.datelindja}','${req.body.qyteti}','${req.body.paga}','${req.body.nrTelefonit}','${req.body.qendra}')`;
     connection.query(sql, (err, data) => {
@@ -37,6 +40,14 @@ const connection = mysql.createConnection({
   }
   ) //per me i insertu te dhena ne tabele
   
+  // app.post("/create", (req, res) => {
+  //   const sql = `INSERT INTO libri (Isbn, Titulli, Autori, Viti_Botimit, Shtepia_Botuese, Nr_Kopjeve, Pershkrimi, Url, Zhanri, Rafti_ID) VALUES ('${req.body.isbn}','${req.body.titulli}','${req.body.Autori}','${req.body.vitiBotimit}','${req.body.shtepiaBotimit}','${req.body.sasia}','${req.body.pershkrimi}','${req.body.url}','${req.body.zhanri}','${req.body.rafti}')`;
+  //   connection.query(sql, (err, data) => {
+  //     if (err) return res.json("Error");
+  //     return res.json(data);
+  //   });
+  // });
+
   app.put('/update/:id', (req, res) => {
     const sql = "UPDATE personi SET `Emri` = ?, `Mbiemri` = ?, `Email` = ?, `Datelindja` = ?, `Qyteti` = ?, `Paga` = ?, `Nr_Tel` = ?, `Biblioteka_ID` = ? WHERE `Personi_ID` = ?";
     const values = [
@@ -68,6 +79,31 @@ const connection = mysql.createConnection({
     })
   }
   )
+
+  app.get("/libri",(req,res)=>{
+    const sql = "SELECT * FROM libri";
+    connection.query(sql,(err,data)=>{
+      if(err)return res.json("Error");
+      return res.json(data);
+    }
+    )
+  })
+
+  // axios.get("/Libri")
+  // .then(response => {
+  //   const sql = "SELECT * FROM libri";
+  //   connection.query(sql,(err,data)=>{
+  //     if(err)return res.json("Error");
+  //     return res.json(data);
+  //   }
+  //   )
+  //   console.log(response.data);
+  // })
+  // .catch(error => {
+  //   // Handle the error
+  //   console.error(error);
+  // });
+
   app.listen(8081,()=>{
     console.log("Connected");
   })

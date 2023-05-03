@@ -16,7 +16,7 @@ export default function Form() {
     const [nrTelefonit,setNrTelefonit]=useState(0)
     const [qendra,setQendra]=useState(0)
 
-    // const navigate=useNavigate();
+    const navigate=useNavigate();
 
     function handleSubmit(event){
         event.preventDefault();

@@ -1,67 +1,61 @@
 import '../css/addBook.css';
-import Nav from './nav';
-function addBook(){
+// import Nav from './nav';
+import React from 'react';
+import axios from 'axios';
+// import { useNavigate, useParams } from 'react-router';
+import {useState} from 'react';
+
+function AddBook(){
+
+  const [isbn,setIsbn]=useState("")
+    const [titulli,setTitulli]=useState("")
+    const [Autori,setAutori]=useState("")
+    const [vitiBotimit,setVitiBotimit]=useState(0)
+    const[shtepiaBotimit,setShtepiaBotimit] = useState("")
+    const [sasia,setSasia]=useState(0)
+    const [pershkrimi,setPershkrimi]=useState("")
+    const [url,setUrl]=useState("")
+    const [zhanri,setZhanri]=useState("")
+    const [rafti,setRafti]=useState(0)
+
+    function handleSubmit(event){
+      event.preventDefault();
+      axios.post("http://localhost:8081/createBook",{isbn,titulli,Autori,vitiBotimit,shtepiaBotimit,sasia,pershkrimi,url,zhanri,rafti})
+      .then(res =>{
+          console.log(res);
+          // navigate('/dashboard'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
+      }).catch(err => console.log(err));
+
+  }
  return(
     <>
     
-<div class="addBook">
-      
-      <div class="titulli">
-        <h1>SHTO LIBRIN</h1>
-        <hr id ='firstHr'></hr>
-      </div>
-    <div >
-      <div>
-        <form action="">
-        <div>
-            <label for="">ISBN :</label>
-            <input type="number" name="isbn"></input>
-          </div>
-          <div>
-            <label for="">Titulli:</label>
-            <input type="text" name="Titulli"></input>
-          </div>
-          <div>
-            <label for="">Autori:</label>
-            <input type="text" name="Autori"></input>
-          </div>
-          <div>
-            <label for="">Viti Botimit:</label>
-            <input type="number" name="vitiBotimit"></input>
-          </div>
-          <div>
-            <label for="">Shtepia Botimit:</label>
-            <input type="text" name="shtepiaBotimit"></input>
-          </div>
-          <div>
-            <label for="">Numri Kopjeve :</label>
-            <input type="number" name="nrKopjeve"></input>
-          </div>
-          <div>
-            <label for="">Kopertina url :</label>
-            <input type="text" name="Photo"></input>
-          </div>
-          <div>
-              <label for="">Pershkrimi:</label>
-            <textarea name="Description" id="" cols="" rows="3" ></textarea>          
-          </div>
-          <div>
-            <label for="">Zhanri:</label>
-            <input type="text" name="Zhanri"></input>
-          </div>
-          <div>
-            <label for="">Rafti:</label>
-            <input type="number" name="Rafti"></input>
-          </div>
-            <div>
-            <button type="submit" id='add' name="submit" >SHTO!</button>
-            <br></br>
-            <br></br>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+    <section>
+            <div className='register'>
+                <div className='col-1'>
+                  
+                </div>
+                <div className='col-2'>
+                    <h2> Sign Up </h2>
+                    <span> Welcome to Octopus</span>
+                    <form id='form' className='flex flex-col' onSubmit={handleSubmit}>
+                        <input type="number"  id='isbn' onChange={e=>setIsbn(e.target.value)} />
+                        <input type="text"  id='titulli' onChange={e=>setTitulli(e.target.value)} />
+                        <input type="text"id='Autori' onChange={e=>setAutori(e.target.value)}/>
+                        <input type="date"  id='vitiBotimit' onChange={e=>setVitiBotimit(e.target.value)}/>
+                        <input type="text" id='shtepiaBotimit' onChange={e=>setShtepiaBotimit(e.target.value)}/>
+                        <input type="number"  id='sasia'  onChange={e=>setSasia(e.target.value)}/>
+                        <input type="text"  id='pershkrimi' onChange={e=>setPershkrimi(e.target.value)} />
+                        <input type="text"  id='url' onChange={e=>setUrl(e.target.value)} />
+                        <input type="text"  id='zhanri' onChange={e=>setZhanri(e.target.value)} />
+                        <input type="number"  id='rafti' onChange={e=>setRafti(e.target.value)} />
+
+                        <button className='btn' type='submit'>Sign Up</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
 
     
     </>
@@ -74,4 +68,4 @@ function addBook(){
 
 
 }
-export default addBook;
+export default AddBook;

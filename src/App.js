@@ -12,16 +12,17 @@ import BookPage from "./components/js/bookPage";
 import WishList from './components/js/wishList';
 //import Porosia from './components/js/porosia';
 //import Pagesa from './components/js/pagesa';
-//import AddBook from './components/js/addBook';
+import AddBook from './components/js/addBook';
 // import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
 import UpdatePerson from './components/js/updatePerson';
+import Ldashboard from './components/js/LibriDashboard';
 function App() {
   return ( 
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<Dashboard />} />
+     <Route index element={<Dashboard/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="Feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
@@ -29,6 +30,8 @@ function App() {
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
     <Route path='/update/:Personi_ID' element={<UpdatePerson />} />
+    <Route path='addBook' element={<AddBook/>} />
+    <Route path='SignupForm' element={<SignupForm/>}/>
 
       
      
