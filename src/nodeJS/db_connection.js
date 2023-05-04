@@ -28,7 +28,15 @@ const connection = mysql.createConnection({
   }
   ) // me i marr te dehnat nga tabelat -->per dashboard mi qit
 
-  
+app.get("/WishList", (req, res) => {
+  const sql = "SELECT * FROM WishList";
+  connection.query(sql, (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  }
+  )
+}
+)
 
   app.post("/create",(req,res)=>{
     const sql = `INSERT INTO personi (Emri, Mbiemri, Email, Datelindja, Qyteti, Paga, Nr_Tel, Biblioteka_ID) VALUES ('${req.body.emri}','${req.body.mbiemri}','${req.body.email}','${req.body.datelindja}','${req.body.qyteti}','${req.body.paga}','${req.body.nrTelefonit}','${req.body.qendra}')`;
@@ -47,6 +55,23 @@ const connection = mysql.createConnection({
       return res.json(data);
     });
   });
+
+// app.post("/createWishCard", (req, res) => {
+//   const sql = `INSERT INTO WishList (Titulli, Autori) VALUES ('${req.body.titulli}','${req.body.Autori}')`;
+//   connection.query(sql, (err, data) => {
+//     if (err) return res.json("Error");
+//     return res.json(data);
+//   });
+// });
+app.post("/createWishCard", (req, res) => {
+  const sql = `INSERT INTO WishList (Titulli, Autori) VALUES (?, ?)`;
+  const values = [req.body.Titulli, req.body.Autori];
+  connection.query(sql, values, (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  });
+});
+
 
   app.put('/update/:id', (req, res) => {
     const sql = "UPDATE personi SET `Emri` = ?, `Mbiemri` = ?, `Email` = ?, `Datelindja` = ?, `Qyteti` = ?, `Paga` = ?, `Nr_Tel` = ?, `Biblioteka_ID` = ? WHERE `Personi_ID` = ?";
@@ -67,26 +92,7 @@ const connection = mysql.createConnection({
     });
   }); // me update ni row
 
-  // app.put('libri/updateLibri/:id', (req, res) => {
-  //   const sql = "UPDATE libri SET  `Titulli` = ?, `Autori` = ?, `Viti_Botimit` = ?, `Shtepia_Botuese` = ?, `Nr_Kopjeve` = ?, `Pershkrimi` = ?, `Url` = ?, `Zhanri` = ?, `Rafti_ID` = ? WHERE `Isbn` = ?";
-  //   const values = [
-  //     req.body.isbn,
-  //     req.body.titulli,
-  //     req.body.Autori,
-  //     req.body.vitiBotimit,
-  //     req.body.shtepiaBotimit,
-  //     req.body.sasia,
-  //     req.body.pershkrimi,
-  //     req.body.url,
-  //     req.body.zhanri,
-  //     req.body.rafti
-     
-  //   ];
-  //   connection.query(sql, values, (err, data) => {
-  //     if (err) return res.json("Error");
-  //     return res.json(data);
-  //   });
-  // }); 
+ 
   app.put('/updateLibri/:id', (req, res) => {
     const sql = "UPDATE libri SET `Titulli` = ?, `Autori` = ?, `Viti_Botimit` = ?, `Shtepia_Botuese` = ?, `Nr_Kopjeve` = ?, `Pershkrimi` = ?, `Url` = ?, `Zhanri` = ?, `Rafti_ID` = ? WHERE `Isbn` = ?";
     const values = [
@@ -128,6 +134,17 @@ const connection = mysql.createConnection({
     })
   }
   )
+
+app.delete('/WishList/:id', (req, res) => {
+  const sql = "DELETE FROM WishList WHERE Wish_ID=?";
+
+  const id = req.params.id;
+  connection.query(sql, [id], (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  })
+}
+)
   
 
   app.get("/libri",(req,res)=>{
@@ -139,20 +156,7 @@ const connection = mysql.createConnection({
     )
   })
 
-  // axios.get("/Libri")
-  // .then(response => {
-  //   const sql = "SELECT * FROM libri";
-  //   connection.query(sql,(err,data)=>{
-  //     if(err)return res.json("Error");
-  //     return res.json(data);
-  //   }
-  //   )
-  //   console.log(response.data);
-  // })
-  // .catch(error => {
-  //   // Handle the error
-  //   console.error(error);
-  // });
+  
 
   app.listen(8081,()=>{
     console.log("Connected");

@@ -10,11 +10,11 @@ function footer(){
     return(
 
         <footer>
-        <div class="footer">
-          <div class="footer-logo">
+        <div className="footer">
+          <div className="footer-logo">
             <img src={logo} alt="logo"/>
           </div>
-          <div class="socialLogo">
+          <div className="socialLogo">
             <ul>
               <li><img src={fbLogo} alt="Facebook"/></li>
               <li><img src={instaLogo} alt="Instagram"/></li>
