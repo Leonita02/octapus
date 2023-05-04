@@ -2,8 +2,9 @@ import '../css/addBook.css';
 // import Nav from './nav';
 import React from 'react';
 import axios from 'axios';
-// import { useNavigate, useParams } from 'react-router';
+
 import {useState} from 'react';
+import { useNavigate } from 'react-router';
 
 function AddBook(){
 
@@ -17,13 +18,14 @@ function AddBook(){
     const [url,setUrl]=useState("")
     const [zhanri,setZhanri]=useState("")
     const [rafti,setRafti]=useState(0)
+    const navigate=useNavigate()
 
     function handleSubmit(event){
       event.preventDefault();
       axios.post("http://localhost:8081/createLibri",{isbn,titulli,Autori,vitiBotimit,shtepiaBotimit,sasia,pershkrimi,url,zhanri,rafti})
       .then(res =>{
           console.log(res);
-          // navigate('/dashboard'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
+          navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
       }).catch(err => console.log(err));
 
   }

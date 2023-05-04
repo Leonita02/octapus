@@ -8,8 +8,8 @@ import { useState } from 'react';
 import axios from 'axios';
 
 export default function WishL() {
-    const [Titulli, setTitulli] = useState("")
-    const [Autori, setAutori] = useState("")
+    const [titulli, setTitulli] = useState("")
+    const [autori, setAutori] = useState("")
     
     const navigate = useNavigate();
 
@@ -22,10 +22,10 @@ export default function WishL() {
         //     }).catch(err => console.log(err));
 
         event.preventDefault();
-        axios.post("http://localhost:8081/createWishCard", { Titulli, Autori})
+        axios.post("http://localhost:8081/createWishCard", { titulli, autori})
             .then(res => {
                 console.log(res);
-                // navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
+                 navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
             }).catch(err => console.log(err));
     }
 
@@ -46,8 +46,8 @@ export default function WishL() {
                 </div>
                 <div className="labels">
                     <form onSubmit = { handleSubmit }>
-                        <input type="text" id='Titulli' onChange={e => setTitulli(e.target.value)} />
-                        <input type="text" id='Autori' onChange={e => setAutori(e.target.value)} />
+                        <input type="text" id='titulli' onChange={e => setTitulli(e.target.value)} />
+                        <input type="text" id='autori' onChange={e => setAutori(e.target.value)} />
 
                         {/* <div> */}
                             {/* <button>Shto më shumë libra</button> */}

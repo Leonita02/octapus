@@ -27,7 +27,7 @@ function App() {
      <Route path="feed" element={<Feed />}></Route>
      <Route index element={<WLdashboard/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
-     <Route path="Feed" element={<Feed/>}></Route>
+     <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
     <Route path='wishList' element = {<WishList></WishList>}></Route>
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
@@ -37,6 +37,7 @@ function App() {
     <Route path='SignupForm' element={<SignupForm/>}/>
     <Route path='/updateLibri/:Isbn' element={<UpdateLibri/>} />
     <Route path='WLdashboard' element={<WLdashboard/>} />
+    
      
    
  </Routes>

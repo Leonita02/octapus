@@ -64,8 +64,8 @@ app.get("/WishList", (req, res) => {
 //   });
 // });
 app.post("/createWishCard", (req, res) => {
-  const sql = `INSERT INTO WishList (Titulli, Autori) VALUES (?, ?)`;
-  const values = [req.body.Titulli, req.body.Autori];
+  const sql = `INSERT INTO wishlist (Titulli, Autori) VALUES (?, ?)`;
+  const values = [req.body.titulli, req.body.autori];
   connection.query(sql, values, (err, data) => {
     if (err) return res.json("Error");
     return res.json(data);

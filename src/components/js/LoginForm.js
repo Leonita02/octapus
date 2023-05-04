@@ -1,5 +1,5 @@
 import React from 'react'
-import bgimg from '../ImagesOfProject/img44.jpeg';
+// import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
 import {Link } from 'react-router-dom';
 export default function Form() {
@@ -17,7 +17,7 @@ export default function Form() {
                     </form>
                 </div>
                 <div className='col-2'>
-                    <img src={bgimg} alt="" />
+                    {/* <img src={bgimg} alt="" /> */}
                 </div>
             </div>
         </section>
