@@ -39,6 +39,7 @@ function WLdashboard() {
                         <tr>
                             <th>Titulli</th>
                             <th>Autori</th>
+                            <th></th>
                         </tr>
                     </thead>
 
