@@ -1,13 +1,15 @@
-import '../css/addBook.css';
-// import Nav from './nav';
-import React from 'react';
+import React from 'react'
+import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
-// import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import {useState} from 'react';
+import '../css/SignupForm.css';
 
-function AddBook(){
 
-  const [isbn,setIsbn]=useState("")
+
+export default function UpdateLibri() {
+    const{Isbn}= useParams()
+    // const [isbn,setIsbn]=useState(0)
     const [titulli,setTitulli]=useState("")
     const [Autori,setAutori]=useState("")
     const [vitiBotimit,setVitiBotimit]=useState(0)
@@ -17,29 +19,32 @@ function AddBook(){
     const [url,setUrl]=useState("")
     const [zhanri,setZhanri]=useState("")
     const [rafti,setRafti]=useState(0)
-
-    function handleSubmit(event){
-      event.preventDefault();
-      axios.post("http://localhost:8081/createLibri",{isbn,titulli,Autori,vitiBotimit,shtepiaBotimit,sasia,pershkrimi,url,zhanri,rafti})
-      .then(res =>{
-          console.log(res);
-          // navigate('/dashboard'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
-      }).catch(err => console.log(err));
-
-  }
- return(
-    <>
     
-    <section>
+    const navigate=useNavigate();
+    function handleUpdate(event){
+        event.preventDefault();
+        axios.put('http://localhost:8081/updateLibri/' + Isbn, { titulli, Autori, vitiBotimit, shtepiaBotimit, sasia, pershkrimi, url, zhanri, rafti})
+        .then(res => {
+            console.log(res);
+            navigate('/');
+            
+        }).catch(err => console.log(err));
+
+    }
+
+    
+   
+    return (
+        <section>
             <div className='register'>
                 <div className='col-1'>
-                  
+                    <img src={bgimg} alt="" />
                 </div>
                 <div className='col-2'>
-                    <h2> Sign Up </h2>
-                    <span> Welcome to Octopus</span>
-                    <form id='form' className='flex flex-col' onSubmit={handleSubmit}>
-                        <input type="number"  id='isbn' onChange={e=>setIsbn(e.target.value)} />
+                    <h2> Update </h2>
+                    
+                    <form id='form' className='flex flex-col' onSubmit={handleUpdate}>
+                        {/* <input type="number"  id='isbn' onChange={e=>setIsbn(e.target.value)} /> */}
                         <input type="text"  id='titulli' onChange={e=>setTitulli(e.target.value)} />
                         <input type="text"id='Autori' onChange={e=>setAutori(e.target.value)}/>
                         <input type="date"  id='vitiBotimit' onChange={e=>setVitiBotimit(e.target.value)}/>
@@ -56,16 +61,5 @@ function AddBook(){
 
             </div>
         </section>
-
-    
-    </>
-
-
-
-
-
- )
-
-
+    )
 }
-export default AddBook;

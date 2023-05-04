@@ -17,12 +17,14 @@ import AddBook from './components/js/addBook';
 import SignupForm from './components/js/SignupForm';
 import UpdatePerson from './components/js/updatePerson';
 import Ldashboard from './components/js/LibriDashboard';
+import UpdateLibri from './components/js/updateLibri';
+
 function App() {
   return ( 
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<Dashboard/>} />
+     <Route index element={<Ldashboard/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="Feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
@@ -32,7 +34,7 @@ function App() {
     <Route path='/update/:Personi_ID' element={<UpdatePerson />} />
     <Route path='addBook' element={<AddBook/>} />
     <Route path='SignupForm' element={<SignupForm/>}/>
-
+    <Route path='/updateLibri/:Isbn' element={<UpdateLibri/>} />
       
      
    

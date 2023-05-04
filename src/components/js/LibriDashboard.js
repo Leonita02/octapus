@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Row from './row';
+// import Row from './row';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -16,19 +16,15 @@ function Ldashboard(){
   }
   )
 
-  // const [libri, setLibri] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get("/libri")
-  //     .then(res => {
-  //       const sql = "SELECT * FROM libri";
-  //       connection.query(sql, (err, data) => {
-  //         if (err) return console.error(err);
-  //         setLibri(data);
-  //       });
-  //     })
-  //     .catch(err => console.error(err));
-  // }, []);
+  const handleDeleteL = async(Isbn)=>{
+    try{
+      await axios.delete('http://localhost:8081/libri/' + Isbn)
+      window.location.reload()
+    }catch(err){
+      console.log(err);
+    }
+  }
+  
     return <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
@@ -66,11 +62,11 @@ function Ldashboard(){
                   <td>{data.Pershkrimi}</td>
                   <td>{data.Url}</td>
                   <td>{data.Zhanri}</td>
-                  <td>{data.Rafti}</td>
+                  <td>{data.Rafti_ID}</td>
                   <td>
-                    {/* <button className='btn btn-primary' ><Link to ={ `update/${data.Personi_ID}`} >Update</Link></button>  */}
-                     {/* <Link to={'update/${data.id}}'}></Link> */}
-                    {/* <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button> */}
+                    
+                     <button className="btn btn-primary"><Link to={`updateLibri/${data.Isbn}`}>Update</Link></button>
+                    <button className = 'btn btn-danger' onClick={e => handleDeleteL(data.Isbn)}>Delete</button>
                   </td>
                 </tr>)
              })   

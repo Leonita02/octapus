@@ -40,13 +40,13 @@ const connection = mysql.createConnection({
   }
   ) //per me i insertu te dhena ne tabele
   
-  // app.post("/create", (req, res) => {
-  //   const sql = `INSERT INTO libri (Isbn, Titulli, Autori, Viti_Botimit, Shtepia_Botuese, Nr_Kopjeve, Pershkrimi, Url, Zhanri, Rafti_ID) VALUES ('${req.body.isbn}','${req.body.titulli}','${req.body.Autori}','${req.body.vitiBotimit}','${req.body.shtepiaBotimit}','${req.body.sasia}','${req.body.pershkrimi}','${req.body.url}','${req.body.zhanri}','${req.body.rafti}')`;
-  //   connection.query(sql, (err, data) => {
-  //     if (err) return res.json("Error");
-  //     return res.json(data);
-  //   });
-  // });
+  app.post("/createLibri", (req, res) => {
+    const sql = `INSERT INTO libri (Isbn, Titulli, Autori, Viti_Botimit, Shtepia_Botuese, Nr_Kopjeve, Pershkrimi, Url, Zhanri, Rafti_ID) VALUES ('${req.body.isbn}','${req.body.titulli}','${req.body.Autori}','${req.body.vitiBotimit}','${req.body.shtepiaBotimit}','${req.body.sasia}','${req.body.pershkrimi}','${req.body.url}','${req.body.zhanri}','${req.body.rafti}')`;
+    connection.query(sql, (err, data) => {
+      if (err) return res.json("Error");
+      return res.json(data);
+    });
+  });
 
   app.put('/update/:id', (req, res) => {
     const sql = "UPDATE personi SET `Emri` = ?, `Mbiemri` = ?, `Email` = ?, `Datelindja` = ?, `Qyteti` = ?, `Paga` = ?, `Nr_Tel` = ?, `Biblioteka_ID` = ? WHERE `Personi_ID` = ?";
@@ -67,7 +67,45 @@ const connection = mysql.createConnection({
     });
   }); // me update ni row
 
-  
+  // app.put('libri/updateLibri/:id', (req, res) => {
+  //   const sql = "UPDATE libri SET  `Titulli` = ?, `Autori` = ?, `Viti_Botimit` = ?, `Shtepia_Botuese` = ?, `Nr_Kopjeve` = ?, `Pershkrimi` = ?, `Url` = ?, `Zhanri` = ?, `Rafti_ID` = ? WHERE `Isbn` = ?";
+  //   const values = [
+  //     req.body.isbn,
+  //     req.body.titulli,
+  //     req.body.Autori,
+  //     req.body.vitiBotimit,
+  //     req.body.shtepiaBotimit,
+  //     req.body.sasia,
+  //     req.body.pershkrimi,
+  //     req.body.url,
+  //     req.body.zhanri,
+  //     req.body.rafti
+     
+  //   ];
+  //   connection.query(sql, values, (err, data) => {
+  //     if (err) return res.json("Error");
+  //     return res.json(data);
+  //   });
+  // }); 
+  app.put('/updateLibri/:id', (req, res) => {
+    const sql = "UPDATE libri SET `Titulli` = ?, `Autori` = ?, `Viti_Botimit` = ?, `Shtepia_Botuese` = ?, `Nr_Kopjeve` = ?, `Pershkrimi` = ?, `Url` = ?, `Zhanri` = ?, `Rafti_ID` = ? WHERE `Isbn` = ?";
+    const values = [
+      req.body.titulli,
+      req.body.Autori,
+      req.body.vitiBotimit,
+      req.body.shtepiaBotimit,
+      req.body.sasia,
+      req.body.pershkrimi,
+      req.body.url,
+      req.body.zhanri,
+      req.body.rafti,
+      req.params.id
+    ];
+    connection.query(sql, values, (err, data) => {
+      if (err) return res.json("Error");
+      return res.json(data);
+    });
+  });
 
   app.delete('/personi/:id',(req,res)=>{
     const sql = "DELETE FROM personi WHERE Personi_ID=?";
@@ -79,6 +117,18 @@ const connection = mysql.createConnection({
     })
   }
   )
+
+  app.delete('/libri/:id',(req,res)=>{
+    const sql = "DELETE FROM libri WHERE Isbn=?";
+   
+    const id = parseInt(req.params.id);
+    connection.query(sql,[id],(err,data )=>{
+      if(err) return res.json("Error");
+      return res.json(data);
+    })
+  }
+  )
+  
 
   app.get("/libri",(req,res)=>{
     const sql = "SELECT * FROM libri";
