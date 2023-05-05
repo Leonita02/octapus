@@ -8,7 +8,7 @@ import { useContext } from "react";
  function Row(){
   const [personi,setPersoni] = useState([]) // me i marr te dhenat prej tabeles personi nga url i node file-it
   useEffect(()=>{
-    axios.get('http://localhost:8081')
+    axios.get('http://localhost:8081/personi')
     .then(res => setPersoni(res.data))
     .catch(err => console.log(err));
 
@@ -35,7 +35,7 @@ import { useContext } from "react";
                   <td>{data.Nr_Tel}</td>
                   <td>{data.Biblioteka_ID}</td>
                   <td>
-                    <button className='btn btn-primary' ><Link to ={ `update/${data.Personi_ID}`} >Update</Link></button> 
+                    <button className='btn btn-primary' ><Link to ={ `personi/${data.Personi_ID}`} >Update</Link></button> 
                      {/* <Link to={'update/${data.id}}'}></Link> */}
                     <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button>
                   </td>

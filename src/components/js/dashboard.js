@@ -23,7 +23,7 @@ function Dashboard(){
     </div>
     <div className="row">
       <div className="col-md-12">
-        {/* <Link to='/SignupForm'>Add new </Link> */}
+        <Link to='/SignupForm'>Add new </Link>
         <table className="table table-hover">
           <thead>
             <tr>

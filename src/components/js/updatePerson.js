@@ -21,7 +21,7 @@ export default function UpdatePerson() {
     const navigate=useNavigate();
     function handleUpdate(event){
         event.preventDefault();
-        axios.put('http://localhost:8081/update/' + Personi_ID, {emri, mbiemri, email, datelindja, qyteti, paga, nrTelefonit, qendra})
+        axios.put('http://localhost:8081/personi/' + Personi_ID, {emri, mbiemri, email, datelindja, qyteti, paga, nrTelefonit, qendra})
         .then(res => {
             console.log(res);
             navigate('/');

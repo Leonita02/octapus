@@ -16,14 +16,14 @@ export default function Form() {
     const [nrTelefonit,setNrTelefonit]=useState(0)
     const [qendra,setQendra]=useState(0)
 
-    // const navigate=useNavigate();
+    const navigate=useNavigate();
 
     function handleSubmit(event){
         event.preventDefault();
-        axios.post("http://localhost:8081/create",{emri,mbiemri,email,datelindja,qyteti,paga,nrTelefonit,qendra})
+        axios.post("http://localhost:8081/personi",{emri,mbiemri,email,datelindja,qyteti,paga,nrTelefonit,qendra})
         .then(res =>{
             console.log(res);
-            // navigate('/dashboard'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
+             navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
         }).catch(err => console.log(err));
 
     }

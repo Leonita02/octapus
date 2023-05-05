@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
 import {Link } from 'react-router-dom';
@@ -55,9 +55,9 @@ export default function Login() {
                         <button className ='btn btn-default border w-100 bg-light rounded-0 text-decoration-none '><Link to ='/clientSignUp'>Regjistrohu</Link></button>
                     </form>
                 </div>
-                {/* <div className='col-2'>
+                <div className='col-2'>
                     <img src={bgimg} alt="" />
-                </div> */}
+                </div>
             </div>
         </section>
     )

@@ -8,13 +8,13 @@
    
 
    #wishBanner {
-    background-color:rgb(162, 160, 160);
+    background-color:rgb(230, 230, 230);
     /* margin-left: 35%;
     margin-right: 35%; */
-    margin:5% 35%;
+    margin:5% 30%;
     text-align: center;
     padding: 1%;
-    width: 30%;
+    width: 40%;
     /* border: solid 1px black; */
     border-radius: 10px;
   }
@@ -32,16 +32,17 @@
     justify-content: center;
     align-items: center;
     border: solid 2px rgb(162, 160, 160);
-    width: 30%;
-    margin: 5% 35%;
+    margin: 5% 30%;
     padding: 1%;
     border-radius: 10px;
+    width: 40%;
   }
 
 .labels form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
 }
 
@@ -51,18 +52,20 @@
   margin-bottom: 10px;
   font-size: 18px;
   color: black;
+  
 
 }
 
 .labels input {
   background-color: #706b6b;
   margin-top: 5px;
-  padding: 10px;
+  padding: 10%;
   border: none;
   border-radius: 5px;
   border: solid 2px rgb(162, 160, 160);
   background-color: white;
   box-shadow: 0px 1px 3px rgba(171, 171, 171, 0.1);
+  
 }
 
 
@@ -75,6 +78,7 @@
   font-size: 18px;
   cursor: pointer;
   margin-top: 20px;
+  
 }
 
 .labels button:hover {
@@ -82,5 +86,7 @@
 }
 
 #vazhdo{
-  /* margin-left: 30%; */
+  padding-bottom: 15%;
+  text-align: center;
+ 
 }
