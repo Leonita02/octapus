@@ -1,25 +1,65 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
 import {Link } from 'react-router-dom';
-export default function Form() {
+import Validation from './LoginValidation';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+
+
+export default function Login() {
+    
+    const navigate = useNavigate();
+
+    const [values,setValues] = useState({
+        Username:'',
+        Password:''
+    })
+    const [errors,setErrors] = useState({})
+    const handleInput = (event) => {
+        setValues(prev => ({...prev, [event.target.name]:[event.target.value]}))
+    }
+    const handleSubmit =(event) => {
+        event.preventDefault();
+        setErrors(Validation(values));
+        if( errors.username === "" && errors.password ===""){
+            axios.post('http://localhost:8081/login' ,values)
+                .then(res => {
+                    if(res.data === "Success"){
+                        navigate('/feed');
+                    }
+                    else{
+                        alert("Nuk ekziston asnjë regjistrim");
+                    }
+                    
+                })
+                .catch(err => console.log(err));
+
+            }
+    }
+  
     return (
         <section>
             <div className='register'>
                 <div className='col-1'>
                     <h2> Log In</h2>
                     <span> Enjoy The Service</span>
-                    <form id='form' className='flex flex-col'>
-                        <input type="text" placeholder='Username' />
-                        <input type="text" placeholder='Password' />
+                    <form action="" onSubmit={handleSubmit} id='form' className='flex flex-col'>
+                        <input type="text" placeholder='Username' onChange={handleInput} name='username' />
+                        {errors.username && <span className='text-danger'>{errors.username}</span>}
 
-                        <button className='btn'><Link to='/feed'>Log In</Link></button>
+                        <input type="text" placeholder='Password' onChange={handleInput} name='password'/>
+                        {errors.password && <span className='text-danger'>{errors.password}</span>}
+
+                        <button type='submit' className='btn'><Link to='/feed'>Kyqu</Link></button>
+                        <button className ='btn btn-default border w-100 bg-light rounded-0 text-decoration-none '><Link to ='/clientSignUp'>Regjistrohu</Link></button>
                     </form>
                 </div>
-                <div className='col-2'>
+                {/* <div className='col-2'>
                     <img src={bgimg} alt="" />
-                </div>
+                </div> */}
             </div>
         </section>
     )
+
 }
