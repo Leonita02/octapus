@@ -20,7 +20,7 @@ const connection=require('./db_connection');
 router.post("/", (req, res) => {
   const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
   const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
-  connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, results) => {
+  connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, data) => {
         if (err) return res.json("Error");
         return res.json(data)
     });

@@ -16,7 +16,7 @@ export default function ClientSignUpForm() {
         email:'',
         datelindja:'',
         qyteti:'',
-       
+       nr_tel :0 ,
         username:'',
         password:''
     })
@@ -55,7 +55,7 @@ export default function ClientSignUpForm() {
                         <input type="text" placeholder='Mbiemri' id='mbiemri' name='mbiemri' onChange={handleInput}/>
                         {errors.mbiemri && <span className='text-danger'>{errors.mbiemri}</span>}
 
-                        <input type="email" placeholder='Email' id='email' name='email'/>
+                        <input type="text" placeholder='Email' id='email' name='email' onChange={handleInput}/>
                         {errors.email && <span className='text-danger'>{errors.email}</span>}
 
 
@@ -69,10 +69,10 @@ export default function ClientSignUpForm() {
                         {errors.nr_tel && <span className='text-danger'>{errors.nr_tel}</span>}
 
                         
-                        <input type="text" placeholder='Username' id='username' name='username'/>
+                        <input type="text" placeholder='Username' id='username' name='username'  onChange={handleInput}/>
                         {errors.username && <span className='text-danger'>{errors.username}</span>}
 
-                        <input type="password" placeholder='Password' id='password' name='password'/>
+                        <input type="password" placeholder='Password' id='password' name='password' onChange={handleInput}/>
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
                         <button className='btn' type='submit'>Sign Up<Link to ='/LoginForm'></Link></button>
