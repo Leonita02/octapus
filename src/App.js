@@ -25,7 +25,7 @@ function App() {
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<WLdashboard/>} />
+     <Route index element={<Ldashboard/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
