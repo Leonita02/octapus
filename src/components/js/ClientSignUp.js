@@ -39,6 +39,17 @@ export default function ClientSignUpForm() {
             }
     // }
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(values); // add this line to log the values object
+    //     axios.post('http://localhost:8081/clientRepo/', values)
+    //       .then((res) => {
+    //         navigate('/logIn');
+    //       })
+    //       .catch((err) => console.log(err));
+    //   };
+
+
     return (
         <section>
             <div className='register'>

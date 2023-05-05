@@ -17,14 +17,33 @@ const connection=require('./db_connection');
   
 //Me insertu prej Sign Up for Client
 
+// router.post("/", (req, res) => {
+//   const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
+//   const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
+//   connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, data) => {
+//         if (err) return res.json("Error");
+//         return res.json(data)
+//     });
+//   });
+
+
+
+
+
+
+
 router.post("/", (req, res) => {
-  const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
-  const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
-  connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, data) => {
-        if (err) return res.json("Error");
-        return res.json(data)
-    });
+    const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
+    const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
+    console.log('req.body:', req.body); // log the request body
+    connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, results) => {
+          if (err) {
+              console.log('Error:', err); // log the error, if any
+              return res.json("Error");
+          }
+          console.log('results:', results); // log the query results
+          return res.json(data);
+      });
   });
 
-
-module.exports = router;
+  module.exports = router;
