@@ -3,7 +3,7 @@ import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import {useState} from 'react';
-import Validation from './SignUpValidation';
+// import Validation from './SignUpValidation';
 import {Link} from 'react-router-dom';
 
 
@@ -13,12 +13,12 @@ export default function ClientSignUpForm() {
     const [values,setValues] = useState({
         emri:'',
         mbiemri:'',
-        password:'',
+        email:'',
         datelindja:'',
         qyteti:'',
-        nr_tel:0,
-        email:'',
-        username:''
+       
+        username:'',
+        password:''
     })
     const [errors,setErrors] = useState({})
     const handleInput = (event) => {
@@ -30,7 +30,7 @@ export default function ClientSignUpForm() {
         // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
         //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
 
-                axios.post('http://localhost:8081/clientRepo' ,values)
+                axios.post('http://localhost:8081/clientRepo/' ,values)
                 .then(res => {
                     navigate('/logIn');
                 })
@@ -58,11 +58,6 @@ export default function ClientSignUpForm() {
                         <input type="email" placeholder='Email' id='email' name='email'/>
                         {errors.email && <span className='text-danger'>{errors.email}</span>}
 
-                        <input type="text" placeholder='Username' id='username' name='username'/>
-                        {errors.username && <span className='text-danger'>{errors.username}</span>}
-
-                        <input type="password" placeholder='Password' id='password' name='password'/>
-                        {errors.password && <span className='text-danger'>{errors.password}</span>}
 
                         <input type="text" placeholder='Datelindja' id='datelindja' name='datelindja' onChange={handleInput}/>
                         {errors.datelindja && <span className='text-danger'>{errors.datelindja}</span>}
@@ -72,6 +67,13 @@ export default function ClientSignUpForm() {
 
                         <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' name='nr_tel' onChange={handleInput}/>
                         {errors.nr_tel && <span className='text-danger'>{errors.nr_tel}</span>}
+
+                        
+                        <input type="text" placeholder='Username' id='username' name='username'/>
+                        {errors.username && <span className='text-danger'>{errors.username}</span>}
+
+                        <input type="password" placeholder='Password' id='password' name='password'/>
+                        {errors.password && <span className='text-danger'>{errors.password}</span>}
 
                         <button className='btn' type='submit'>Sign Up<Link to ='/LoginForm'></Link></button>
                     </form>
