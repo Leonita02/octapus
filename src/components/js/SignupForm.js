@@ -30,12 +30,8 @@ export default function Form() {
     return (
         <section>
             <div className='register'>
-                <div className='col-1'>
-                    <img src={bgimg} alt="" />
-                </div>
                 <div className='col-2'>
-                    <h2> Sign Up </h2>
-                    <span> Welcome to Octopus</span>
+                    <h2 id='titulli'> Register form </h2>
                     <form id='form' className='flex flex-col' onSubmit={handleSubmit}>
                         <input type="text" placeholder='Emri' id='emri' onChange={e=>setEmri(e.target.value)} />
                         <input type="text" placeholder='Mbiemri' id='mbiemri' onChange={e=>setMbiemri(e.target.value)} />

@@ -1,71 +1,57 @@
 body {
-    background-color: #013C4D;
+    background: white;
+    font-family: Arial,Helvetica,sans-serif;
 }
 
-.addBook {
-    align-items: center;
-    justify-content: center;
-    width: 450px;
-    height: 985px;
-    margin: auto;
-    background-color: white;
-    border-radius: 5%;
-    margin-top: 5%;
-    border: 5px solid grey;
-    padding-right: 20px;
-    margin-bottom: 5%;
-
-
-}
-
-.titulli>h1 {
-    text-align: center;
-}
-
-form {
-    padding: 2% 5%;
-}
-
-form label {
+.register {
     display: flex;
-    margin-top: 20px;
-    font-size: 18px;
-
-}
-
-form input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e9ecef;
     border-radius: 5px;
-    outline: none;
-
-}
-
-form textarea {
+    background-color: rgb(241, 235, 235);
+    margin: 5% auto;
+    padding: 20px;
+    border: solid 1px black;
+  }
+  
+  #form {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #form > input,
+  #btn {
+    border: 1px solid #e9ecef;
+    padding: .9em 1em;
+    width: 100%; /* Set width to 100% */
+  }
+  
+  #form > input:focus {
     outline: none;
-}
-
-#add {
-    width: 100px;
-    height: 35px;
-    margin-top: 25px;
-    border: none;
-    background: rgba(213, 68, 28, 1);
-    color: rgb(251, 251, 251);
-    font-size: 18px;
-    margin-left: 40%;
+  }
+  
+   #btn {
+    background-color: rgb(213, 68, 28, 1);
+    color: #e9ecef;
+    font-size: 1em;
     cursor: pointer;
-}
+    padding-bottom: 20%;
+  }
+  
+ 
 
-#firstHr {
-    height: 2px;
-    color: rgb(0, 0, 0);
-    background-color: black;
-}
+  .flex {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  #titullii {
+    text-align: center; /* Center the heading text */
+    margin-bottom: 20px; /* Add some bottom margin for spacing */
+  }

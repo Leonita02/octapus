@@ -35,11 +35,8 @@ export default function UpdatePerson() {
     return (
         <section>
             <div className='register'>
-                <div className='col-1'>
-                    <img src={bgimg} alt="" />
-                </div>
                 <div className='col-2'>
-                    <h2> Update </h2>
+                    <h2> Ndrysho! </h2>
                     
                     <form id='form' className='flex flex-col' onSubmit={handleUpdate}>
                         <input type="text" placeholder='Emri' id='emri' onChange={e=>setEmri(e.target.value)} />
@@ -51,7 +48,7 @@ export default function UpdatePerson() {
                         <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' onChange={e=>setNrTelefonit(e.target.value)} />
                         <input type="text" placeholder='Qendra' id='qendra' onChange={e=>setQendra(e.target.value)} />
 
-                        <button className='btn' type='submit' >Update</button>
+                        <button className='btn' type='submit' >Ndrysho</button>
                     </form>
                 </div>
 

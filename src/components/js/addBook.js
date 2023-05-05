@@ -34,25 +34,23 @@ function AddBook(){
     
     <section>
             <div className='register'>
-                <div className='col-1'>
-                  
-                </div>
+               
                 <div className='col-2'>
-                    <h2> Sign Up </h2>
-                    <span> Welcome to Octopus</span>
+                    <h2 id='titullii'> +Libër! </h2>
+                    <hr></hr>
                     <form id='form' className='flex flex-col' onSubmit={handleSubmit}>
-                        <input type="number"  id='isbn' onChange={e=>setIsbn(e.target.value)} />
-                        <input type="text"  id='titulli' onChange={e=>setTitulli(e.target.value)} />
-                        <input type="text"id='Autori' onChange={e=>setAutori(e.target.value)}/>
-                        <input type="date"  id='vitiBotimit' onChange={e=>setVitiBotimit(e.target.value)}/>
-                        <input type="text" id='shtepiaBotimit' onChange={e=>setShtepiaBotimit(e.target.value)}/>
-                        <input type="number"  id='sasia'  onChange={e=>setSasia(e.target.value)}/>
-                        <input type="text"  id='pershkrimi' onChange={e=>setPershkrimi(e.target.value)} />
-                        <input type="text"  id='url' onChange={e=>setUrl(e.target.value)} />
-                        <input type="text"  id='zhanri' onChange={e=>setZhanri(e.target.value)} />
-                        <input type="number"  id='rafti' onChange={e=>setRafti(e.target.value)} />
+                        <input type="number" placeholder='Isbn:' id='isbn' onChange={e=>setIsbn(e.target.value)} />
+                        <input type="text" placeholder='Titulli:' id='titulli' onChange={e=>setTitulli(e.target.value)} />
+                        <input type="text" placeholder='Autori:' id='Autori' onChange={e=>setAutori(e.target.value)}/>
+                        <input type="date" placeholder='Viti i botimit:' id='vitiBotimit' onChange={e=>setVitiBotimit(e.target.value)}/>
+                        <input type="text" placeholder='Shtepia e botimit:' id='shtepiaBotimit' onChange={e=>setShtepiaBotimit(e.target.value)}/>
+                        <input type="number" placeholder='Sasia:' id='sasia'  onChange={e=>setSasia(e.target.value)}/>
+                        <input type="text" placeholder='Pershkrimi:' id='pershkrimi' onChange={e=>setPershkrimi(e.target.value)} />
+                        <input type="text" placeholder='Url:' id='url' onChange={e=>setUrl(e.target.value)} />
+                        <input type="text" placeholder='Zhanri:' id='zhanri' onChange={e=>setZhanri(e.target.value)} />
+                        <input type="number" placeholder='Rafti:' id='rafti' onChange={e=>setRafti(e.target.value)} />
 
-                        <button className='btn' type='submit'>Sign Up</button>
+                        <button id='btn' type='submit'>Shto</button>
                     </form>
                 </div>
 
