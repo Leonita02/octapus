@@ -12,27 +12,32 @@ export default function ClientSignUpForm() {
     const navigate = useNavigate();
     const [values,setValues] = useState({
         emri:'',
-        Username:'',
-        Password:''
+        mbiemri:'',
+        password:'',
+        datelindja:'',
+        qyteti:'',
+        nr_tel:0,
+        email:'',
+        username:''
     })
     const [errors,setErrors] = useState({})
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]:[event.target.value]}))
+        setValues(prev => ({...prev, [event.target.name]: event.target.value}))
     }
     const handleSubmit =(event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-        if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
-            && errors.qyteti ==="" && errors.paga ==="" && errors.numri_telefonit ==="" && errors.username === "" && errors.password ===""){
+        // setErrors(Validation(values));
+        // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
+        //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
 
-                axios.post('http://localhost:8081/signUp' ,values)
+                axios.post('http://localhost:8081/clientRepo' ,values)
                 .then(res => {
                     navigate('/logIn');
                 })
                 .catch(err => console.log(err));
 
             }
-    }
+    // }
 
     return (
         <section>
@@ -65,11 +70,8 @@ export default function ClientSignUpForm() {
                         <input type="text" placeholder='Qyteti' id='qyteti' name='qyteti' onChange={handleInput}/>
                         {errors.qyteti && <span className='text-danger'>{errors.qyteti}</span>}
 
-                        <input type="text" placeholder='Paga' id='paga' name='paga' onChange={handleInput}/>
-                        {errors.paga && <span className='text-danger'>{errors.paga}</span>}
-
-                        <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' name='numri_telefonit' onChange={handleInput}/>
-                        {errors.numri_telefonit && <span className='text-danger'>{errors.numri_telefonit}</span>}
+                        <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' name='nr_tel' onChange={handleInput}/>
+                        {errors.nr_tel && <span className='text-danger'>{errors.nr_tel}</span>}
 
                         <button className='btn' type='submit'>Sign Up<Link to ='/LoginForm'></Link></button>
                     </form>

@@ -84,14 +84,14 @@ else{
 
 //numri telefonit validimi
 
-if(values.numri_telefonit ===""){
-    error.numri_telefonit ="Emri nuk duhet te jete i zbrazet";
+if(values.nr_tel ===""){
+    error.nr_tel ="Emri nuk duhet te jete i zbrazet";
 }
-else if(!number_pattern.test(values.numri_telefonit)){
-    error.numri_telefonit = "Email nuk eshte i duhuri";
+else if(!number_pattern.test(values.nr_tel)){
+    error.nr_tel = "Email nuk eshte i duhuri";
 }
 else{
-    error.numri_telefonit = ""
+    error.nr_tel = ""
 }
 
  //username validimi
