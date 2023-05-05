@@ -7,9 +7,9 @@ import { useState } from "react";
 
 
 function WLdashboard() {
-    const [WishList, setWishList] = useState([])
+    const [wishList, setWishList] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8081/WishList')
+        axios.get('http://localhost:8081/wishList')
             .then(res => setWishList(res.data))
             .catch(err => console.log(err));
 
@@ -18,7 +18,7 @@ function WLdashboard() {
 
     const handleDeleteW = async (Wish_ID) => {
         try {
-            await axios.delete('http://localhost:8081/WishList/' + Wish_ID)
+            await axios.delete('http://localhost:8081/wishList/' + Wish_ID)
             window.location.reload()
         } catch (err) {
             console.log(err);
@@ -44,7 +44,7 @@ function WLdashboard() {
                     </thead>
 
                     <tbody>
-                        {WishList.map((data, i) => { // me i printu qato te dhena
+                        {wishList.map((data, i) => { // me i printu qato te dhena
                             return (<tr key={i}>
                                 <td>{data.Titulli}</td>
                                 <td>{data.Autori}</td>

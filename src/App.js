@@ -32,10 +32,10 @@ function App() {
     <Route path='wishList' element = {<WishList></WishList>}></Route>
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
-    <Route path='/update/:Personi_ID' element={<UpdatePerson />} />
+    <Route path='/personi/:Personi_ID' element={<UpdatePerson />} />
     <Route path='addBook' element={<AddBook/>} />
     <Route path='SignupForm' element={<SignupForm/>}/>
-    <Route path='/updateLibri/:Isbn' element={<UpdateLibri/>} />
+    <Route path='/libri/:Isbn' element={<UpdateLibri/>} />
     <Route path='WLdashboard' element={<WLdashboard/>} />
     
      

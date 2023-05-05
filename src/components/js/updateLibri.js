@@ -23,7 +23,7 @@ export default function UpdateLibri() {
     const navigate=useNavigate();
     function handleUpdate(event){
         event.preventDefault();
-        axios.put('http://localhost:8081/updateLibri/' + Isbn, { titulli, Autori, vitiBotimit, shtepiaBotimit, sasia, pershkrimi, url, zhanri, rafti})
+        axios.put('http://localhost:8081/libri/' + Isbn, { titulli, Autori, vitiBotimit, shtepiaBotimit, sasia, pershkrimi, url, zhanri, rafti})
         .then(res => {
             console.log(res);
             navigate('/');

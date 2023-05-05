@@ -65,7 +65,7 @@ function Ldashboard(){
                   <td>{data.Rafti_ID}</td>
                   <td>
                     
-                     <button className="btn btn-primary"><Link to={`updateLibri/${data.Isbn}`}>Update</Link></button>
+                     <button className="btn btn-primary"><Link to={`libri/${data.Isbn}`}>Update</Link></button>
                     <button className = 'btn btn-danger' onClick={e => handleDeleteL(data.Isbn)}>Delete</button>
                   </td>
                 </tr>)

@@ -22,7 +22,7 @@ function AddBook(){
 
     function handleSubmit(event){
       event.preventDefault();
-      axios.post("http://localhost:8081/createLibri",{isbn,titulli,Autori,vitiBotimit,shtepiaBotimit,sasia,pershkrimi,url,zhanri,rafti})
+      axios.post("http://localhost:8081/libri",{isbn,titulli,Autori,vitiBotimit,shtepiaBotimit,sasia,pershkrimi,url,zhanri,rafti})
       .then(res =>{
           console.log(res);
           navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme

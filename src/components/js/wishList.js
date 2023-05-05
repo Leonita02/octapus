@@ -14,15 +14,10 @@ export default function WishL() {
     const navigate = useNavigate();
 
     function handleSubmit(event) {
-        // event.preventDefault();
-        // axios.post("http://localhost:8081/createWishCard", { Titulli, autori})
-        //     .then(res => {
-        //         console.log(res);
-        //         // navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
-        //     }).catch(err => console.log(err));
+    
 
         event.preventDefault();
-        axios.post("http://localhost:8081/createWishCard", { titulli, autori})
+        axios.post("http://localhost:8081/wishList", { titulli, autori})
             .then(res => {
                 console.log(res);
                  navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme

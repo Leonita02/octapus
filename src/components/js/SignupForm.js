@@ -20,7 +20,7 @@ export default function Form() {
 
     function handleSubmit(event){
         event.preventDefault();
-        axios.post("http://localhost:8081/create",{emri,mbiemri,email,datelindja,qyteti,paga,nrTelefonit,qendra})
+        axios.post("http://localhost:8081/personi",{emri,mbiemri,email,datelindja,qyteti,paga,nrTelefonit,qendra})
         .then(res =>{
             console.log(res);
              navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
