@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import {useState} from 'react';
 // import Validation from './SignUpValidation';
 import {Link} from 'react-router-dom';
+import '../css/clientSignup.css'
 
 
 export default function ClientSignUpForm() {
@@ -51,15 +52,17 @@ export default function ClientSignUpForm() {
 
 
     return (
-        <section>
+        <>
             <div className='register'>
-                <div className='col-1'>
+                <div className='col-2'>
                     <img src={bgimg} alt="" />
                 </div>
-                <div className='col-2'>
-                    <h2> Sign Up </h2>
-                    <span> Welcome to Octopus</span>
-                    <form action="" onSubmit={handleSubmit}  id='form' className='flex flex-col' >
+                <div className='col-1'>
+                    
+                    <h2> Regjistrohu </h2>
+                    <span> Mirëse vini në Octopus</span>
+                    <form action="" onSubmit={handleSubmit}  id='form' className='forma' >
+                        
                         <input type="text" placeholder='Emri' id='emri' name='emri' onChange={handleInput} />
                         {errors.emri && <span className='text-danger'>{errors.emri}</span>}
 
@@ -86,10 +89,13 @@ export default function ClientSignUpForm() {
                         <input type="password" placeholder='Password' id='password' name='password' onChange={handleInput}/>
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
-                        <button className='btn' type='submit'>Sign Up<Link to ='/LoginForm'></Link></button>
+                        <button className='btn' type='submit'>Regjistrohu<Link to ='/LoginForm'></Link></button>
+                        
                     </form>
+                    
                 </div>
             </div>
-        </section>
+            
+        </>
     )
 }
