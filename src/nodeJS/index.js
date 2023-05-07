@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+
 app.use(cors());
 app.use(express.json());
 
@@ -12,12 +13,14 @@ const personiRoute = require('./personi');
 const libriRoute = require('./libri');
 const wishListRoute = require('./wishList');
 const clientRepoRoute = require('./clientRepo');
+const loginRoute = require('./login');
 
 
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
 app.use('/wishList', wishListRoute);
 app.use('/clientRepo', clientRepoRoute);
+app.use('/login',loginRoute);
 
 
 
