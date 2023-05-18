@@ -35,7 +35,7 @@ import { useContext } from "react";
                   <td>{data.Nr_Tel}</td>
                   <td>{data.Biblioteka_ID}</td>
                   <td>
-                    <button className='btn btn-primary' ><Link to ={ `personi/${data.Personi_ID}`} >Update</Link></button> 
+                    <button className='btn btn-primary' ><Link to ={ `/personi/${data.Personi_ID}`} >Update</Link></button> 
                      {/* <Link to={'update/${data.id}}'}></Link> */}
                     <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button>
                   </td>

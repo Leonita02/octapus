@@ -16,7 +16,7 @@ import AddBook from './components/js/addBook';
 // import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
 import UpdatePerson from './components/js/updatePerson';
-import Ldashboard from './components/js/LibriDashboard';
+import LibriDashboard from './components/js/LibriDashboard';
 import UpdateLibri from './components/js/updateLibri';
 import WLdashboard from './components/js/WLdashboard';
 import ClientSignUpForm from './components/js/ClientSignUp';
@@ -26,7 +26,7 @@ function App() {
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<LoginForm/>} />
+     <Route index element={<HomePage/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
@@ -39,6 +39,7 @@ function App() {
     <Route path='/libri/:Isbn' element={<UpdateLibri/>} />
     <Route path='WLdashboard' element={<WLdashboard/>} />
     <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
+    <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
     
      
    

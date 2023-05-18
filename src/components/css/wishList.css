@@ -46,25 +46,16 @@
 
 }
 
-.labels label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: black;
-  
 
-}
 
 .labels input {
-  background-color: #706b6b;
   margin-top: 5px;
-  padding: 10%;
   border: none;
   border-radius: 5px;
   border: solid 2px rgb(162, 160, 160);
   background-color: white;
   box-shadow: 0px 1px 3px rgba(171, 171, 171, 0.1);
+  width: 200%; 
   
 }
 

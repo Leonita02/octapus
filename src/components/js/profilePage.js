@@ -30,7 +30,7 @@ function ProfilePage(){
             <img src ={fotoFavs} id='fotoLogout' alt='foto'></img>
             <img src ={addWishList} id='fotoFavs' alt='foto' onClick={navigateToWishList} ></img>
             <img src ={logout} id='fotoWishL' alt='foto'></img>
-            <hr id='line'/>
+           
             
             </div>
            
