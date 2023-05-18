@@ -39,12 +39,6 @@ function ProfilePage(){
         
         <div className='cards'>
         <WishCard></WishCard>
-        <WishCard></WishCard>
-        <WishCard></WishCard>
-        
-       
-        
-
         </div>
         </>
         

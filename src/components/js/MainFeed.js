@@ -7,11 +7,7 @@ function MainF(){
   <div className="row justify-content-center">
     <div className="col-lg-14 divi">
       <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
+      
     </div>
   </div>
 </div>
