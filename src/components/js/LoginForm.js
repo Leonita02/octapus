@@ -27,7 +27,10 @@ export default function Login() {
             axios.post('http://localhost:8081/login', values)
                 .then(res => {
                     if (res.data === "Success") {
-                        navigate('/feed');
+                        if(data.role===4){
+                            navigate('/feed');
+                        }
+                        
                     }
                     else {
                         alert("Nuk ekziston asnjë regjistrim");

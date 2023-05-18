@@ -39,6 +39,7 @@ function App() {
     <Route path='ClientSignUp' element={<ClientSignUpForm/>}/>
     <Route path='/libri/:Isbn' element={<UpdateLibri/>} />
     <Route path='WLdashboard' element={<WLdashboard/>} />
+    <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
     
      
    
