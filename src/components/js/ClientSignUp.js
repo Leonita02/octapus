@@ -39,7 +39,7 @@ export default function ClientSignUpForm() {
 
             }
     // }
-
+//MOS I FSHINI QITO KOMENTE!!!!
     // const handleSubmit = (event) => {
     //     event.preventDefault();
     //     console.log(values); // add this line to log the values object
