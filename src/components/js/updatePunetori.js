@@ -7,21 +7,38 @@ import '../css/SignupForm.css';
 
 
 
-export default function UpdatePerson() {
-    const{Personi_ID}=useParams()
-    const [emri,setEmri]=useState("")
-    const [mbiemri,setMbiemri]=useState("")
-    const [email,setEmail]=useState("")
-    const [datelindja,setDatelindja]=useState("")
-    const[qyteti,setQyteti] = useState("")
-    const [paga,setPaga]=useState(0)
-    const [nrTelefonit,setNrTelefonit]=useState(0)
-    const [qendra,setQendra]=useState(0)
-    
+export default function UpdatePunetori() {
+    const { Personi_ID } = useParams();
+    const [emri,setEmri]=useState("");
+    const [mbiemri,setMbiemri]=useState("");
+    const [email,setEmail]=useState("");
+    const [datelindja,setDatelindja]=useState("");
+    const[qyteti,setQyteti] = useState("");
+    const [paga,setPaga]=useState(0);
+    const [numri_telefonit,setNrTelefonit]=useState(0);
     const navigate=useNavigate();
+  
+    if (!Personi_ID) {
+        console.log('Personi_ID is undefined or empty');
+        return null;
+      }
+      console.log('URL:', `http://localhost:8081/punetori/${Personi_ID}`);
+     
+  
+      console.log('Personi_ID:', Personi_ID);
+
+      console.log('emri:', emri);
+console.log('mbiemri:', mbiemri);
+console.log('email:', email);
+console.log('datelindja:', datelindja);
+console.log('qyteti:', qyteti);
+console.log('paga:', paga);
+console.log('numri_telefonit:', numri_telefonit);
+    
+   
     function handleUpdate(event){
         event.preventDefault();
-        axios.put('http://localhost:8081/personi/' + Personi_ID, {emri, mbiemri, email, datelindja, qyteti, paga, nrTelefonit, qendra})
+        axios.put('http://localhost:8081/punetori/' + Personi_ID, {emri, mbiemri, email, datelindja, qyteti, paga, numri_telefonit})
         .then(res => {
             console.log(res);
             navigate('/');
@@ -46,7 +63,7 @@ export default function UpdatePerson() {
                         <input type="text" placeholder='Qyteti' id='qyteti' onChange={e=>setQyteti(e.target.value)}/>
                         <input type="text" placeholder='Paga' id='paga'  onChange={e=>setPaga(e.target.value)}/>
                         <input type="text" placeholder='Numri Telefonit' id='numri_telefonit' onChange={e=>setNrTelefonit(e.target.value)} />
-                        <input type="text" placeholder='Qendra' id='qendra' onChange={e=>setQendra(e.target.value)} />
+                       
 
                         <button className='btn' type='submit' >Ndrysho</button>
                     </form>

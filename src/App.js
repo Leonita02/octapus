@@ -15,25 +15,28 @@ import WishList from './components/js/wishList';
 import AddBook from './components/js/addBook';
 // import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
-import UpdatePerson from './components/js/updatePerson';
+import UpdatePunetori from './components/js/updatePunetori';
 import LibriDashboard from './components/js/LibriDashboard';
 import UpdateLibri from './components/js/updateLibri';
 import WLdashboard from './components/js/WLdashboard';
 import ClientSignUpForm from './components/js/ClientSignUp';
+import PunetoretDashB from './components/js/punetoretDshB';
+import MenaxheriDashB from './components/js/menaxheriDshB';
+import UpdateMenaxheri from './components/js/updateMenaxheri';
 
 function App() {
   return ( 
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<LoginForm/>} />
+     <Route index element={<MenaxheriDashB/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
     <Route path='wishList' element = {<WishList></WishList>}></Route>
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
-    <Route path='/personi/:Personi_ID' element={<UpdatePerson />} />
+    <Route path='/punetori/:Personi_ID' element={<UpdatePunetori />} />
     <Route path='addBook' element={<AddBook/>} />
     <Route path='SignupForm' element={<SignupForm/>}/>
     <Route path='ClientSignUp' element={<ClientSignUpForm/>}/>
@@ -41,6 +44,7 @@ function App() {
     <Route path='WLdashboard' element={<WLdashboard/>} />
     <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
     <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
+    <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
     
      
    

@@ -14,6 +14,8 @@ const libriRoute = require('./libri');
 const wishListRoute = require('./wishList');
 const clientRepoRoute = require('./clientRepo');
 const loginRoute = require('./login');
+const punetoriRoute=require('./punetori');
+const menaxheriRoute=require('./menaxheri');
 
 
 app.use('/personi', personiRoute);
@@ -21,6 +23,8 @@ app.use('/libri', libriRoute);
 app.use('/wishList', wishListRoute);
 app.use('/clientRepo', clientRepoRoute);
 app.use('/login',loginRoute);
+app.use('/punetori',punetoriRoute);
+app.use('/menaxheri',menaxheriRoute);
 
 
 
