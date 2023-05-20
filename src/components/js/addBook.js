@@ -33,28 +33,29 @@ function AddBook(){
     <>
     
     <section>
-            <div className='register'>
-               
-                <div className='col-2'>
-                    <h2 id='titullii'> +Libër! </h2>
-                    <hr></hr>
-                    <form id='form' className='flex flex-col' onSubmit={handleSubmit}>
-                        <input type="number" placeholder='Isbn:' id='isbn' onChange={e=>setIsbn(e.target.value)} />
-                        <input type="text" placeholder='Titulli:' id='titulli' onChange={e=>setTitulli(e.target.value)} />
-                        <input type="text" placeholder='Autori:' id='Autori' onChange={e=>setAutori(e.target.value)}/>
-                        <input type="date" placeholder='Viti i botimit:' id='vitiBotimit' onChange={e=>setVitiBotimit(e.target.value)}/>
-                        <input type="text" placeholder='Shtepia e botimit:' id='shtepiaBotimit' onChange={e=>setShtepiaBotimit(e.target.value)}/>
-                        <input type="number" placeholder='Sasia:' id='sasia'  onChange={e=>setSasia(e.target.value)}/>
-                        <input type="text" placeholder='Pershkrimi:' id='pershkrimi' onChange={e=>setPershkrimi(e.target.value)} />
-                        <input type="text" placeholder='Url:' id='url' onChange={e=>setUrl(e.target.value)} />
-                        <input type="text" placeholder='Zhanri:' id='zhanri' onChange={e=>setZhanri(e.target.value)} />
-                        <input type="number" placeholder='Rafti:' id='rafti' onChange={e=>setRafti(e.target.value)} />
+           
+            <div className="register">
+                <div className="row  ">
+                    <center>
+                    <h2>Shto Libër!</h2>
+                    </center>
+                    <hr />
+            <form id="form" className="flex flex-col" onSubmit={handleSubmit}>
+                <input type="number" className="form-control" placeholder="Isbn:" id="isbn" onChange={e => setIsbn(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Titulli:" id="titulli" onChange={e => setTitulli(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Autori:" id="Autori" onChange={e => setAutori(e.target.value)} />
+                <input type="date" className="form-control" placeholder="Viti i botimit:" id="vitiBotimit" onChange={e => setVitiBotimit(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Shtepia e botimit:" id="shtepiaBotimit" onChange={e => setShtepiaBotimit(e.target.value)} />
+                <input type="number" className="form-control" placeholder="Sasia:" id="sasia" onChange={e => setSasia(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Pershkrimi:" id="pershkrimi" onChange={e => setPershkrimi(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Url:" id="url" onChange={e => setUrl(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Zhanri:" id="zhanri" onChange={e => setZhanri(e.target.value)} />
+                <input type="number" className="form-control" placeholder="Rafti:" id="rafti" onChange={e => setRafti(e.target.value)} />
 
-                        <button id='btn' type='submit'>Shto</button>
-                    </form>
-                </div>
-
-            </div>
+                <button id="btn" type="submit" className="btn">Shto</button>
+            </form>
+        </div>
+        </div>
         </section>
 
     

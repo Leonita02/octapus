@@ -41,8 +41,8 @@ export default function WishL() {
                 </div>
                 <div className="labels">
                     <form onSubmit = { handleSubmit }>
-                        <input type="text" placeholder='Titulli:' id='titulli' onChange={e => setTitulli(e.target.value)} />
-                        <input type="text" placeholder='Autori:' id='autori' onChange={e => setAutori(e.target.value)} />
+                        <input type="text" className="form-control" placeholder='Titulli:' id='titulli' onChange={e => setTitulli(e.target.value)} />
+                        <input type="text" className="form-control" placeholder='Autori:' id='autori' onChange={e => setAutori(e.target.value)} />
                 
                         <br></br>
                         <button id="vazhdo" type='submit'>Shto Librin!</button>

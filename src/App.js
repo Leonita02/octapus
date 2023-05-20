@@ -24,19 +24,20 @@ import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
 
+
 function App() {
   return ( 
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<MenaxheriDashB/>} />
+     <Route index element={<Dashboard/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
     <Route path='wishList' element = {<WishList></WishList>}></Route>
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
-    <Route path='/punetori/:Personi_ID' element={<UpdatePunetori />} />
+    <Route path='/punetori/:Personi_ID' element={<UpdatePunetori/>} />
     <Route path='addBook' element={<AddBook/>} />
     <Route path='SignupForm' element={<SignupForm/>}/>
     <Route path='ClientSignUp' element={<ClientSignUpForm/>}/>

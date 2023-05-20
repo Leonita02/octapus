@@ -39,9 +39,11 @@ export default function UpdateLibri() {
     return (
         <section>
             <div className='register'>
-                <div className='col-2'>
-                    <h2> Ndrysho! </h2>
-                    
+                <div className='row'>
+                    <center>
+                    <h2> Ndrysho!</h2>
+                    </center>
+                    <hr/>
                     <form id='form' className='flex flex-col' onSubmit={handleUpdate}>
                         <input type="text" placeholder='Titulli:' id='titulli' onChange={e=>setTitulli(e.target.value)} />
                         <input type="text" placeholder='Autori:' id='Autori' onChange={e=>setAutori(e.target.value)}/>
