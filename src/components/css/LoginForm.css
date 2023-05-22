@@ -31,20 +31,26 @@ body {
 }
 
 #form>input,
-.btn {
+.btnn {
     border: 1px solid #e9ecef;
-    padding: .9em 1em;
+    
 }
 
 #form>input:focus {
     outline: none;
 }
 
-#form>.btn {
+#form>.btnn {
     background-color: #013C4D;
     color: #e9ecef;
     font-size: 1em;
     cursor: pointer;
+    
+}
+.btnn>a{
+    text-decoration: none;
+    color: white;
+    padding: 5%;
 }
 
 .flex {

@@ -26,7 +26,7 @@ body {
     width: 200%;
   }
   #form > input,
-  .btn {
+  .butn {
     border: 1px solid #e9ecef;
     padding: .9em 1em;
   }
@@ -35,7 +35,7 @@ body {
     outline: none;
   }
   
-  #form > .btn {
+  #form > .butn {
     background-color: #013C4D;
     color: #e9ecef;
     font-size: 1em;

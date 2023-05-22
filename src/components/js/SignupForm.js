@@ -92,8 +92,8 @@ export default function SignupForm() {
                         <input type="text" placeholder='Password' id='password' name='password' onChange={handleInput}/>
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
-                        <button className='btn' type='submit' onClick={handleSubmitP}>Regjistro si Punetorë</button>
-                        <button className='btn' type='submit' onClick={handleSubmitM}>Regjistro si Menaxherë</button>
+                        <button className='butn' type='submit' onClick={handleSubmitP}>Regjistro si Punetorë</button>
+                        <button className='butn' type='submit' onClick={handleSubmitM}>Regjistro si Menaxherë</button>
                         
                     </form>
                     

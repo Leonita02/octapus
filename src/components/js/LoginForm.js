@@ -55,8 +55,8 @@ export default function Login() {
                         <input type="text" placeholder='Password' onChange={handleInput} name='password' />
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
-                        <button type='submit' className='btn'><Link to='/feed'>Kyqu</Link></button>
-                        <button className='btn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
+                        <button type='submit' className='btnn w-100'><Link to='/feed'>Kyqu</Link></button>
+                        <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
                     </form>
                 </div>
                 <div className='col-2'>
