@@ -38,7 +38,7 @@ function WishCard(){
             </div>
             <div className="comment-footer">
               <button className="btn m-2  border border-danger" onClick={e => handleDelete(data.Wish_ID)}>Delete</button>
-              <button className="btn m-2 border border-info"><Link to={`/wishList/${data.Wish_ID}`} >Edit</Link></button>
+              <button className="btn m-2 border border-info"><Link to={`/wishList/${data.Wish_ID}`} id="ahref">Edit</Link></button>
     
             </div>
           </div>

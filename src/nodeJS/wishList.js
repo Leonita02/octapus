@@ -23,10 +23,11 @@ router.get("/", (req, res) => {
   });
 
 router.put('/:id', (req, res) => {
-  const sql = "UPDATE libri SET `Titulli` = ?, `Autori` = ?, WHERE `Wish_ID` = ?";
+  const sql = "UPDATE wishList SET `Titulli` = ?, `Autori` = ? WHERE `Wish_ID` = ?";
   const values = [
     req.body.titulli,
     req.body.autori,
+    req.params.id
   ];
   connection.query(sql, values, (err, data) => {
     if (err) return res.json("Error");

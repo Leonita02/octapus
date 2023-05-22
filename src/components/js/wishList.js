@@ -20,7 +20,7 @@ export default function WishL() {
         axios.post("http://localhost:8081/wishList", { titulli, autori})
             .then(res => {
                 console.log(res);
-                 navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
+                 navigate('/profilePage'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
             }).catch(err => console.log(err));
     }
 
@@ -40,7 +40,7 @@ export default function WishL() {
                     </center>
                 </div>
                 <div className="labels">
-                    <form onSubmit = { handleSubmit }>
+                    <form onSubmit = { handleSubmit } id='form'>
                         <input type="text" className="form-control" placeholder='Titulli:' id='titulli' onChange={e => setTitulli(e.target.value)} />
                         <input type="text" className="form-control" placeholder='Autori:' id='autori' onChange={e => setAutori(e.target.value)} />
                 

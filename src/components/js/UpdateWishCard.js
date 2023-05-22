@@ -8,6 +8,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 export default function WishL() {
+    const{Wish_ID}=useParams()
     const [titulli, setTitulli] = useState("")
     const [autori, setAutori] = useState("")
 
@@ -18,7 +19,7 @@ export default function WishL() {
         axios.put('http://localhost:8081/wishList/' + Wish_ID, {titulli, autori })
             .then(res => {
                 console.log(res);
-                navigate('/');
+                navigate('/profilePage');
 
             }).catch(err => console.log(err));
 
@@ -33,15 +34,16 @@ export default function WishL() {
                 <div id="wishBanner">
                     <center>
                         <h1>Lista juaj e deshirave:</h1>
+                        <h2>Ndrysho</h2>
                     </center>
                 </div>
                 <div className="labels">
-                    <form onSubmit={handleUpdate}>
+                    <form onSubmit={handleUpdate} id='form'>
                         <input type="text" className="form-control" placeholder='Titulli:' id='titulli' onChange={e => setTitulli(e.target.value)} />
                         <input type="text" className="form-control" placeholder='Autori:' id='autori' onChange={e => setAutori(e.target.value)} />
 
                         <br></br>
-                        <button id="vazhdo" type='submit'>Shto Librin!</button>
+                        <button id="vazhdo" type='submit'>Ndrysho!</button>
 
                     </form>
                 </div>
