@@ -1,0 +1,48 @@
+Procedura per shtimin e LEXUESVE :
+emri : register_new_user
+BEGIN
+  DECLARE personi_id INT;
+
+  -- Insert a row into UserTable
+  INSERT INTO personi (emri, mbiemri, email, datelindja, qyteti, paga, nr_tel, biblioteka_ID ) 
+  	VALUES (emri, mbiemri, email, datelindja, qyteti, NULL, nr_tel, 1000 );
+
+  -- Get the inserted user_id
+  SET personi_ID = LAST_INSERT_ID();
+
+  -- Insert a row into UserData with the inserted user_id
+  INSERT INTO useri (username, password, personi_ID, roli_id) VALUES (username, password, personi_ID, 4);
+END
+
+
+Procedura per shtimin e PUNETOREVE:
+emri: register_new_employee
+BEGIN
+  DECLARE personi_id INT;
+
+  -- Insert a row into UserTable
+  INSERT INTO personi (emri, mbiemri, email, datelindja, qyteti, paga, nr_tel, biblioteka_ID ) 
+  	VALUES (emri, mbiemri, email, datelindja, qyteti, paga, nr_tel, 1000 );
+
+  -- Get the inserted user_id
+  SET personi_ID = LAST_INSERT_ID();
+
+  -- Insert a row into UserData with the inserted user_id
+  INSERT INTO useri (username, password, personi_ID, roli_id) VALUES (username, password, personi_ID, 3);
+END
+
+Procedura per shtimin e MENAXHERAVE:
+emri : register_new_manager
+BEGIN
+  DECLARE personi_id INT;
+
+  -- Insert a row into UserTable
+  INSERT INTO personi (emri, mbiemri, email, datelindja, qyteti, paga, nr_tel, biblioteka_ID ) 
+  	VALUES (emri, mbiemri, email, datelindja, qyteti, paga, nr_tel, 1000 );
+
+  -- Get the inserted user_id
+  SET personi_ID = LAST_INSERT_ID();
+
+  -- Insert a row into UserData with the inserted user_id
+  INSERT INTO useri (username, password, personi_ID, roli_id) VALUES (username, password, personi_ID, 2);
+END
