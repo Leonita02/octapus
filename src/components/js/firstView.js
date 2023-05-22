@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 function View() {
   return (
 
-    <><div class="firstView">
+    <><div className="firstView">
       <div id="whitePart"></div>
       <div className="leftImage">
          <img id='foto1' src={View1} alt="View 1" />

@@ -34,13 +34,11 @@
 }
  .cards{
    margin:5%;
-   display: flex;
-   justify-content: space-between;
-    
-
-    
+   align-items: center;
+  justify-content: center; 
 
 } 
+
 #line{
     color: rgb(0, 0, 0);
     width: 14%;
