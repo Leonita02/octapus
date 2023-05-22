@@ -23,7 +23,7 @@ import ClientSignUpForm from './components/js/ClientSignUp';
 import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
-
+import UpdateWishCard from './components/js/UpdateWishCard';
 
 function App() {
   return ( 
@@ -46,6 +46,7 @@ function App() {
     <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
     <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
     <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
+    <Route path ='/wishList/:Wish_ID' element={<UpdateWishCard > </UpdateWishCard>} />
     
      
    

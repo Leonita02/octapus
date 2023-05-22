@@ -2,6 +2,8 @@
 import profile from '../ImagesOfProject/prodilePiic.png';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 function WishCard(){
   const [wishList, setWishList] = useState([])
   useEffect(() => {
@@ -11,6 +13,15 @@ function WishCard(){
 
   }
   )
+  const handleDelete = async (Wish_ID) => {
+    try {
+      await axios.delete('http://localhost:8081/wishList/' + Wish_ID)
+      window.location.reload()
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="row">
       {wishList.map((data, i) => (
@@ -26,8 +37,9 @@ function WishCard(){
               <h4 className="card-title">"{data.Titulli}"</h4>
             </div>
             <div className="comment-footer">
-              <a href="#" className="btn m-2  border border-danger">Delete</a>
-              <a href="#" className="btn m-2 border border-info">Edit</a>
+              <button className="btn m-2  border border-danger" onClick={e => handleDelete(data.Wish_ID)}>Delete</button>
+              <button className="btn m-2 border border-info"><Link to={`/wishList/${data.Wish_ID}`} >Edit</Link></button>
+    
             </div>
           </div>
         </div>

@@ -22,6 +22,18 @@ router.get("/", (req, res) => {
     });
   });
 
+router.put('/:id', (req, res) => {
+  const sql = "UPDATE libri SET `Titulli` = ?, `Autori` = ?, WHERE `Wish_ID` = ?";
+  const values = [
+    req.body.titulli,
+    req.body.autori,
+  ];
+  connection.query(sql, values, (err, data) => {
+    if (err) return res.json("Error");
+    return res.json(data);
+  });
+});
+
   
   router.delete('/:id', (req, res) => {
     const sql = "DELETE FROM WishList WHERE Wish_ID=?";
