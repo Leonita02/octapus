@@ -47,6 +47,9 @@ function App() {
     <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
     <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
     <Route path ='/wishList/:Wish_ID' element={<UpdateWishCard > </UpdateWishCard>} />
+    <Route path='/PunetoretDshB' element={<PunetoretDashB></PunetoretDashB>}></Route>
+    <Route path='/MenaxheriDshB' element={<MenaxheriDashB></MenaxheriDashB>}></Route>
+
     
      
    

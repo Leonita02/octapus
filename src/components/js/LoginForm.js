@@ -2,7 +2,7 @@ import React from 'react'
 import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
 import { Link } from 'react-router-dom';
-import Validation from './LoginValidation';
+// import Validation from './LoginValidation';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,27 +20,57 @@ export default function Login() {
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     setErrors(Validation(values));
+    //     if (errors.username === "" && errors.password === "") {
+    //         axios.post('http://localhost:8081/login', values)
+    //             .then(res => {
+    //                 if (res.data === "Success") {
+    //                     // if(data.role===4){
+    //                     //     navigate('/feed');
+    //                     // }
+                        
+    //                 }
+    //                 else {
+    //                     alert("Nuk ekziston asnjë regjistrim");
+    //                 }
+
+    //             })
+    //             .catch(err => console.log(err));
+
+    //     }
+    // }
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
-        if (errors.username === "" && errors.password === "") {
-            axios.post('http://localhost:8081/login', values)
-                .then(res => {
-                    if (res.data === "Success") {
-                        // if(data.role===4){
-                        //     navigate('/feed');
-                        // }
-                        
-                    }
-                    else {
-                        alert("Nuk ekziston asnjë regjistrim");
-                    }
+        // setErrors(Validation(values));
+    
+        if (!errors.username && !errors.password) {
+          axios
+            .post('http://localhost:8081/login', values)
+            .then((res) => {
+              const { role, token } = res.data;
+    
+              localStorage.setItem('token', token);
+    
+              if (role === 4) {
+                navigate('/feed');
+              } else if(role=== 3){
+                navigate('/PunetoretDshB');
+              }else if(role===2){
+                navigate('/MenaxheriDshB');
+              }else if(role===1){
+                navigate('/LibriDashboard');
+              }
 
-                })
-                .catch(err => console.log(err));
-
+              
+              else {
+                alert('Nuk ekziston asnjë regjistrim');
+              }
+            })
+            .catch((err) => console.log(err));
         }
-    }
+      };
 
     return (
         <section>
@@ -67,3 +97,31 @@ export default function Login() {
     )
 
 }
+
+// qetu nese dojn me bo me cookie dmth jo me localStorage 
+
+// const navigate = useNavigate();
+
+// const handleSubmit = (event) => {
+//   event.preventDefault();
+
+//   axios
+//     .post('http://localhost:8081/login', values)
+//     .then((res) => {
+//       const { role } = res.data;
+
+
+//       if (role === 4) {
+//         navigate('/feed');
+//       } else if (role === 3) {
+//         navigate('/punetoretDshB');
+//       } else if (role === 2) {
+//         navigate('/menaxheriDshB');
+//       } else if (role === 1) {
+//         navigate('/LibriDashboard');
+//       } else {
+//         alert('Nuk ekziston asnjë regjistrim');
+//       }
+//     })
+//     .catch((err) => console.log(err));
+// }; 
