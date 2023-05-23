@@ -19,7 +19,7 @@ function Nav(){
         <ul>
             <li ><h1 className='emri'>OCTOPUS</h1></li>
             <div id="top-right">
-              <li><Link to="/">Home</Link></li>
+              <li><Link to="/feed">Home</Link></li>
               <li><a href="#">Contact</a></li>
               <li><a href="#">About Us</a></li>
               <li><img src={profile} onClick={navigateToProfilePage}></img></li>

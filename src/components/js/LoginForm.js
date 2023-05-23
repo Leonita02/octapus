@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import Validation from './LoginValidation';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Cookies from 'js-cookie';
 import { useState } from 'react';
 
 export default function Login() {
@@ -41,36 +41,59 @@ export default function Login() {
 
     //     }
     // }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // setErrors(Validation(values));
+    // ---- LOCAL STORAGE
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // setErrors(Validation(values));
     
-        if (!errors.username && !errors.password) {
-          axios
-            .post('http://localhost:8081/login', values)
-            .then((res) => {
-              const { role, token } = res.data;
+    //     if (!errors.username && !errors.password) {
+    //       axios
+    //         .post('http://localhost:8081/login', values)
+    //         .then((res) => {
+    //           const { role, token } = res.data;
     
-              localStorage.setItem('token', token);
+    //           localStorage.setItem('token', token);
     
-              if (role === 4) {
-                navigate('/feed');
-              } else if(role=== 3){
-                navigate('/PunetoretDshB');
-              }else if(role===2){
-                navigate('/MenaxheriDshB');
-              }else if(role===1){
-                navigate('/LibriDashboard');
-              }
+    //           if (role === 4) {
+    //             navigate('/feed');
+    //           } else if(role=== 3){
+    //             navigate('/PunetoretDshB');
+    //           }else if(role===2){
+    //             navigate('/MenaxheriDshB');
+    //           }else if(role===1){
+    //             navigate('/LibriDashboard');
+    //           }
 
               
-              else {
-                alert('Nuk ekziston asnjë regjistrim');
-              }
-            })
-            .catch((err) => console.log(err));
-        }
-      };
+    //           else {
+    //             alert('Nuk ekziston asnjë regjistrim');
+    //           }
+    //         })
+    //         .catch((err) => console.log(err));
+    //     }
+    //   }; 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+      
+        axios.post('http://localhost:8081/login', values)
+        .then((res) => {
+          const { role } = res.data;
+          const token = Cookies.get('token');
+      
+          if (role === 4) {
+            navigate('/feed');
+          } else if (role === 3) {
+            navigate('/punetoretDshB');
+          } else if (role === 2) {
+            navigate('/menaxheriDshB');
+          } else if (role === 1) {
+            navigate('/LibriDashboard');
+          } else {
+            alert('Nuk ekziston asnjë regjistrim');
+          }
+        })
+        .catch((err) => console.log(err));
+      }; 
 
     return (
         <section>

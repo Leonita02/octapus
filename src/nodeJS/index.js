@@ -2,9 +2,11 @@ require ('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 const storeItems = new Map([
@@ -20,7 +22,8 @@ const clientRepoRoute = require('./clientRepo');
 const loginRoute = require('./login');
 const punetoriRoute=require('./punetori');
 const menaxheriRoute=require('./menaxheri');
-
+const logOutRoute = require('./logout');
+const checkSessionRouter = require('./checkSesion');
 
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
@@ -29,6 +32,8 @@ app.use('/clientRepo', clientRepoRoute);
 app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
+app.use('/logout',logOutRoute);
+app.use('/checkSesion', checkSessionRouter);
 
 
 

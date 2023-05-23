@@ -47,6 +47,8 @@ function App() {
     <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
     <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
     <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
+    <Route path ='/punetoretDshB' element={<PunetoretDashB></PunetoretDashB>}></Route>
+    <Route path ='/menaxheriDshB' element={<MenaxheriDashB></MenaxheriDashB>}></Route>
 
     
      
