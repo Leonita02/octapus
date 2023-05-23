@@ -8,59 +8,59 @@ function Pagesa() {
             <div><Nav /></div>
             
 
-           <div class="order">
+           <div className="order">
             <h2>Porosite tenden</h2>
             <h3>Plotësoni informatat e kërkuara për të porositur atë qka dëshironi</h3>
-            <div class="row">
-            <div class="col-75">
-            <div class="container">
-            <div class="row">
+            <div className="row">
+            <div className="col-75">
+            <div className="container">
+            <div className="row">
 
-            <div class="col-50">
+            <div className="col-50">
             <h3>Informatat rreth porosisë</h3>
-            <label for="fname"><i class="fa fa-user"></i> Emri dhe Mbiemri:</label>
+            <label htmlFor="fname"><i className="fa fa-user"></i> Emri dhe Mbiemri:</label>
               <input type="text" id="fname" name="firstname" placeholder="" />
-              <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+              <label htmlFor="email"><i className="fa fa-envelope"></i> Email:</label>
               <input type="text" id="email" name="email" placeholder=""/>
-              <label for="adr"><i class="fa fa-address-card-o"></i> Adresa:</label>
+              <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Adresa:</label>
               <input type="text" id="adr" name="address" placeholder=""/>
-              <label for="city"><i class="fa fa-institution"></i> Qyteti:</label>
+              <label htmlFor="city"><i className="fa fa-institution"></i> Qyteti:</label>
               <input type="text" id="city" name="city" placeholder=""/>
 
-              <div class="row">
-              <div class="col-50">
-              <label for="state">Shteti:</label>
+              <div className="row">
+              <div className="col-50">
+              <label htmlFor="state">Shteti:</label>
                   <input type="text" id="state" name="state" placeholder=""/>
               </div>
-              <div class="col-50">
-                  <label for="zip">Zip Kodi:</label>
+              <div className="col-50">
+                  <label htmlFor="zip">Zip Kodi:</label>
                   <input type="text" id="zip" name="zip" placeholder=""/>
                 </div>
               </div>
               </div>
 
-              <div class="col-50">
+              <div className="col-50">
               <h3>Pagesa:</h3>
-              <label for="fname"></label>
+              <label htmlFor="fname"></label>
               <div className="icon-container">
                 <i className="fa fa-cc-visa" style={{color: 'navy'}}></i>
                 <i className="fa fa-cc-amex" style={{color: 'blue'}}></i>
                 <i className="fa fa-cc-mastercard" style={{color: 'red'}}></i>
                 <i className="fa fa-cc-discover" style={{color: 'orange'}}></i> 
             </div>
-              <label for="cname">Emri i Kartelës:</label>
+              <label htmlFor="cname">Emri i Kartelës:</label>
               <input type="text" id="cname" name="cardname" placeholder=""/>
-              <label for="ccnum">Numri i kredit-kartelës:</label>
+              <label htmlFor="ccnum">Numri i kredit-kartelës:</label>
               <input type="text" id="ccnum" name="cardnumber" placeholder=""/>
-              <label for="expmonth">Muaji i skadencës:</label>
+              <label htmlFor="expmonth">Muaji i skadencës:</label>
               <input type="text" id="expmonth" name="expmonth" placeholder=""/>
-              <div class="row">
-                <div class="col-50">
-                  <label for="expyear">Viti i skandencës:</label>
+              <div className="row">
+                <div className="col-50">
+                  <label htmlFor="expyear">Viti i skandencës:</label>
                   <input type="text" id="expyear" name="expyear" placeholder=""/>
                 </div>
-                <div class="col-50">
-                  <label for="cvv">Sasia:</label>
+                <div className="col-50">
+                  <label htmlFor="cvv">Sasia:</label>
                   <input type="text" id="cvv" name="cvv" placeholder=""/>
                 </div>
               </div>
@@ -69,10 +69,10 @@ function Pagesa() {
             </div>
 
             <label>
-            <input type="checkbox" checked="checked" name="sameadr" />
+            <input type="checkbox" name="sameadr" />
             </label>
             <br></br>
-          <input type="submit" value="Konfirmo porosinë" class="btn" onclick="valido()"/>
+          <input type="submit" value="Konfirmo porosinë" className="btn"/>
             </div>
             </div>
             </div>
@@ -85,7 +85,7 @@ function Pagesa() {
 export default Pagesa;
 
 
-
+// onClick={valido()}
 // function valido(){
 //     var fname = document.getElementById('fname').value
 //     var email = document.getElementById('email').value;

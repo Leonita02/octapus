@@ -11,7 +11,7 @@ import {Routes} from 'react-router';
 import BookPage from "./components/js/bookPage";
 import WishList from './components/js/wishList';
 //import Porosia from './components/js/porosia';
-//import Pagesa from './components/js/pagesa';
+import Pagesa from './components/js/pagesa';
 import AddBook from './components/js/addBook';
 // import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
@@ -23,7 +23,7 @@ import ClientSignUpForm from './components/js/ClientSignUp';
 import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
-import UpdateWishCard from './components/js/UpdateWishCard';
+
 
 function App() {
   return ( 
@@ -35,6 +35,7 @@ function App() {
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
     <Route path='wishList' element = {<WishList></WishList>}></Route>
+    <Route path='pagesa' element = {<Pagesa></Pagesa>}></Route>
     <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
     <Route path='/punetori/:Personi_ID' element={<UpdatePunetori/>} />
@@ -46,9 +47,6 @@ function App() {
     <Route path ='ClientSignUpForm' element={<ClientSignUpForm></ClientSignUpForm>}></Route>
     <Route path='LibriDashboard' element={<LibriDashboard></LibriDashboard>}></Route>
     <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
-    <Route path ='/wishList/:Wish_ID' element={<UpdateWishCard > </UpdateWishCard>} />
-    <Route path='/PunetoretDshB' element={<PunetoretDashB></PunetoretDashB>}></Route>
-    <Route path='/MenaxheriDshB' element={<MenaxheriDashB></MenaxheriDashB>}></Route>
 
     
      

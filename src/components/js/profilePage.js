@@ -8,6 +8,7 @@ import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
 import { useNavigate } from 'react-router';
+import { Link } from "react-router-dom";
 
 
 
@@ -16,12 +17,18 @@ function ProfilePage(){
     function navigateToWishList() {
         navigate('/wishList');
     }
+    function navigateToPagesa(){
+        navigate('/pagesa');
+        console.log("Checkout")
+    }
     return (
         <>
         <div>
        <Nav></Nav>
        </div>
-        
+       <br></br>
+       <br></br>
+       <button className="btn btn-primary" onClick={navigateToPagesa}>Pagesa</button>
         <div className='userProfile'>
             <img src={fotoProfili} id='fotoProfili' alt='foto' ></img>
            

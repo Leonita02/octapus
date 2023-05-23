@@ -1,12 +1,16 @@
-
+require ('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
-
 app.use(cors());
 app.use(express.json());
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
+const storeItems = new Map([
+  [1,{priceInCents:10000,name:"Learn React"}],
+  [2,{priceInCents:20000,name:"Learn NodeJS"}]
+])
 
 const connection = require('./db_connection');
 const personiRoute = require('./personi');
