@@ -10,9 +10,6 @@ router.get('/',(req,res)=>{
 
   res.clearCookie('token');
 
-  
- 
-
   return res.json({ Status: 'Success' });
 });
 

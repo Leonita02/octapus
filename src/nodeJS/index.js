@@ -2,10 +2,38 @@ require ('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(
+  session({
+    secret: 'ekipa-shkaterruese',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+    },
+  })
+);
+
+app.use(cookieParser());
+
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['POST', 'GET'],
+    credentials: true,
+  })
+);
+
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
@@ -23,7 +51,8 @@ const loginRoute = require('./login');
 const punetoriRoute=require('./punetori');
 const menaxheriRoute=require('./menaxheri');
 const logOutRoute = require('./logout');
-const checkSessionRouter = require('./checkSesion');
+const searchRoute=require('./search');
+
 
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
@@ -33,7 +62,8 @@ app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
 app.use('/logout',logOutRoute);
-app.use('/checkSesion', checkSessionRouter);
+app.use('/search',searchRoute);
+
 
 
 

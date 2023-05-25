@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function Login() {
 
@@ -20,7 +21,86 @@ export default function Login() {
     const handleInput = (event) => {
         setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
     }
-    // const handleSubmit = (event) => {
+
+
+   
+   
+    // useEffect(() => {
+    //   axios
+    //     .get('http://localhost:8081/login', {
+    //       withCredentials: true, // Include cookies in the request
+          
+    //     })
+    //     .then(res => {
+    //       if (res.data.Login) {
+    //         navigate('/feed');
+    //       } else {
+    //         navigate('/login');
+    //       }
+    //     })
+    //     .catch(err => console.log(err));
+    // }, []);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8081/login',values )
+          .then(res=>{
+            if(res.data.Login){
+              navigate('/feed')
+            }else{
+              alert('No record')
+            }
+            console.log(res);
+          })
+          .catch(err=>console.log(err));
+        }
+        
+      
+      //   axios.post('http://localhost:8081/login', values)
+      //   .then((res) => {
+      //     const { role } = res.data;
+      //     const token = Cookies.get('token');
+      
+      //     if (role === 4) {
+      //       navigate('/feed');
+      //     } else if (role === 3) {
+      //       navigate('/punetoretDshB');
+      //     } else if (role === 2) {
+      //       navigate('/menaxheriDshB');
+      //     } else if (role === 1) {
+      //       navigate('/LibriDashboard');
+      //     } else {
+      //       alert('Nuk ekziston asnjë regjistrim');
+      //     }
+      //   })
+      //   .catch((err) => console.log(err));
+      // }; 
+
+    return (
+        <section>
+            <div className='register'>
+                <div className='col-1'>
+                    <h2> Log In</h2>
+                    <span> Enjoy The Service</span>
+                    <form action="" onSubmit={handleSubmit} id='form' className='flex flex-col'>
+                        <input type="text" placeholder='Username' onChange={handleInput} name='username' />
+                        {errors.username && <span className='text-danger'>{errors.username}</span>}
+
+                        <input type="text" placeholder='Password' onChange={handleInput} name='password' />
+                        {errors.password && <span className='text-danger'>{errors.password}</span>}
+
+                        <button type='submit' className='btnn w-100'><Link to='/feed'>Kyqu</Link></button>
+                        <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
+                    </form>
+                </div>
+                <div className='col-2'>
+                    <img src={bgimg} alt="" />
+                </div>
+            </div>
+        </section>
+    )
+
+}
+ // const handleSubmit = (event) => {
     //     event.preventDefault();
     //     setErrors(Validation(values));
     //     if (errors.username === "" && errors.password === "") {
@@ -71,56 +151,7 @@ export default function Login() {
     //         })
     //         .catch((err) => console.log(err));
     //     }
-    //   }; 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-      
-        axios.post('http://localhost:8081/login', values)
-        .then((res) => {
-          const { role } = res.data;
-          const token = Cookies.get('token');
-      
-          if (role === 4) {
-            navigate('/feed');
-          } else if (role === 3) {
-            navigate('/punetoretDshB');
-          } else if (role === 2) {
-            navigate('/menaxheriDshB');
-          } else if (role === 1) {
-            navigate('/LibriDashboard');
-          } else {
-            alert('Nuk ekziston asnjë regjistrim');
-          }
-        })
-        .catch((err) => console.log(err));
-      }; 
-
-    return (
-        <section>
-            <div className='register'>
-                <div className='col-1'>
-                    <h2> Log In</h2>
-                    <span> Enjoy The Service</span>
-                    <form action="" onSubmit={handleSubmit} id='form' className='flex flex-col'>
-                        <input type="text" placeholder='Username' onChange={handleInput} name='username' />
-                        {errors.username && <span className='text-danger'>{errors.username}</span>}
-
-                        <input type="text" placeholder='Password' onChange={handleInput} name='password' />
-                        {errors.password && <span className='text-danger'>{errors.password}</span>}
-
-                        <button type='submit' className='btnn w-100'><Link to='/feed'>Kyqu</Link></button>
-                        <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
-                    </form>
-                </div>
-                <div className='col-2'>
-                    <img src={bgimg} alt="" />
-                </div>
-            </div>
-        </section>
-    )
-
-}
-
+    //   };
 // qetu nese dojn me bo me cookie dmth jo me localStorage 
 
 // const navigate = useNavigate();

@@ -1,16 +1,23 @@
 
-form{
-    margin-top:7%;
-    display: flex;
-    justify-content: center;
-}
+
+   
+    form {
+        
+           margin-left: 25%;
+            display: inline;
+            flex-direction: column;
+            align-items: center;
+          
+      }
+
 form>input{
-    width:500px;
+    width:600px;
     height: 40px;
     border-radius: 30px;
     border: solid 1px black;
 }
 form>button{
+    width: 90px;
     height: 30px;
     margin-left: 5px;
     background-color: #013C4D;
@@ -19,4 +26,13 @@ form>button{
     cursor: pointer;
     border-radius: 2px;
     padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+form>p{
+    margin-top: 3%;
+    text-align: left;
+    font-size: 30px;
+    color:darkred;
+    margin-left:5%;
+
 }

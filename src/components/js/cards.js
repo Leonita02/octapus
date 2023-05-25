@@ -2,6 +2,8 @@ import '../css/cards.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import photo from '../ImagesOfProject/c1.jpg'
+
 
 function Card() {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ function Card() {
         <div key={i} className="flip-card" onClick={navigateToBook}> 
           <div className="flip-card-inner">
             <div className="flip-card-front">
-              <img src={data.Url}alt="Libri" />
+              <img src={require(`../ImagesOfProject/${data.Url}`)}alt="Libri" />
             </div>
             <div className="flip-card-back">
               <h1>{data.Titulli}</h1>

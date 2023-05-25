@@ -23,19 +23,6 @@ function ProfilePage(){
         console.log("Checkout")
     }
 
-    useEffect(() => {
-      axios
-        .get('http://localhost:8081/login') 
-        .then((res) => {
-          if (!(res.data.Status==='Session Started')) {
-            navigate('/');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          
-        });
-    }, []);
 
     const handleLogout = () => {
         axios
