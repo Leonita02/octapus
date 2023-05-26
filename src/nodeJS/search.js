@@ -5,8 +5,8 @@ const connection = require('./db_connection');
 router.get('/', (req, res) => {
   const searchTerm = req.query.term;
 
-  const query = `SELECT * FROM libri WHERE Titulli LIKE '%${searchTerm}%'`;
-
+  const query = `SELECT * FROM libri WHERE Titulli LIKE '%${searchTerm.replace(/'/g, "''")}%'`;
+ 
   connection.query(query, (err, results) => {
     if (err) {
       console.error('Error executing search query:', err);
