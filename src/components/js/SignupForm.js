@@ -3,52 +3,109 @@ import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import {useState} from 'react';
-
+import bcrypt from 'bcrypt';
 
 export default function SignupForm() {
 
     const navigate = useNavigate();
-    const [values,setValues] = useState({
-        emri:'',
-        mbiemri:'',
-        email:'',
-        datelindja:'',
-        qyteti:'',
-        paga:0,
-       nr_tel :0 ,
-        username:'',
-        password:''
-    })
-    const [errors,setErrors] = useState({})
+    const [values, setValues] = useState({
+      emri: '',
+      mbiemri: '',
+      email: '',
+      datelindja: '',
+      qyteti: '',
+      paga: 0,
+      nr_tel: 0,
+      username: '',
+      password: '',
+    });
+    const [errors, setErrors] = useState({});
+  
     const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: event.target.value}))
-    }
-    const handleSubmitP =(event) => {
-        event.preventDefault();
-        // setErrors(Validation(values));
-        // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
-        //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
+      setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    };
+  
+    const handleSubmitP = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const hashedPassword = await bcrypt.hash(values.password, 10);
+  
+        const newUser = { ...values, password: hashedPassword };
+  
+        axios
+          .post('http://localhost:8081/punetori/', newUser)
+          .then((res) => {
+            // navigate('/logIn');
+          })
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.error('Error hashing password:', error);
+      }
+    };
+  
+    const handleSubmitM = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const hashedPassword = await bcrypt.hash(values.password, 10);
+  
+        const newUser = { ...values, password: hashedPassword };
+  
+        axios
+          .post('http://localhost:8081/menaxheri/', newUser)
+          .then((res) => {
+            navigate('/menaxheriDshB');
+          })
+          .catch((err) => console.log(err));
+      } catch (error) {
+        console.error('Error hashing password:', error);
+      }
+    };
 
-                axios.post('http://localhost:8081/punetori/' ,values)
-                .then(res => {
-                    // navigate('/logIn');
-                })
-                .catch(err => console.log(err));
 
-            }
-            const handleSubmitM =(event) => {
-                event.preventDefault();
-                // setErrors(Validation(values));
-                // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
-                //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
+    // const navigate = useNavigate();
+    // const [values,setValues] = useState({
+    //     emri:'',
+    //     mbiemri:'',
+    //     email:'',
+    //     datelindja:'',
+    //     qyteti:'',
+    //     paga:0,
+    //    nr_tel :0 ,
+    //     username:'',
+    //     password:''
+    // })
+    // const [errors,setErrors] = useState({})
+    // const handleInput = (event) => {
+    //     setValues(prev => ({...prev, [event.target.name]: event.target.value}))
+    // }
+    // const handleSubmitP =(event) => {
+    //     event.preventDefault();
+    //     // setErrors(Validation(values));
+    //     // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
+    //     //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
+
+    //             axios.post('http://localhost:8081/punetori/' ,values)
+    //             .then(res => {
+    //                 // navigate('/logIn');
+    //             })
+    //             .catch(err => console.log(err));
+
+    //         }
+    //         const handleSubmitM =(event) => {
+    //             event.preventDefault();
+    //             // setErrors(Validation(values));
+    //             // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
+    //             //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
         
-                        axios.post('http://localhost:8081/menaxheri/' ,values)
-                        .then(res => {
-                             navigate('/menaxheriDshB');
-                        })
-                        .catch(err => console.log(err));
+    //                     axios.post('http://localhost:8081/menaxheri/' ,values)
+    //                     .then(res => {
+    //                          navigate('/menaxheriDshB');
+    //                     })
+    //                     .catch(err => console.log(err));
         
-                    }
+    //                 }
  
 
     return (
