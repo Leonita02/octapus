@@ -7,6 +7,63 @@ import {useState} from 'react';
 
 export default function SignupForm() {
 
+    // const navigate = useNavigate();
+    // const [values, setValues] = useState({
+    //   emri: '',
+    //   mbiemri: '',
+    //   email: '',
+    //   datelindja: '',
+    //   qyteti: '',
+    //   paga: 0,
+    //   nr_tel: 0,
+    //   username: '',
+    //   password: '',
+    // });
+    // const [errors, setErrors] = useState({});
+  
+    // const handleInput = (event) => {
+    //   setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    // };
+  
+    // const handleSubmitP = async (event) => {
+    //   event.preventDefault();
+  
+    //   try {
+    //     const hashedPassword = await bcrypt.hash(values.password, 10);
+  
+    //     const newUser = { ...values, password: hashedPassword };
+  
+    //     axios
+    //       .post('http://localhost:8081/punetori/', newUser)
+    //       .then((res) => {
+    //         // navigate('/logIn');
+    //       })
+    //       .catch((err) => console.log(err));
+    //   } catch (error) {
+    //     console.error('Error hashing password:', error);
+    //   }
+    // };
+  
+    // const handleSubmitM = async (event) => {
+    //   event.preventDefault();
+  
+    //   try {
+    //     const hashedPassword = await bcrypt.hash(values.password, 10);
+  
+    //     const newUser = { ...values, password: hashedPassword };
+  
+    //     axios
+    //       .post('http://localhost:8081/menaxheri/', newUser)
+    //       .then((res) => {
+    //         navigate('/menaxheriDshB');
+    //       })
+    //       .catch((err) => console.log(err));
+    //   } catch (error) {
+    //     console.error('Error hashing password:', error);
+    //   }
+    // };
+
+
     const navigate = useNavigate();
     const [values,setValues] = useState({
         emri:'',

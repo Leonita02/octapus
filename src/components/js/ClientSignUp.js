@@ -8,7 +8,44 @@ import {Link} from 'react-router-dom';
 import '../css/clientSignup.css'
 
 
+
 export default function ClientSignUpForm() {
+    
+//     const navigate = useNavigate();
+//   const [values, setValues] = useState({
+//     emri: '',
+//     mbiemri: '',
+//     email: '',
+//     datelindja: '',
+//     qyteti: '',
+//     nr_tel: 0,
+//     username: '',
+//     password: '',
+//   });
+//   const [errors, setErrors] = useState({});
+
+//   const handleInput = (event) => {
+//     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+
+    // try {
+    //   const hashedPassword = await bcrypt.hash(values.password, 10);
+
+    //   const newUser = { ...values, password: hashedPassword };
+
+    //   axios
+    //     .post('http://localhost:8081/clientRepo/', newUser)
+    //     .then((res) => {
+    //       navigate('/logIn');
+    //     })
+    //     .catch((err) => console.log(err));
+    // } catch (error) {
+    //   console.error('Error hashing password:', error);
+    // }
+//   };
 
     const navigate = useNavigate();
     const [values,setValues] = useState({

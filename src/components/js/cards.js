@@ -32,7 +32,7 @@ function Card() {
         <div key={i} className="flip-card" onClick={() => navigateToBook(data.Isbn)}> 
           <div className="flip-card-inner">
             <div className="flip-card-front">
-              <img src={require(`../ImagesOfProject/${data.Url}`)}alt="Libri" />
+              {/* <img src={require(`../ImagesOfProject/${data.Url}`)} alt="Libri" /> */}
             </div>
             <div className="flip-card-back">
               <h1>{data.Titulli}</h1>
