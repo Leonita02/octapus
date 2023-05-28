@@ -6,39 +6,76 @@ import {useState} from 'react';
 // import Validation from './SignUpValidation';
 import {Link} from 'react-router-dom';
 import '../css/clientSignup.css'
+import bcrypt from 'bcrypt';
 
 
 export default function ClientSignUpForm() {
-
+    
     const navigate = useNavigate();
-    const [values,setValues] = useState({
-        emri:'',
-        mbiemri:'',
-        email:'',
-        datelindja:'',
-        qyteti:'',
-       nr_tel :0 ,
-        username:'',
-        password:''
-    })
-    const [errors,setErrors] = useState({})
-    const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.name]: event.target.value}))
+  const [values, setValues] = useState({
+    emri: '',
+    mbiemri: '',
+    email: '',
+    datelindja: '',
+    qyteti: '',
+    nr_tel: 0,
+    username: '',
+    password: '',
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleInput = (event) => {
+    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const hashedPassword = await bcrypt.hash(values.password, 10);
+
+      const newUser = { ...values, password: hashedPassword };
+
+      axios
+        .post('http://localhost:8081/clientRepo/', newUser)
+        .then((res) => {
+          navigate('/logIn');
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.error('Error hashing password:', error);
     }
-    const handleSubmit =(event) => {
-        event.preventDefault();
-        // setErrors(Validation(values));
-        // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
-        //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
+  };
 
-                axios.post('http://localhost:8081/clientRepo/' ,values)
-                .then(res => {
-                    navigate('/logIn');
-                })
-                .catch(err => console.log(err));
-
-            }
+    // const navigate = useNavigate();
+    // const [values,setValues] = useState({
+    //     emri:'',
+    //     mbiemri:'',
+    //     email:'',
+    //     datelindja:'',
+    //     qyteti:'',
+    //    nr_tel :0 ,
+    //     username:'',
+    //     password:''
+    // })
+    // const [errors,setErrors] = useState({})
+    // const handleInput = (event) => {
+    //     setValues(prev => ({...prev, [event.target.name]: event.target.value}))
     // }
+    // const handleSubmit =(event) => {
+    //     event.preventDefault();
+    //     // setErrors(Validation(values));
+    //     // if(errors.emri === "" && errors.mbiemri ==="" && errors.email ==="" && errors.ditelindja === ""
+    //     //     && errors.qyteti ==="" && errors.nr_tel ==="" && errors.username === "" && errors.password ===""){
+
+    //             axios.post('http://localhost:8081/clientRepo/' ,values)
+    //             .then(res => {
+    //                 navigate('/logIn');
+    //             })
+    //             .catch(err => console.log(err));
+
+    //         }
+    // // }
 //MOS I FSHINI QITO KOMENTE!!!!
     // const handleSubmit = (event) => {
     //     event.preventDefault();
