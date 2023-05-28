@@ -1,17 +1,16 @@
-nav{
+#navi {
   width: 100%;
   height: 8%;
   position: fixed;
   border-bottom: solid 0.5px grey;
-  background-color:#013C4D;
+  background-color: #013C4D;
   color: white;
   z-index: 1;
-  margin: 0%;
-  padding: 0%;
-  
+  margin: 0;
+  padding: 0;
 }
 
-ul {
+#navi ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -19,38 +18,42 @@ ul {
   background-color: transparent;
 }
 
-li {
+#navi li {
   float: left;
   color: white;
 }
 
-li a {
+#navi li a {
   display: block;
-  color:white;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-li a:hover {
-  color:#FFD8CC;
-}
-#top-right{
-float: right;
-margin-right: 15px;
-}
-li>h1{
-margin-left: 15px;
-}
-.emri{
-display: inline;
-font-weight: bold;
-font-size: 40px;
+#navi li a:hover {
+  color: #FFD8CC;
 }
 
-li>img{
-width: 50px;
-height: 50px;
-border-radius:100%;
-cursor: pointer;
+#navi #top-right {
+  float: right;
+  margin-right: 15px;
 }
+
+#navi li > h1 {
+  margin-left: 15px;
+}
+
+#navi .emri {
+  display: inline;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#navi li > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+

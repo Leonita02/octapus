@@ -53,6 +53,8 @@ const punetoriRoute=require('./punetori');
 const menaxheriRoute=require('./menaxheri');
 const logOutRoute = require('./logout');
 const searchRoute=require('./search');
+const bookPageRoute=require('./bookPage');
+const romanceRoute = require('./LibriRomance');
 
 
 app.use('/personi', personiRoute);
@@ -64,7 +66,8 @@ app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
 app.use('/logout',logOutRoute);
 app.use('/search',searchRoute);
-
+app.use('/bookPage',bookPageRoute);
+app.use('/LibriRomance', romanceRoute);
 
 
 

@@ -10,8 +10,8 @@ function SearchBar({ setIsSearching }) {
   const [noResults, setNoResults] = useState(false);
   const navigate = useNavigate();
 
-  const navigateToBook = () => {
-    navigate('/bookPage');
+  const navigateToBook = (isbn) => {
+    navigate(`/bookPage/${isbn}`);
   };
 
   const handleInputChange = (event) => {
@@ -57,7 +57,7 @@ function SearchBar({ setIsSearching }) {
         <p>Asnjë rezultat për "{searchTerm}" ...</p>
       ) : (
         searchResults.map((data, i) => (
-          <div key={`card-${i}`} className="flip-card" onClick={navigateToBook}>
+          <div key={`card-${i}`} className="flip-card" onClick={() => navigateToBook(data.Isbn)}>
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <img src={require(`../ImagesOfProject/${data.Url}`)} alt="Libri" />

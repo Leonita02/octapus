@@ -18,12 +18,13 @@ import SignupForm from './components/js/SignupForm';
 import UpdatePunetori from './components/js/updatePunetori';
 import LibriDashboard from './components/js/LibriDashboard';
 import UpdateLibri from './components/js/updateLibri';
+import UpdateWishCard from './components/js/UpdateWishCard';
 import WLdashboard from './components/js/WLdashboard';
 import ClientSignUpForm from './components/js/ClientSignUp';
 import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
-
+import Romance from './components/js/Romance';
 
 function App() {
   return ( 
@@ -36,7 +37,7 @@ function App() {
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
     <Route path='wishList' element = {<WishList></WishList>}></Route>
     <Route path='pagesa' element = {<Pagesa></Pagesa>}></Route>
-    <Route path='bookPage' element ={<BookPage></BookPage>}></Route>
+    <Route path="/bookPage/:id" element={<BookPage />} />
     <Route path = 'dashboard' element ={<Dashboard></Dashboard>}></Route>
     <Route path='/punetori/:Personi_ID' element={<UpdatePunetori/>} />
     <Route path='addBook' element={<AddBook/>} />
@@ -49,6 +50,9 @@ function App() {
     <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri />} />
     <Route path ='/punetoretDshB' element={<PunetoretDashB></PunetoretDashB>}></Route>
     <Route path ='/menaxheriDshB' element={<MenaxheriDashB></MenaxheriDashB>}></Route>
+    <Route path='/wishList/:Wish_ID' element={<UpdateWishCard />} />
+    <Route path='Romance' element={<Romance />} />
+    
 
     
      

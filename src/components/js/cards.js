@@ -7,8 +7,8 @@ import photo from '../ImagesOfProject/c1.jpg'
 
 function Card() {
   const navigate = useNavigate();
-  const navigateToBook = () => {
-    navigate('/bookPage');
+  const navigateToBook = (isbn) => {
+    navigate(`/bookPage/${isbn}`);
   };
  
   const [libri, setLibri] = useState([]);
@@ -21,14 +21,7 @@ function Card() {
   }, []);
 
   
-  // const handleDeleteL = async (Isbn) => {
-  //   try {
-  //     await axios.delete(`http://localhost:8081/libri/${Isbn}`);
-  //     window.location.reload();
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+ 
   
  
 
@@ -36,7 +29,7 @@ function Card() {
     <>
    
       {libri.map((data, i) => (
-        <div key={i} className="flip-card" onClick={navigateToBook}> 
+        <div key={i} className="flip-card" onClick={() => navigateToBook(data.Isbn)}> 
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <img src={require(`../ImagesOfProject/${data.Url}`)}alt="Libri" />
@@ -52,6 +45,13 @@ function Card() {
     </>
   );
 }
-
+ // const handleDeleteL = async (Isbn) => {
+  //   try {
+  //     await axios.delete(`http://localhost:8081/libri/${Isbn}`);
+  //     window.location.reload();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 export default Card;
 
