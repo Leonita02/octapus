@@ -1,8 +1,16 @@
 import React from 'react';
 import Nav from '../js/nav';
 import Payment from '../css/pagesa.css';
+import { useNavigate } from 'react-router';
+import { handleButtonClick } from './pagesaStripe'; 
+import axios from 'axios';
+
 
 function Pagesa() {
+  const navigate = useNavigate();
+  function navigateToPagesa(){
+    // console.log(url);
+    navigate('/logIn')}
     return (
         <>
             <div><Nav /></div>
@@ -73,6 +81,7 @@ function Pagesa() {
             </label>
             <br></br>
           <input type="submit" value="Konfirmo porosinë" className="btn"/>
+          <button className="btn btn-primary" onClick={handleButtonClick}>Paguaj</button>
             </div>
             </div>
             </div>

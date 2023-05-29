@@ -19,7 +19,6 @@ function ProfilePage(){
     }
     function navigateToPagesa(){
         navigate('/pagesa');
-        console.log("Checkout")
     }
     return (
         <>

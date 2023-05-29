@@ -16,7 +16,7 @@ function View() {
          </div>
       <div className="rightImage"><img src={View2} alt="View 2" /></div>
     </div>
-    <div class='textArea'>
+    <div className='textArea'>
         <div>
           <h1 id="aboutUs">About Us</h1>
         
