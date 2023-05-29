@@ -68,6 +68,9 @@ app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
 app.use('/StripeCon', StripeCon);
+app.use('/logout',logOutRoute);
+app.use('/search',searchRoute);
+app.use('/bookPage',bookPageRoute);
 
 
 
