@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
+const StripeCon = require ('./Stripe/StripeCon');
 
 const storeItems = new Map([
   [1,{priceInCents:10000,name:"Learn React"}],
@@ -35,6 +36,7 @@ app.use('/clientRepo', clientRepoRoute);
 app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
+app.use('/StripeCon', StripeCon);
 
 
 

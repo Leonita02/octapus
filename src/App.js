@@ -31,7 +31,7 @@ function App() {
    <Router>
    <Routes>
      <Route path="feed" element={<Feed />}></Route>
-     <Route index element={<Dashboard/>} />
+     <Route index element={<HomePage/>} />
      <Route path="logIn" element={<LoginForm/>}></Route>
      <Route path="feed" element={<Feed/>}></Route>
     <Route path='profilePage' element = {<ProfilePage/>}></Route>
