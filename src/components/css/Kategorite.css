@@ -1,0 +1,28 @@
+.kategorite{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+
+.kategorite>ul>li{
+    color: rgb(104, 104, 104);
+    text-decoration: none;
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    
+    
+  }
+
+  .kategorite li a:hover {
+    color: rgb(126, 104, 76);
+  }
+
+  .nav-link:visited {
+    font-weight: bold;
+  }

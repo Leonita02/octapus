@@ -6,6 +6,8 @@
     margin-top: 10%;
     margin: 5%;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .flip-card-inner {
@@ -37,7 +39,7 @@
   }
   
   .flip-card-back {
-    background-color: #afb2b3;
+    background-color: #f4f0f0;
     color: black;
     transform: rotateY(180deg);
   }

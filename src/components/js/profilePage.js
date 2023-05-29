@@ -9,7 +9,8 @@ import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
 import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 function ProfilePage(){
@@ -20,6 +21,23 @@ function ProfilePage(){
     function navigateToPagesa(){
         navigate('/pagesa');
     }
+
+
+    const handleLogout = () => {
+        axios
+          .get('http://localhost:8081/logout')
+          .then((res) => {
+            if (res.data.Status === 'Success') {
+              navigate('/');
+            } else {
+              alert('Error');
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert('Error');
+          });
+      };
     return (
         <>
         <div>
@@ -35,7 +53,7 @@ function ProfilePage(){
           
             <img src ={fotoFavs} id='fotoLogout' alt='foto'></img>
             <img src ={addWishList} id='fotoFavs' alt='foto' onClick={navigateToWishList} ></img>
-            <img src ={logout} id='fotoWishL' alt='foto'></img>
+            <img src ={logout} id='fotoWishL' alt='foto' onClick={handleLogout}></img>
            
             
             </div>
