@@ -23,57 +23,35 @@ export default function Login() {
     }
 
 
-   
-   
-    // useEffect(() => {
-    //   axios
-    //     .get('http://localhost:8081/login', {
-    //       withCredentials: true, // Include cookies in the request
-          
-    //     })
-    //     .then(res => {
-    //       if (res.data.Login) {
-    //         navigate('/feed');
-    //       } else {
-    //         navigate('/login');
-    //       }
-    //     })
-    //     .catch(err => console.log(err));
-    // }, []);
     const handleSubmit = (event) => {
-        event.preventDefault();
-        axios.post('http://localhost:8081/login',values )
-          .then(res=>{
-            if(res.data.Login){
-              navigate('/feed')
-            }else{
-              alert('No record')
-            }
-            console.log(res);
-          })
-          .catch(err=>console.log(err));
+      event.preventDefault();
+      axios.post('http://localhost:8081/login', values, {
+        withCredentials: true,
+      })
+      .then(res => {
+        if (res.data) {
+          const { username, roleId } = res.data; // Extract the roleId from the response
+          
+          // Redirect based on the role
+          if (roleId === 1) {
+            navigate('/dashboard');
+          } else if (roleId === 2) {
+            navigate('/menaxheriDshB');
+          } else if (roleId === 3) {
+            navigate('/punetoretDshB');
+          } else if (roleId === 4) {
+            navigate('/feed');
+          }
+         
+        } else {
+          alert('No record');
         }
-        
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+    };
       
-      //   axios.post('http://localhost:8081/login', values)
-      //   .then((res) => {
-      //     const { role } = res.data;
-      //     const token = Cookies.get('token');
-      
-      //     if (role === 4) {
-      //       navigate('/feed');
-      //     } else if (role === 3) {
-      //       navigate('/punetoretDshB');
-      //     } else if (role === 2) {
-      //       navigate('/menaxheriDshB');
-      //     } else if (role === 1) {
-      //       navigate('/LibriDashboard');
-      //     } else {
-      //       alert('Nuk ekziston asnjë regjistrim');
-      //     }
-      //   })
-      //   .catch((err) => console.log(err));
-      // }; 
+
 
     return (
         <section>

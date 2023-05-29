@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken')
 app.use(express.json());
 
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 app.use(
   session({
+    name: 'accessToken',
     secret: 'ekipa-shkaterruese',
     resave: false,
     saveUninitialized: true,

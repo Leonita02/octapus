@@ -6,6 +6,13 @@ const connection=require('./db_connection');
 
 router.post("/", (req, res) => {
     const { emri, mbiemri, email, datelindja, qyteti,paga, nr_tel, username, password } = req.body;
+    // Kodi per mos me pas username te njejt 
+    // const q = 'SELECT *  FROM useri WHERE username=?'
+    // connection.query(q,[req.body.username],(err,data)=>{
+    //   if(err)return res.status(500).json(err)
+    //   if(data.length)return res.status(409).json("User alreay exists")
+    // })
+
     const sqlProcedureCommand = `CALL register_new_employee(?, ?, ?, ?, ?, ?, ?, ?,?)`;
     console.log('req.body:', req.body); // log the request body
     connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti,paga, nr_tel, username, password], (err, results) => {

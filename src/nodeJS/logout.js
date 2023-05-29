@@ -6,11 +6,17 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 router.use(cookieParser());
 
-router.get('/',(req,res)=>{
-
-  res.clearCookie('token');
-
-  return res.json({ Status: 'Success' });
+router.get('/', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.clearCookie('accessToken');
+      res.sendStatus(200);  // Optional: Clear the access token cookie if it exists
+      
+    }
+  });
 });
 
 
