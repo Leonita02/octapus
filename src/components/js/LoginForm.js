@@ -8,31 +8,78 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 
+// export default function Login() {
+
+//     const navigate = useNavigate();
+
+//     const [values, setValues] = useState({
+//         Username: '',
+//         Password: ''
+//     })
+//     const [errors, setErrors] = useState({})
+//     const handleInput = (event) => {
+//         setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
+//     }
+
+
+//     const handleSubmit = (event) => {
+//       event.preventDefault();
+//       axios.post('http://localhost:8081/login', values, {
+//         withCredentials: true,
+//       })
+//       .then(res => {
+//         if (res.data) {
+//           const { username, roleId } = res.data; // Extract the roleId from the response
+          
+//           // Redirect based on the role
+//           if (roleId === 1) {
+//             navigate('/dashboard');
+//           } else if (roleId === 2) {
+//             navigate('/menaxheriDshB');
+//           } else if (roleId === 3) {
+//             navigate('/punetoretDshB');
+//           } else if (roleId === 4) {
+//             navigate('/feed');
+//           }
+         
+//         } else {
+//           alert('No record');
+//         }
+//         console.log(res);
+//       })
+//       .catch(err => console.log(err));
+//     };
 export default function Login() {
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    Username: '',
+    Password: '',
+  });
+  const [errors, setErrors] = useState({});
+  const [, setCookies] = useCookies(['username', 'roleId', 'accessToken']);
 
-    const navigate = useNavigate();
+  const handleInput = (event) => {
+    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
 
-    const [values, setValues] = useState({
-        Username: '',
-        Password: ''
-    })
-    const [errors, setErrors] = useState({})
-    const handleInput = (event) => {
-        setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
-    }
-
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      axios.post('http://localhost:8081/login', values, {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post('http://localhost:8081/login', values, {
         withCredentials: true,
       })
-      .then(res => {
+      .then((res) => {
         if (res.data) {
-          const { username, roleId } = res.data; // Extract the roleId from the response
-          
-          // Redirect based on the role
+          const { username, roleId, accessToken } = res.data; // Extract the necessary data from the response
+
+          // Store the necessary information in cookies
+          setCookies('username', username);
+          setCookies('roleId', roleId);
+          setCookies('accessToken', accessToken);
+
+          // Redirect to the authorized route based on the role
           if (roleId === 1) {
             navigate('/dashboard');
           } else if (roleId === 2) {
@@ -42,15 +89,13 @@ export default function Login() {
           } else if (roleId === 4) {
             navigate('/feed');
           }
-         
         } else {
           alert('No record');
         }
         console.log(res);
       })
-      .catch(err => console.log(err));
-    };
-      
+      .catch((err) => console.log(err));
+  };
 
 
     return (
@@ -66,7 +111,7 @@ export default function Login() {
                         <input type="text" placeholder='Password' onChange={handleInput} name='password' />
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
-                        <button type='submit' className='btnn w-100'><Link to='/feed'>Kyqu</Link></button>
+                        <button type='submit' className='btnn w-100'>Kyqu</button>
                         <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
                     </form>
                 </div>

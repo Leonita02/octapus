@@ -13,8 +13,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500);
     } else {
       res.clearCookie('accessToken');
-      res.sendStatus(200);  // Optional: Clear the access token cookie if it exists
-      
+      res.sendStatus(200);
     }
   });
 });

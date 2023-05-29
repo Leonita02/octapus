@@ -138,6 +138,8 @@ router.post('/', (req, res) => {
       "secret-key"
     );
 
+    res.cookie('accessToken', token, { httpOnly: true, secure: true, sameSite: 'lax' });
+
     // Store the accessToken in the session data
     req.session.accessToken = token;
     req.session.user = {

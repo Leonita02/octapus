@@ -16,12 +16,13 @@ app.use(bodyParser.json());
 
 app.use(
   session({
+    name: 'accessToken',
     secret: 'ekipa-shkaterruese',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       secure: false,
-      maxAge: 24 * 60 * 60 * 1000, // 1 day in milliseconds
+      maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
     },
   })
 );
@@ -58,7 +59,7 @@ const searchRoute=require('./search');
 const bookPageRoute=require('./bookPage');
 const romanceRoute = require('./LibriRomance');
 
-app.use(cors());
+
 app.use(express.json());
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
