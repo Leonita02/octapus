@@ -1,94 +1,68 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from '../js/nav';
 import Payment from '../css/pagesa.css';
 import { useNavigate } from 'react-router';
 import { handleButtonClick } from './pagesaStripe'; 
 import axios from 'axios';
-
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Pagesa() {
   const navigate = useNavigate();
-  function navigateToPagesa(){
-    // console.log(url);
-    navigate('/logIn')}
-    return (
-        <>
-            <div><Nav /></div>
-            
+  function navigateToPagesa() {
+    navigate('/logIn');
+  }
 
-           <div className="order">
-            <h2>Porosite tenden</h2>
-            <h3>Plotësoni informatat e kërkuara për të porositur atë qka dëshironi</h3>
-            <div className="row">
-            <div className="col-75">
-            <div className="container">
-            <div className="row">
+  const [pagesat, setPagesat] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:8081/stripe')
+      .then(res => setPagesat(res.data))
+      .catch(err => console.log(err));
+  }, []);
 
-            <div className="col-50">
-            <h3>Informatat rreth porosisë</h3>
-            <label htmlFor="fname"><i className="fa fa-user"></i> Emri dhe Mbiemri:</label>
-              <input type="text" id="fname" name="firstname" placeholder="" />
-              <label htmlFor="email"><i className="fa fa-envelope"></i> Email:</label>
-              <input type="text" id="email" name="email" placeholder=""/>
-              <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Adresa:</label>
-              <input type="text" id="adr" name="address" placeholder=""/>
-              <label htmlFor="city"><i className="fa fa-institution"></i> Qyteti:</label>
-              <input type="text" id="city" name="city" placeholder=""/>
+  return (
+    <>
+      <div>
+        <Nav />
+      </div>
+      <br />
+      <br />
+      <br />
 
-              <div className="row">
-              <div className="col-50">
-              <label htmlFor="state">Shteti:</label>
-                  <input type="text" id="state" name="state" placeholder=""/>
-              </div>
-              <div className="col-50">
-                  <label htmlFor="zip">Zip Kodi:</label>
-                  <input type="text" id="zip" name="zip" placeholder=""/>
-                </div>
-              </div>
-              </div>
+      <h2>Historia e Pagesave</h2>
 
-              <div className="col-50">
-              <h3>Pagesa:</h3>
-              <label htmlFor="fname"></label>
-              <div className="icon-container">
-                <i className="fa fa-cc-visa" style={{color: 'navy'}}></i>
-                <i className="fa fa-cc-amex" style={{color: 'blue'}}></i>
-                <i className="fa fa-cc-mastercard" style={{color: 'red'}}></i>
-                <i className="fa fa-cc-discover" style={{color: 'orange'}}></i> 
-            </div>
-              <label htmlFor="cname">Emri i Kartelës:</label>
-              <input type="text" id="cname" name="cardname" placeholder=""/>
-              <label htmlFor="ccnum">Numri i kredit-kartelës:</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder=""/>
-              <label htmlFor="expmonth">Muaji i skadencës:</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder=""/>
-              <div className="row">
-                <div className="col-50">
-                  <label htmlFor="expyear">Viti i skandencës:</label>
-                  <input type="text" id="expyear" name="expyear" placeholder=""/>
-                </div>
-                <div className="col-50">
-                  <label htmlFor="cvv">Sasia:</label>
-                  <input type="text" id="cvv" name="cvv" placeholder=""/>
-                </div>
-              </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Pagesa_ID</th>
+            <th>Qyteti</th>
+            <th>Emri i Karteles</th>
+            <th>Numri i Karteles</th>
+            <th>Data Pageses</th>
+            <th>Person_ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pagesat.map((pagesa) => (
+            <tr key={pagesa.Pagesa_ID}>
+              <td>{pagesa.Pagesa_ID}</td>
+              <td>{pagesa.qyteti}</td>
+              <td>{pagesa.emriKarteles}</td>
+              <td>{pagesa.nrKarteles}</td>
+              <td>{pagesa.data_pageses}</td>
+              <td>{pagesa.Personi_ID}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            </div>
-            </div>
-
-            <label>
-            <input type="checkbox" name="sameadr" />
-            </label>
-            <br></br>
-          <input type="submit" value="Konfirmo porosinë" className="btn"/>
-          <button className="btn btn-primary" onClick={handleButtonClick}>Paguaj</button>
-            </div>
-            </div>
-            </div>
-  
-            </div>
-        </>
-    )
+      <h3>Paguani me formën më të shpejtë!</h3>
+      <button className="btn btn-primary" onClick={handleButtonClick}>
+        Paguaj
+      </button>
+    </>
+  );
 }
 
 export default Pagesa;
