@@ -75,18 +75,21 @@ export default function Login() {
           const { username, roleId, accessToken } = res.data; // Extract the necessary data from the response
 
           // Store the necessary information in cookies
-          setCookies('username', username);
-          setCookies('roleId', roleId);
+         
           setCookies('accessToken', accessToken);
 
           // Redirect to the authorized route based on the role
           if (roleId === 1) {
-            navigate('/dashboard');
+            console.log('Redirecting to:', roleId); // Add this line
+            navigate('/WLdashboard');
           } else if (roleId === 2) {
+            console.log('Redirecting to:', roleId); // Add this line
             navigate('/menaxheriDshB');
           } else if (roleId === 3) {
+            console.log('Redirecting to:', roleId); // Add this line
             navigate('/punetoretDshB');
           } else if (roleId === 4) {
+            console.log('Redirecting to:', roleId); // Add this line
             navigate('/feed');
           }
         } else {

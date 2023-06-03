@@ -41,10 +41,10 @@ app.use(
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require ('./Stripe/StripeCon');
 
-const storeItems = new Map([
-  [1,{priceInCents:10000,name:"Learn React"}],
-  [2,{priceInCents:20000,name:"Learn NodeJS"}]
-])
+// const storeItems = new Map([
+//   [1,{priceInCents:10000,name:"Learn React"}],
+//   [2,{priceInCents:20000,name:"Learn NodeJS"}]
+// ])
 
 const connection = require('./db_connection');
 const personiRoute = require('./personi');
