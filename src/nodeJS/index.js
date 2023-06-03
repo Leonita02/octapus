@@ -41,10 +41,7 @@ app.use(
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require ('./Stripe/StripeCon');
 
-// const storeItems = new Map([
-//   [1,{priceInCents:10000,name:"Learn React"}],
-//   [2,{priceInCents:20000,name:"Learn NodeJS"}]
-// ])
+
 
 const connection = require('./db_connection');
 const personiRoute = require('./personi');
@@ -59,8 +56,18 @@ const searchRoute=require('./search');
 const bookPageRoute=require('./bookPage');
 const romanceRoute = require('./LibriRomance');
 
+app.use(cors());
 
-app.use(express.json());
+//Dont use json body format for stripe api
+app.use((req, res, next) => {
+  if (req.originalUrl === "/stripe/api/webhook") {
+    next();
+  } else {
+    express.json()(req, res, next);
+  }
+});
+
+
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
 app.use('/wishList', wishListRoute);
@@ -68,7 +75,7 @@ app.use('/clientRepo', clientRepoRoute);
 app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
-app.use('/StripeCon', StripeCon);
+app.use('/stripe', StripeCon);
 app.use('/logout',logOutRoute);
 app.use('/search',searchRoute);
 app.use('/bookPage',bookPageRoute);
