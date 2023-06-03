@@ -3,6 +3,41 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+app.use(express.json());
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+app.use(
+  session({
+    name: 'accessToken',
+    secret: 'ekipa-shkaterruese',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000 // 1 day in milliseconds
+    },
+  })
+);
+
+app.use(cookieParser());
+
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['POST', 'GET','PUT','DELETE'],
+    credentials: true,
+  })
+);
+
+
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require ('./Stripe/StripeCon');
 const connection = require('./db_connection');
@@ -38,6 +73,9 @@ app.use('/login',loginRoute);
 app.use('/punetori',punetoriRoute);
 app.use('/menaxheri',menaxheriRoute);
 app.use('/stripe', StripeCon);
+app.use('/logout',logOutRoute);
+app.use('/search',searchRoute);
+app.use('/bookPage',bookPageRoute);
 
 
 

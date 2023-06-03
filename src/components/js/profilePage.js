@@ -22,22 +22,21 @@ function ProfilePage(){
         navigate('/pagesa');
     }
 
-
     const handleLogout = () => {
-        axios
-          .get('http://localhost:8081/logout')
-          .then((res) => {
-            if (res.data.Status === 'Success') {
-              navigate('/');
-            } else {
-              alert('Error');
-            }
-          })
-          .catch((err) => {
-            console.log(err);
+      axios
+       .get('http://localhost:8081/logout')
+        .then((res) => {
+          if (res.status === 200) {
+            navigate('/');
+          } else {
             alert('Error');
-          });
-      };
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert('Error');
+        });
+    }; 
     return (
         <>
         <div>
