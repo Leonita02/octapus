@@ -7,26 +7,34 @@ import Kategorite from './Kategorite';
 import '../css/Kategorite.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-export default function Romance(){
-    const navigate = useNavigate();
-    const navigateToBook = (isbn) => {
-      navigate(`/bookPage/${isbn}`);
-    };
-    const [isSearching, setIsSearching] = useState(false);
+export default function Zhanret(){
+  const { Genre } = useParams();
+  const navigate = useNavigate();
+  const navigateToBook = (isbn) => {
+    navigate(`/bookPage/${isbn}`);
+  };
 
+  const [isSearching, setIsSearching] = useState(false);
   const handleSetIsSearching = (value) => {
     setIsSearching(value);
   };
 
-  const [libri,setLibri] = useState([]) 
+  const [libri, setLibri] = useState([]);
 
-  useEffect(()=>{
-    axios.get('http://localhost:8081/LibriRomance')
-    .then(res => setLibri(res.data))
-    .catch(err => console.log(err));
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8081/LibriRomance/${Genre}`);
+        setLibri(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  })
+    fetchBooks();
+  }, [Genre]);
 
     return(
         <>
@@ -37,7 +45,7 @@ export default function Romance(){
       <br></br>
       <br></br>
         <br></br>
-      
+
       <center>
       <SearchBar setIsSearching={handleSetIsSearching} />
       <Kategorite></Kategorite><br></br>

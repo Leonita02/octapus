@@ -28,7 +28,8 @@ import ClientSignUpForm from './components/js/ClientSignUp';
 import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
-import Romance from './components/js/Romance';
+import Zhanret from './components/js/Zhanret';
+import SideBar from './components/js/SideBar';
 const authorizedRoutes = [
   // General pages accessible to all users
   { path: '/', element: <HomePage /> },
@@ -38,13 +39,17 @@ const authorizedRoutes = [
   { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
   { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
   { path: '/wishList', element: <WishList /> },
-  { path: '/Romance', element: <Romance /> },
+  { path: '/Zhanret', element: <Zhanret /> },
   { path: 'profilePage', element: <ProfilePage /> },
+  { path: '/LibriDashboard', element: <LibriDashboard />},
+  { path: '/menaxheri', element: <MenaxheriDashB />},
+  { path: '/Sidebar', element: <SideBar />},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },
-  { path: '/LibriDashboard', element: <LibriDashboard />, allowedRoles: ['1', '2'] },
-  { path: '/bookPage/:id', element: <BookPage /> ,allowedRoles: ['1','2','3','4']}
+  // { path: '/LibriDashboard', element: <LibriDashboard />, allowedRoles: ['1', '2'] },
+  { path: '/bookPage/:id', element: <BookPage /> ,allowedRoles: ['1','2','3','4']},
+  {path: '/Zhanret/:Genre', element: <Zhanret/>, allowedRoles: ['1','2','3','4']}
 ];
 
 
