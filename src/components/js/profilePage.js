@@ -44,7 +44,7 @@ function ProfilePage(){
        </div>
        <br></br>
        <br></br>
-       <button className="btn btn-primary" onClick={navigateToPagesa}>Pagesa</button>
+       <button className="btn btn-primary" onClick={navigateToPagesa}>Pagesat</button>
         <div className='userProfile'>
             <img src={fotoProfili} id='fotoProfili' alt='foto' ></img>
            
