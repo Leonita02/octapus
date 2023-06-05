@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../css/Sbar.css';
 
 import { useNavigate } from 'react-router';
+import Kategorite from './Kategorite';
 
 function SearchBar({ setIsSearching }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -52,6 +53,7 @@ function SearchBar({ setIsSearching }) {
       />
       <button type="submit">  Kërko  </button>
       <br></br>
+    
       {/* Render the search results */}
       {noResults ? (
         <p>Asnjë rezultat për "{searchTerm}" ...</p>

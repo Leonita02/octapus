@@ -1,4 +1,4 @@
-import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaPowerOff } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/sideBar.css";
@@ -136,7 +136,7 @@ function SideBar(){
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleLogout}>
-                Logout
+                <FaPowerOff/>Logout
               </Link>
             </li>
           </ul>
