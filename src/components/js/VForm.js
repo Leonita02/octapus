@@ -4,9 +4,9 @@ function VF() {
         <>
 
             <br></br>
-            <div class="kerkesaP">
+            <div className="kerkesaP">
 
-                <div class="titulli">
+                <div className="titulli">
                     <h1>Kerkesa e Pushimeve</h1>
                     <hr id='firstHr'></hr>
                 </div>

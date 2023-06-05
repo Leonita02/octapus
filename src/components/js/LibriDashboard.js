@@ -28,7 +28,7 @@ function Ldashboard(){
     return <> <div className="col-md-12 mt-5">
            <h1 className="text-center">Invertari i Librave</h1>
          </div> 
-    <table class="table caption-top bg-white rounded mt-2">
+    <table className="table caption-top bg-white rounded mt-2">
     <caption className='text-white fs-4'> Recent Orders</caption>
     <thead>
     <tr>
