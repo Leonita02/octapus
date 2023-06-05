@@ -1,4 +1,4 @@
-import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaPowerOff, FaMoneyBill } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/sideBar.css";
@@ -13,6 +13,7 @@ import PunetoretDashB from './punetoretDshB';
 import Feed from './feed';
 import Dashboard from './dashboard';
 import MainF from './MainFeed';
+import PagesaForm from './pagesaForm';
 
 
 function SideBar(){
@@ -20,19 +21,21 @@ function SideBar(){
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('http://localhost:8081/libri')
     .then(res => setLibri(res.data))
     .catch(err => console.log(err));
+  }, []);
 
-  }
-  )
 
+  
   const [selectedComponent, setSelectedComponent] = useState("Ldashboard");
 
   const handleLinkClick = (component) => {
     setSelectedComponent(component);
   };
+
+
 
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
@@ -42,19 +45,21 @@ function SideBar(){
         return <MenaxheriDashB />;
       case "MainF":
         return <MainF />;
+      case "Pagesa":
+        return<PagesaForm/>
       default:
         return <Ldashboard/>;
     }
   };
 
-  const handleDeleteL = async(Isbn)=>{
-    try{
-      await axios.delete('http://localhost:8081/libri/' + Isbn)
-      window.location.reload()
-    }catch(err){
+  const handleDeleteL = async (Isbn) => {
+    try {
+      await axios.delete('http://localhost:8081/libri/' + Isbn);
+      window.location.reload();
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const handleLogout = () => {
     axios
@@ -70,45 +75,48 @@ function SideBar(){
         console.log(err);
         alert('Error');
       });
-  }; 
+  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  
-    return <>
-      <div className="container-fluid">
-      <div className="row">
-        <div className="col-sm-3 sidebar">
-          <ul className="nav flex-column">
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">
-                <FaHome/>Home
-              </Link>
-            </li>
-            <li className="nav-item">
-            <Link
-           className={`nav-link ${selectedComponent === "MainF" ? "active" : ""}`}
-           to="#"
-           onClick={() => handleLinkClick("MainF")}
-         >
-           <FaBook /> Feed
-  </Link>
+  const handlePaymentSuccess = () => {
+    setSelectedComponent("SideBar"); // Set the desired component to be displayed
+  };
 
-            </li>
-            <li className={`nav-item dropdown`}>
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                id="servicesDropdown"
-                role="button"
-                onClick={() => handleLinkClick("Ldashboard")}
-                aria-haspopup="true"
-                aria-expanded={selectedComponent === "Ldashboard"}
-              >
-                 <FaCogs />Tabelat
-              </Link>
-              <div
+  return (
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-sm-3 sidebar">
+            <ul className="nav flex-column">
+              <li className="nav-item">
+                <Link className="nav-link active" to="/">
+                  <FaHome/>Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${selectedComponent === "MainF" ? "active" : ""}`}
+                  to="#"
+                  onClick={() => handleLinkClick("MainF")}
+                >
+                  <FaBook /> Feed
+                </Link>
+              </li>
+              <li className={`nav-item dropdown`}>
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to="#"
+                  id="servicesDropdown"
+                  role="button"
+                  onClick={() => handleLinkClick("Ldashboard")}
+                  aria-haspopup="true"
+                  aria-expanded={selectedComponent === "Ldashboard"}
+                >
+                  <FaCogs />Tabelat
+                </Link>
+                <div
                   className={`dropdown-menu ${
                     selectedComponent === "Ldashboard" ? "show" : ""
                     }`}
@@ -150,6 +158,7 @@ function SideBar(){
   
    
   </>
+  );
 }
 
 export default SideBar;

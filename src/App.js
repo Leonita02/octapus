@@ -28,8 +28,11 @@ import ClientSignUpForm from './components/js/ClientSignUp';
 import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
-import LexuesiDashB from './components/js/lexuesitDshB';
 import SideBar from './components/js/SideBar';
+import LexuesiDashB from './components/js/lexuesitDshB';
+
+import Drame from './components/js/Drame';
+import AboutPage from './components/js/AboutUs';
 
 const authorizedRoutes = [
   // General pages accessible to all users
@@ -40,14 +43,14 @@ const authorizedRoutes = [
   { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
   { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
   { path: '/wishList', element: <WishList /> },
-  { path: '/lexuesitDshB', element: <LexuesiDashB /> },
-  { path: '/pagesa', element: <Pagesa/> },
-
-
-  { path: '/profilePage', element: <ProfilePage /> },
+  { path: '/Romance', element: <Romance /> },
+  { path: 'profilePage', element: <ProfilePage /> },
   { path: '/LibriDashboard', element: <LibriDashboard />},
   { path: '/menaxheri', element: <MenaxheriDashB />},
   { path: '/Sidebar', element: <SideBar />},
+  { path: '/Romance', element: <Romance/>},
+  { path: '/Drame', element: <Drame/>},
+  { path: '/AboutUs', element: <AboutPage/>},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },
