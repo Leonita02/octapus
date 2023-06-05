@@ -29,7 +29,8 @@ import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
 import LexuesiDashB from './components/js/lexuesitDshB';
-import Romance from './components/js/Romance';
+import SideBar from './components/js/SideBar';
+
 const authorizedRoutes = [
   // General pages accessible to all users
   { path: '/', element: <HomePage /> },
@@ -42,7 +43,7 @@ const authorizedRoutes = [
   { path: '/lexuesitDshB', element: <LexuesiDashB /> },
   { path: '/pagesa', element: <Pagesa/> },
 
-  { path: '/Romance', element: <Romance /> },
+
   { path: '/profilePage', element: <ProfilePage /> },
   { path: '/LibriDashboard', element: <LibriDashboard />},
   { path: '/menaxheri', element: <MenaxheriDashB />},
