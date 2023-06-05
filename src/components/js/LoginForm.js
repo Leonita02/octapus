@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 // import Validation from './LoginValidation';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
+
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
@@ -64,6 +65,8 @@ export default function Login() {
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
+  const [cookies, setCookie] = useCookies(['accessToken']);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -75,8 +78,9 @@ export default function Login() {
           const { username, roleId, accessToken } = res.data; // Extract the necessary data from the response
 
           // Store the necessary information in cookies
-         
-          setCookies('accessToken', accessToken);
+          setCookie('accessToken', accessToken, { path: '/' });
+          setCookie('userId', res.data.userId, { path: '/' });
+          setCookie('roleId', roleId, { path: '/' });
 
           // Redirect to the authorized route based on the role
           if (roleId === 1) {
@@ -99,6 +103,8 @@ export default function Login() {
       })
       .catch((err) => console.log(err));
   };
+
+  // Rest of your component code
 
 
     return (
