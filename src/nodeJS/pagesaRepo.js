@@ -2,8 +2,24 @@ const express=require('express');
 const router=express.Router();
 const connection=require('./db_connection');
 
+//Marrja e te dhenave nga databaza per testim te Personi_ID
+router.get('/', async (req, res) => {
+    const { Personi_ID } = req.query;
+  
+    // Perform a database query to check if the Personi_ID exists in the personi table
+    const personi = await Personi.findOne({
+      where: {
+        Personi_ID: Personi_ID,
+      },
+    });
+    if (personi) {
+        res.json({ exists: true });
+      } else {
+        res.json({ exists: false });
+      }
+});
 
-
+//Ruajtja e te dhenave ne databaze
 router.post("/", (req, res) => {
     const { Personi_ID,qyteti,email,emriKarteles,nrKarteles,data_pageses} = req.body;
   
