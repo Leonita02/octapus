@@ -1,5 +1,5 @@
 
-footer {
+/* footer {
     background-color: rgb(3, 47, 57);
     color: #fff;
     padding: 5%;
@@ -45,6 +45,46 @@ footer {
     text-decoration: none;
   } */
   
-  .socialLogo li:last-child {
+  /* .socialLogo li:last-child {
     margin-left: 17%;
+  } */
+  .footer-logo {
+    width: 150px; /* Adjust the width as needed */
+  }
+  
+  .social-link {
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .social-link:hover {
+    color: #ccc;
+  }
+  
+  .spicy-text {
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+  
+      text-align: right; /* Align the text to the right */
+    
+  }
+  .bg-footer {
+    background-color:rgb(3, 47, 57) ;
+  }
+  .social-link {
+    margin-right: 12px; /* Increase this value to add more space between icons */
+  }
+  
+  .icon-lg {
+    font-size: 24px; /* Increase this value to make the icons larger */
+  }
+  .text-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .footer-logo {
+    width: 80px; /* Adjust the width as needed */
+    height: 80px; /* Adjust the height as needed */
+    border-radius: 50%; /* Add border radius to make it round */
   }

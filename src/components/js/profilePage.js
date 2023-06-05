@@ -112,7 +112,7 @@ function ProfilePage(){
                 </ul>
                 <div className="card-footer bg-light" onClick={navigateToPagesa}>
                   <div className="list-group-item">
-                    <i className="bi bi-box-arrow-left me-2"></i>
+                  <i className="bi bi-credit-card-fill me-2"></i>
                     Pagesat
                   </div>
                 </div>

@@ -25,18 +25,13 @@ function Ldashboard(){
     }
   }
   
-    return <div className="container mx-auto">
-    <div className="row">
-      <div className="col-md-12 mt-5">
-        <h1 className="text-center">Invertari i Librave</h1>
-      </div>
-    </div>
-    <div className="row">
-      <div className="col-md-12">
-        <Link to='/addBook' className="btn btn-success">Add new </Link>
-        <table className="table table-hover">
-          <thead>
-            <tr>
+    return <> <div className="col-md-12 mt-5">
+           <h1 className="text-center">Invertari i Librave</h1>
+         </div> 
+    <table class="table caption-top bg-white rounded mt-2">
+    <caption className='text-white fs-4'> Recent Orders</caption>
+    <thead>
+    <tr>
               <th>ISBN</th>
               <th>Titulli</th>
               <th>Autori</th>
@@ -48,10 +43,9 @@ function Ldashboard(){
               <th>Zhanri</th>
               <th>Rafti</th>
             </tr>
-          </thead>
-
-          <tbody>
-      {libri.map((data,i)=>{ // me i printu qato te dhena
+            </thead>
+        <tbody>
+        {libri.map((data,i)=>{ // me i printu qato te dhena
        return(<tr key={i}>
                   <td>{data.Isbn}</td>
                   <td>{data.Titulli}</td>
@@ -63,20 +57,28 @@ function Ldashboard(){
                   <td>{data.Url}</td>
                   <td>{data.Zhanri}</td>
                   <td>{data.Rafti_ID}</td>
+                  
                   <td>
-                    
-                     <button className="btn btn-primary"><Link to={`/libri/${data.Isbn}`}>Update</Link></button>
-                    <button className = 'btn btn-danger' onClick={e => handleDeleteL(data.Isbn)}>Delete</button>
-                  </td>
+  <div className="d-inline-flex">
+    <button className="btn btn-primary text-white">
+      <Link to={`/libri/${data.Isbn}`} className="text-white text-decoration-none">
+        Edit
+      </Link>
+    </button>
+
+    <button className="btn btn-danger" onClick={(e) => handleDeleteL(data.Isbn)}>
+      Delete
+    </button>
+  </div>
+</td>
                 </tr>)
              })   
       }
   </tbody>
-          
-        </table>
-      </div>
-    </div>
-  </div>
+   
+  </table>
+  </>
+  
 }
 
 export default Ldashboard;

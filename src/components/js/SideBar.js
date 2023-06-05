@@ -1,4 +1,4 @@
-import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaMoneyBill } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaPowerOff, FaMoneyBill } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/sideBar.css";
@@ -129,42 +129,35 @@ function SideBar(){
                   >
                     <FaBook /> Librat
                   </Link>
-                  <Link
-                    className="dropdown-item"
-                    onClick={() => handleLinkClick("PunetoretDashB")}
-                  >
-                    <FaUsers/> Puntoret
-                  </Link>
-                  <Link
-                    className="dropdown-item"
-                    onClick={() => handleLinkClick("MenaxheriDashB")}
-                  >
-                    <FaUsers/> Menaxheret
-                  </Link>
-                </div>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact" onClick={handleLogout}>
-                  Logout
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link
-                  className={`nav-link ${selectedComponent === "Pagesa" ? "active" : ""}`}
-                  to="#"
-                  onClick={() => handleLinkClick("Pagesa")}
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("PunetoretDashB")}
                 >
-                  <FaMoneyBill /> Pagesa
+                 <FaUsers/> Puntoret
                 </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-sm-9 content">
-            <div className="container mx-auto">{renderSelectedComponent()}</div>
-          </div>
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("MenaxheriDashB")}
+                >
+                 <FaUsers/> Menaxheret
+                </Link>
+              </div>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact" onClick={handleLogout}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="col-sm-9 content">
+          <div className="container mx-auto">{renderSelectedComponent()}</div>
         </div>
       </div>
-    </>
+    </div>
+  
+   
+  </>
   );
 }
 

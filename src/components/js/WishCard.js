@@ -3,16 +3,22 @@ import profile from '../ImagesOfProject/prodilePiic.png';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
 function WishCard(){
   const [wishList, setWishList] = useState([])
-  useEffect(() => {
-      axios.get('http://localhost:8081/wishList')
-          .then(res => setWishList(res.data))
-          .catch(err => console.log(err));
+  const [cookies] = useCookies(['userId', 'roleId']);
 
-  }
-  )
+  // Access the user ID and role ID from cookies
+  const userId = cookies.userId;
+  useEffect(() => {
+    // Make the GET request to fetch wishlist data based on userId
+    axios.get(`http://localhost:8081/wishList?userId=${userId}`)
+      .then(res => {
+        setWishList(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [userId]);
   const handleDelete = async (Wish_ID) => {
     try {
       await axios.delete('http://localhost:8081/wishList/' + Wish_ID)
@@ -29,8 +35,10 @@ function WishCard(){
           <div className="card comment-card w-100 m-3">
             <div className="comment-header p-3">
               <img src={profile} alt="User Avatar" className="avatar rounded-circle" style={{ width: "50px", height: "50px" }} />
-              <h3 className="card-title">John Doe</h3>
-              <span className="card-subtitle mb-2 text-muted">April 24, 2023</span>
+              <br></br>
+            
+              <h4 className="card-title">@{data.Username}</h4>
+              {/* <span className="card-subtitle mb-2 text-muted">April 24, 2023</span> */}
             </div>
             <div className="comment-body p-3">
               <h4 className="card-title">{data.Autori}</h4>
