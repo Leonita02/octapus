@@ -1,18 +1,14 @@
 require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+
 app.use(express.json());
-
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
+app.use(cookieParser());
 
 app.use(
   session({
@@ -27,12 +23,10 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
-    methods: ['POST', 'GET','PUT','DELETE'],
+    origin: 'http://localhost:3000',
+    methods: ['POST', 'GET', 'PUT', 'DELETE'],
     credentials: true,
   })
 );
@@ -40,6 +34,9 @@ app.use(
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require ('./Stripe/StripeCon');
+
+
+
 const connection = require('./db_connection');
 const personiRoute = require('./personi');
 const libriRoute = require('./libri');
@@ -52,8 +49,9 @@ const logOutRoute = require('./logout');
 const searchRoute=require('./search');
 const bookPageRoute=require('./bookPage');
 const romanceRoute = require('./LibriRomance');
+const userInfoRoute=require('./userInfo');
 
-app.use(cors());
+
 
 //Dont use json body format for stripe api
 app.use((req, res, next) => {
@@ -76,7 +74,8 @@ app.use('/stripe', StripeCon);
 app.use('/logout',logOutRoute);
 app.use('/search',searchRoute);
 app.use('/bookPage',bookPageRoute);
-
+app.use('/userInfo',userInfoRoute);
+app.use('/LibriRomance', romanceRoute);
 
 
 app.listen(8081, () => {

@@ -138,28 +138,33 @@ router.post('/', (req, res) => {
       "secret-key"
     );
 
-    res.cookie('accessToken', token, { httpOnly: true, secure: true, sameSite: 'lax' });
+    res.cookie('accessToken', token, { httpOnly: true, secure: false, sameSite: 'none' });
 
     // Store the accessToken in the session data
     req.session.accessToken = token;
     req.session.user = {
       id : result[0].Useri_ID,
       username: result[0].Username,
-      roleId: result[0].Roli_ID
+      roleId: result[0].Roli_ID,
+      personiId : result[0].Personi_ID
     };
     console.log('Stored username:', result[0].Username);
     console.log('Stored roleId:', result[0].Roli_ID);
     console.log('Session:', req.session);
 
-    res.status(200).json({ username: result[0].Username, roleId: result[0].Roli_ID });
+    // Include userId in the response data
+    res.status(200).json({ username: result[0].Username, roleId: result[0].Roli_ID, userId: result[0].Useri_ID });
   });
 });
 
 router.get('/', (req, res) => {
   const user = req.session.user;
-  const roleId = user ? user.roleId : null;
+  console.log('User object:', user); // Debug statement
 
-  res.json({ roleId });
+  const roleId = user ? user.roleId : null;
+  const userId = user ? user.id : null;
+
+  res.json({ roleId, userId });
 });
 // router.get('/', (req, res) => {
 //   const { username, roleId } = req.session;
