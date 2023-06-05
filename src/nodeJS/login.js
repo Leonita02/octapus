@@ -145,7 +145,8 @@ router.post('/', (req, res) => {
     req.session.user = {
       id : result[0].Useri_ID,
       username: result[0].Username,
-      roleId: result[0].Roli_ID
+      roleId: result[0].Roli_ID,
+      personiId : result[0].Personi_ID
     };
     console.log('Stored username:', result[0].Username);
     console.log('Stored roleId:', result[0].Roli_ID);

@@ -29,7 +29,7 @@ import PunetoretDashB from './components/js/punetoretDshB';
 import MenaxheriDashB from './components/js/menaxheriDshB';
 import UpdateMenaxheri from './components/js/updateMenaxheri';
 import LexuesiDashB from './components/js/lexuesitDshB';
-// import Zhanret from './components/js/Zhanret';
+import Romance from './components/js/Romance';
 const authorizedRoutes = [
   // General pages accessible to all users
   { path: '/', element: <HomePage /> },
@@ -42,14 +42,16 @@ const authorizedRoutes = [
   { path: '/lexuesitDshB', element: <LexuesiDashB /> },
   { path: '/pagesa', element: <Pagesa/> },
 
-  // { path: '/Zhanret', element: <Zhanret /> },
+  { path: '/Romance', element: <Romance /> },
   { path: '/profilePage', element: <ProfilePage /> },
+  { path: '/LibriDashboard', element: <LibriDashboard />},
+  { path: '/menaxheri', element: <MenaxheriDashB />},
+  { path: '/Sidebar', element: <SideBar />},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },
   { path: '/LibriDashboard', element: <LibriDashboard />, allowedRoles: ['1', '2'] },
   { path: '/bookPage/:id', element: <BookPage /> ,allowedRoles: ['1','2','3','4']}
-  // {path: '/Zhanret/:Genre', element: <Zhanret/>, allowedRoles: ['1','2','3','4']}
 ];
 
 

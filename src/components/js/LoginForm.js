@@ -81,19 +81,16 @@ export default function Login() {
           setCookie('accessToken', accessToken, { path: '/' });
           setCookie('userId', res.data.userId, { path: '/' });
           setCookie('roleId', roleId, { path: '/' });
+          setCookies('username', username);
 
           // Redirect to the authorized route based on the role
           if (roleId === 1) {
-            console.log('Redirecting to:', roleId); // Add this line
-            navigate('/WLdashboard');
+            navigate('/dashboard');
           } else if (roleId === 2) {
-            console.log('Redirecting to:', roleId); // Add this line
             navigate('/menaxheriDshB');
           } else if (roleId === 3) {
-            console.log('Redirecting to:', roleId); // Add this line
             navigate('/punetoretDshB');
           } else if (roleId === 4) {
-            console.log('Redirecting to:', roleId); // Add this line
             navigate('/feed');
           }
         } else {

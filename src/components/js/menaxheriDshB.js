@@ -33,7 +33,9 @@ function MenaxheriDashB(){
 //     }
 //   }
   
-    return <div className="container mx-auto">
+    return <>
+    
+    <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
         <h1 className="text-center"><b>Menaxherët e Bibliotekës</b></h1>
@@ -81,6 +83,7 @@ function MenaxheriDashB(){
       </div>
     </div>
   </div>
+  </>
 }
 
 export default MenaxheriDashB;
