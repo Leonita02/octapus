@@ -50,6 +50,7 @@ const searchRoute=require('./search');
 const bookPageRoute=require('./bookPage');
 const romanceRoute = require('./LibriRomance');
 const userInfoRoute=require('./userInfo');
+const pagesaRepo = require('./pagesaRepo');
 
 
 
@@ -76,6 +77,7 @@ app.use('/search',searchRoute);
 app.use('/bookPage',bookPageRoute);
 app.use('/userInfo',userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
+app.use('/pagesaRepo',pagesaRepo);
 
 
 app.listen(8081, () => {
