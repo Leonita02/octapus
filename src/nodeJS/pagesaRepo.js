@@ -18,7 +18,7 @@ router.post("/personat/:email", (req, res) => {
   connection.query(sqlProcedureCommand, [p_email, qyteti,shuma], (err, results) => {
     if (err) {
       console.log('Error:', err); // log the error, if any
-      return res.json({ succeeded: false, message: err });
+      return res.json({ succeeded: false, message: "Email nuk ekziston!" });
     }
     console.log('results:', results); // log the query results
     return res.json({ succeeded: true, message: "Payment completed successfully!" });
