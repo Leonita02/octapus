@@ -55,6 +55,7 @@ const menaxhimiPRoute=require('./menaxhimiP');
 
 
 
+
 //Dont use json body format for stripe api
 app.use((req, res, next) => {
   if (req.originalUrl === "/stripe/api/webhook") {
@@ -78,7 +79,7 @@ app.use('/search', searchRoute);
 app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
-app.use('/pagesaRepo',pagesaRepo);
+app.use('/pagesaRepo',pagesatRoute);
 
 
 app.listen(8081, () => {
