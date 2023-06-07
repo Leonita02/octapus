@@ -8,6 +8,7 @@ export default function PagesaForm() {
     const [values, setValues] = useState({
         qyteti: '',
         email: '',
+        shuma: '10€',
     });
 
     const [errors, setErrors] = useState({});
@@ -67,11 +68,12 @@ export default function PagesaForm() {
 
         if (hasErrors) {
             console.log('Form contains errors:', errors);
-            return; 
+            return;
         }
 
         axios.post(`http://localhost:8081/pagesat/personat/${values.email}`, {
-            qyteti: values.qyteti
+            qyteti: values.qyteti,
+            shuma:values.shuma
         })
             .then((res) => {
                 alert(res.data.message);
@@ -115,6 +117,17 @@ export default function PagesaForm() {
                                         required
                                     />
                                     {errors.qyteti && <div className="invalid-feedback">{errors.qyteti}</div>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="shuma">Shuma</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="shuma"
+                                        name="shuma"
+                                        value={values.shuma}
+                                        readOnly 
+                                    />
                                 </div>
                                 <br />
                                 <button className="btn btn-primary btn-lg btn-block custom-button" type="submit" onClick={handleSubmitP}>

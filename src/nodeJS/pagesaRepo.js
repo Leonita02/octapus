@@ -9,12 +9,13 @@ router.post("/personat/:email", (req, res) => {
 
   const { email: p_email } = req.params;
   const { qyteti } = req.body;
+  const {shuma} = req.body;
 
   console.log({ email: p_email, qyteti });
 
-  const sqlProcedureCommand = `CALL make_cash_payment_for_user(?, ?)`;
+  const sqlProcedureCommand = `CALL save_payment(?, ?,?)`;
 
-  connection.query(sqlProcedureCommand, [p_email, qyteti], (err, results) => {
+  connection.query(sqlProcedureCommand, [p_email, qyteti,shuma], (err, results) => {
     if (err) {
       console.log('Error:', err); // log the error, if any
       return res.json({ succeeded: false, message: err });
