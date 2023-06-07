@@ -32,7 +32,6 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
-import Romance from './components/js/Romance';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
 
