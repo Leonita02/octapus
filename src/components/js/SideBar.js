@@ -14,18 +14,19 @@ import Feed from './feed';
 import Dashboard from './dashboard';
 import MainF from './MainFeed';
 import PagesaForm from './pagesaForm';
-
+import Porosia from './porosia';
+import Pdashboard from './porosiaDashboard';
 
 function SideBar(){
-  const [libri,setLibri] = useState([]);
+  // const [libri,setLibri] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('http://localhost:8081/libri')
-    .then(res => setLibri(res.data))
-    .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:8081/libri')
+  //   .then(res => setLibri(res.data))
+  //   .catch(err => console.log(err));
+  // }, []);
 
 
   
@@ -47,19 +48,23 @@ function SideBar(){
         return <MainF />;
       case "Pagesa":
         return<PagesaForm/>
+      case "Porosia":
+        return<Porosia/>
+      case "Pdashboard":
+          return<Pdashboard/>
       default:
         return <Ldashboard/>;
     }
   };
 
-  const handleDeleteL = async (Isbn) => {
-    try {
-      await axios.delete('http://localhost:8081/libri/' + Isbn);
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDeleteL = async (Isbn) => {
+  //   try {
+  //     await axios.delete('http://localhost:8081/libri/' + Isbn);
+  //     window.location.reload();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleLogout = () => {
     axios
@@ -142,13 +147,22 @@ function SideBar(){
                  <FaUsers/> Menaxheret
                 </Link>
                 <Link
+                to="#"
                   className="dropdown-item"
-                  onClick={() => handleLinkClick("Pagesa")}
+                  onClick={() => handleLinkClick("Pdashboard")}
                 >
-                 <FaUsers/> Pagesat
+                 <FaUsers/> Porositë
                 </Link>
               </div>
             </li>
+            <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("Porosia")}>
+                  <FaHome/>Porosia
+                </Link>
+              </li>
+             
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleLogout}>
                 Logout
