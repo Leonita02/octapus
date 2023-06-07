@@ -21,7 +21,7 @@ function Nav(){
             <div id="top-right">
               <li><Link to="/feed">Home</Link></li>
               <li><a href="#">Contact</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><Link to="/aboutUs">About Us</Link></li>
               <li><img src={profile} onClick={navigateToProfilePage}></img></li>
             </div>
         </ul>

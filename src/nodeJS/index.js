@@ -33,7 +33,7 @@ app.use(
 
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-const StripeCon = require ('./Stripe/StripeCon');
+const StripeCon = require('./Stripe/StripeCon');
 
 
 
@@ -46,12 +46,14 @@ const loginRoute = require('./login');
 const punetoriRoute = require('./punetori');
 const menaxheriRoute = require('./menaxheri');
 const logOutRoute = require('./logout');
-const searchRoute=require('./search');
-const bookPageRoute=require('./bookPage');
+const searchRoute = require('./search');
+const bookPageRoute = require('./bookPage');
 const romanceRoute = require('./LibriRomance');
-const userInfoRoute=require('./userInfo');
-const pagesaRepo = require('./pagesaRepo');
-const porosiaRoute = require('./porosia');
+const userInfoRoute = require('./userInfo');
+const pagesatRoute = require('./pagesaRepo');
+const porosiaRoute = require('./porosia');const menaxhimiPRoute=require('./menaxhimiP');
+
+
 
 
 //Dont use json body format for stripe api
@@ -68,17 +70,16 @@ app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
 app.use('/wishList', wishListRoute);
 app.use('/clientRepo', clientRepoRoute);
-app.use('/login',loginRoute);
-app.use('/punetori',punetoriRoute);
-app.use('/menaxheri',menaxheriRoute);
+app.use('/login', loginRoute);
+app.use('/punetori', punetoriRoute);
+app.use('/menaxheri', menaxheriRoute);
 app.use('/stripe', StripeCon);
-app.use('/logout',logOutRoute);
-app.use('/search',searchRoute);
-app.use('/bookPage',bookPageRoute);
-app.use('/userInfo',userInfoRoute);
+app.use('/logout', logOutRoute);
+app.use('/search', searchRoute);
+app.use('/bookPage', bookPageRoute);
+app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
 app.use('/pagesaRepo',pagesaRepo);
-app.use('/porosia',porosiaRout);
 
 
 app.listen(8081, () => {

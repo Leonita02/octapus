@@ -17,7 +17,7 @@ import WishList from './components/js/wishList';
 //import Porosia from './components/js/porosia';
 import Pagesa from './components/js/pagesa';
 import AddBook from './components/js/addBook';
-// import VForm from './components/js/VForm'
+ import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
 import UpdatePunetori from './components/js/updatePunetori';
 import LibriDashboard from './components/js/LibriDashboard';
@@ -31,6 +31,7 @@ import UpdateMenaxheri from './components/js/updateMenaxheri';
 import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
+import MenaxhimiP from './components/js/menaxhimiP';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
 import Porosia from './components/js/porosia';
@@ -56,6 +57,9 @@ const authorizedRoutes = [
   { path: '/AboutUs', element: <AboutPage/>},
   { path: '/Porosia', element: <Porosia/>},
   { path: '/porosiaDashboard', element: <Pdashboard/>},
+  {path: '/libri/:Isbn',element : <UpdateLibri/>},
+  { path: '/Vform', element: <VForm/>},
+  { path: '/menaxhimiP', element: <MenaxhimiP/>},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },

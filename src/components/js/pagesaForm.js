@@ -1,149 +1,130 @@
-import React from 'react'
-import bgimg from '../ImagesOfProject/img33.jpeg';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { useEffect } from 'react';
-
 
 export default function PagesaForm() {
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    qyteti: '',
+    email: '',
+    shuma: '10€',
+  });
 
-    const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
 
-    const [values, setValues] = useState({
-        Personi_ID: '',
-        qyteti: '',
-        email: '',
-        emriKarteles: '',
-        nrKarteles: '',
-        data_pageses: ''
-    });
+  useEffect(() => {
+    if (successMessage === 'Pagesa u krye me sukses') {
+      navigate('/sideBar');
+    }
+  }, [successMessage, navigate]);
 
-    const [errors, setErrors] = useState({});
-    const [successMessage, setSuccessMessage] = useState('');
-    
-    useEffect(() => {
-        if (successMessage === "Pagesa u krye me sukses") {
-          navigate('/sideBar');
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    let error = null;
+
+    // Regex validation
+    const regexQyteti = /^[A-Za-z]+$/;
+    const regexEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    switch (name) {
+      case 'email':
+        if (!value.trim()) {
+          error = 'Email nuk duhet te jete e zbrazet!';
+        } else if (!regexEmail.test(value)) {
+          error = 'Emaili jo valid!';
         }
-      }, [successMessage, navigate]);
-
-    
-
-    const handleInput = (event) => {
-        const { name, value } = event.target;
-        let error = null;
-        //Regex validation
-        const regexPersoni_ID = /^[A-Za-z0-9]{1,}$/;
-        const regexQyteti = /^[A-Za-z]+$/;
-        const regexEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-        const regexEmriKarteles = /^[A-Za-z]+$/;
-        const regexNrKarteles = /^[0-9]{5,}$/;
-       const regexDataPageses = /^\d{4}-\d{2}-\d{2}$/;
-
-        switch (name) {
-            case 'Personi_ID':
-                if (!regexPersoni_ID.test(value)) {
-                    error = 'Invalid Personi ID';
-                }
-                break;
-            case 'qyteti':
-                if (!regexQyteti.test(value)) {
-                    error = 'Invalid Qyteti';
-                }
-                break;
-            case 'email':
-                if (!regexEmail.test(value)) {
-                    error = 'Invalid Email';
-                }
-                break;
-            case 'emriKarteles':
-                if (!regexEmriKarteles.test(value)) {
-                    error = 'Invalid Emri i Karteles';
-                }
-                break;
-            case 'nrKarteles':
-                if (!regexNrKarteles.test(value)) {
-                    error = 'Invalid Numri i Karteles';
-                }
-                break;
-            case 'data_pageses':
-                if (!regexDataPageses.test(value)) {
-                    error = 'Invalid Data e Pageses';
-                }
-                break;
-            default:
-                break;
+        break;
+      case 'qyteti':
+        if (!value.trim()) {
+          error = 'Qyteti nuk duhet te jete zbrazet!';
+        } else if (!regexQyteti.test(value)) {
+          error = 'Vlera e qytetit jo valide!';
         }
-
-        setValues((prev) => ({ ...prev, [name]: value }));
-        setErrors((prev) => ({ ...prev, [name]: error }));
-    };
-
-
-
-    const handleSubmitP = (event) => {
-        event.preventDefault();
-        //Checking if there are any errors for the validation with regex
-        const hasErrors = Object.values(errors).some((error) => error !== null);
-
-        if (hasErrors) {
-            console.log('Form contains errors:', errors);
-            return;
-        }
-
-       axios.post('http://localhost:8081/pagesaRepo/', values)
-        .then((res) => {
-            const responseMessage = res.data.message;
-            console.log('Response:', responseMessage);
-            // Display the success message to the user
-            setSuccessMessage(responseMessage);
-        })
-        .catch((err) => console.log(err));
+        break;
+      default:
+        break;
     }
 
-    return (
-        <>
-            <div className='register'>
-                <div className='col-2'>
-                    <img src={bgimg} alt="" />
-                </div>
-                <div className='col-1'>
+    setValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
 
-                    <h2> Paguaj Kesh </h2>
-                    <form action="" id='form' className='forma' >
+  const handleSubmitP = (event) => {
+    event.preventDefault();
 
-                        <input type="text" placeholder='Personi_ID' id='Personi_ID' name='Personi_ID' onChange={handleInput} />
-                        {errors.Personi_ID && <span className="text-danger">{errors.Personi_ID}</span>}
+    if (values.email === '' || values.qyteti === '') {
+      alert('Please fill the required fields!');
+      return;
+    }
 
-                        <input type="text" placeholder='Qyteti' id='Qyteti' name='Qyteti' onChange={handleInput} />
-                        {errors.Qyteti && <span className="text-danger">{errors.Qyteti}</span>}
+    // Checking if there are any errors for the validation with regex
+    const hasErrors = Object.values(errors).some((error) => error !== null);
 
-                        <input type="text" placeholder='Email' id='email' name='email' onChange={handleInput} />
-                        {errors.email && <span className="text-danger">{errors.email}</span>}
+    if (hasErrors) {
+      console.log('Form contains errors:', errors);
+      return;
+    }
 
+    axios
+      .post(`http://localhost:8081/pagesat/personat/${values.email}`, {
+        qyteti: values.qyteti,
+        shuma: values.shuma,
+      })
+      .then((res) => {
+        alert(res.data.message);
+        console.log({ res });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-                        <input type="text" placeholder='EmriKarteles' id='emriKarteles' name='emriKarteles' onChange={handleInput} />
-                        {errors.emriKarteles && <span className="text-danger">{errors.emriKarteles}</span>}
-
-                        <input type="text" placeholder='nrKarteles' id='nrKarteles' name='nrKarteles' onChange={handleInput} />
-                        {errors.nrKarteles && <span className="text-danger">{errors.nrKarteles}</span>}
-
-                        <input type="text" placeholder='Data e Pageses' id='data_pageses' name='data_pageses' onChange={handleInput} />
-                        {errors.data_pageses && <span className="text-danger">{errors.data_pageses}</span>}
-
-
-                        <button className='butn' type='submit' onClick={handleSubmitP}>Paguaj</button>
-
-
-                    </form>
-
-                </div>
-            </div>
-
-        </>
-    )
+  return (
+    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="col-md-8">
+        <div className="card">
+          <div className="card-body">
+            <h2 className="card-title text-center mb-4">Paguaj Kesh</h2>
+            <form className="needs-validation" noValidate>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                  id="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleInput}
+                  required
+                />
+                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="qyteti">Qyteti</label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.qyteti ? 'is-invalid' : ''}`}
+                  id="qyteti"
+                  name="qyteti"
+                  value={values.qyteti}
+                  onChange={handleInput}
+                  required
+                />
+                {errors.qyteti && <div className="invalid-feedback">{errors.qyteti}</div>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="shuma">Shuma</label>
+                <input type="text" className="form-control" id="shuma" name="shuma" value={values.shuma} readOnly />
+              </div>
+              <br />
+              <button className="btn btn-primary btn-lg btn-block custom-button pb-5 col-3" type="submit" onClick={handleSubmitP}>
+                Paguaj
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-
-

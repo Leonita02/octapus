@@ -1,30 +1,28 @@
-const express=require('express');
-const router=express.Router();
-const connection=require('./db_connection');
+const express = require('express');
+const router = express.Router();
+const connection = require('./db_connection');
 
 
+router.post("/personat/:email", (req, res) => {
 
-router.post("/", (req, res) => {
-    const { Personi_ID,qyteti,email,emriKarteles,nrKarteles,data_pageses} = req.body;
-  
-    const sqlInsertCommand = `INSERT INTO pagesa (Personi_ID, qyteti, email, emriKarteles, nrKarteles, data_pageses) VALUES (?, ?, ?, ?, ?, ?)`;
-   
-  
-    connection.query(
-      sqlInsertCommand,
-      [Personi_ID, qyteti, email, emriKarteles, nrKarteles, data_pageses],
-      (err, results) => {
-        if (err) {
-          console.log('Error:', err);
-          return res.json("Error");
-        }
-        console.log('results:', results);
-        const successMessage = "Pagesa u krye me sukses";
-        // return res.json(results);
-        return res.json({ message: successMessage });
-        
-      }
-    );
+  console.log("erdh te endpointi i pagesave!", { params: req.params, body: req.body });
+
+  const { email: p_email } = req.params;
+  const { qyteti } = req.body;
+  const {shuma} = req.body;
+
+  console.log({ email: p_email, qyteti });
+
+  const sqlProcedureCommand = `CALL save_payment(?, ?,?)`;
+
+  connection.query(sqlProcedureCommand, [p_email, qyteti,shuma], (err, results) => {
+    if (err) {
+      console.log('Error:', err); // log the error, if any
+      return res.json({ succeeded: false, message: "Email nuk ekziston!" });
+    }
+    console.log('results:', results); // log the query results
+    return res.json({ succeeded: true, message: "Payment completed successfully!" });
   });
+});
 
-  module.exports = router;
+module.exports = router;

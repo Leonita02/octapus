@@ -1,6 +1,7 @@
 import React from 'react';
 import bib from '../ImagesOfProject/library.jpg';
 import Nav from './nav';
+import Footer from './footer';
 
 const AboutPage = () => {
   return (
@@ -54,6 +55,12 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
+      <Footer/>
     </>
   );
 };
