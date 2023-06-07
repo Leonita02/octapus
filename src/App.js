@@ -33,6 +33,8 @@ import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
+import Porosia from './components/js/porosia';
+import Pdashboard from './components/js/porosiaDashboard';
 
 const authorizedRoutes = [
   // General pages accessible to all users
@@ -40,6 +42,7 @@ const authorizedRoutes = [
   { path: '/feed', element: <Feed /> },
   { path: '/logIn', element: <LoginForm /> },
   { path: '/signup', element: <SignupForm /> },
+  { path: '/addBook', element: <AddBook /> },
   { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
   { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
   { path: '/wishList', element: <WishList /> },
@@ -51,6 +54,8 @@ const authorizedRoutes = [
   { path: '/Romance', element: <Romance/>},
   { path: '/Drame', element: <Drame/>},
   { path: '/AboutUs', element: <AboutPage/>},
+  { path: '/Porosia', element: <Porosia/>},
+  { path: '/porosiaDashboard', element: <Pdashboard/>},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },

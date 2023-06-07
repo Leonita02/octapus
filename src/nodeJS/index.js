@@ -51,7 +51,7 @@ const bookPageRoute=require('./bookPage');
 const romanceRoute = require('./LibriRomance');
 const userInfoRoute=require('./userInfo');
 const pagesaRepo = require('./pagesaRepo');
-
+const porosiaRoute = require('./porosia');
 
 
 //Dont use json body format for stripe api
@@ -78,6 +78,7 @@ app.use('/bookPage',bookPageRoute);
 app.use('/userInfo',userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
 app.use('/pagesaRepo',pagesaRepo);
+app.use('/porosia',porosiaRout);
 
 
 app.listen(8081, () => {
