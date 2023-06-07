@@ -54,7 +54,7 @@ export default function Feed() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8081/Romance`);
+      const response = await axios.get(`http://localhost:8081/LibriRomance/Romance`);
       // Assuming the response data is an array of cards
       const cards = response.data;
       // Process the cards data as needed

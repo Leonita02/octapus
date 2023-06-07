@@ -141,6 +141,12 @@ function SideBar(){
                 >
                  <FaUsers/> Menaxheret
                 </Link>
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("Pagesa")}
+                >
+                 <FaUsers/> Pagesat
+                </Link>
               </div>
             </li>
             <li className="nav-item">
