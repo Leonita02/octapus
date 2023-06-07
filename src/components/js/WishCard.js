@@ -31,6 +31,7 @@ function WishCard(){
   return (
     <div className="row">
       {wishList.map((data, i) => (
+       
         <div className="col-md-4 col-lg-4 col-xl-4" key={i}>
           <div className="card comment-card w-100 m-3">
             <div className="comment-header p-3">
@@ -45,7 +46,7 @@ function WishCard(){
               <h4 className="card-title">"{data.Titulli}"</h4>
             </div>
             <div className="comment-footer">
-              <button className="btn m-2  btn-danger border border-danger" onClick={e => handleDelete(data.Wish_ID)}>Delete</button>
+            <button className="btn m-2 btn-danger border border-danger" onClick={() => handleDelete(data.Wish_ID)}>Delete</button>
               <button className="btn m-2 border border-primary"><Link to={`/wishList/${data.Wish_ID}`} style={{ color: 'black', textDecoration: 'none' }}>Edit</Link></button>
     
             </div>
