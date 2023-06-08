@@ -7,14 +7,29 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const bodyParser = require('body-parser');
 
 
-router.get("/",(req,res)=>{
-    const sql = "SELECT * FROM pagesa";
-    connection.query(sql,(err,data)=>{
-      if(err)return res.json("Error");
-      return res.json(data);
+// router.get("/",(req,res)=>{
+//     const userId = req.query.userId;
+//     const sql = "SELECT * FROM pagesa";
+//     connection.query(sql,(err,data)=>{
+//       if(err)return res.json("Error");
+//       return res.json(data);
+//     }
+//     )
+//   })
+
+  router.get("/",(req,res)=>{
+    const userId = req.query.userId;
+  const sql = "select * from Personi p inner join Useri u on p.Personi_ID=u.Personi_ID inner join Pagesa pg on pg.Personi_ID=p.Personi_ID and u.Useri_ID=?";
+  const values = [userId];
+
+  connection.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error retrieving pagesa" });
     }
-    )
-  })
+    return res.json(data);
+  });
+});
 
 const storeItems = new Map([
     [1, { priceInCents: 1000, name: "Octopus Pagesë Vjetore" }],

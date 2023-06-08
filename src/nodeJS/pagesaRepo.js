@@ -25,4 +25,18 @@ router.post("/personat/:email", (req, res) => {
   });
 });
 
+router.get("/",(req,res)=>{
+  
+  const sql = "select * from Personi p inner join Pagesa pg on pg.Personi_ID=p.Personi_ID ";
+
+
+  connection.query(sql, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error retrieving pagesa" });
+    }
+    return res.json(data);
+  });
+});
+
 module.exports = router;

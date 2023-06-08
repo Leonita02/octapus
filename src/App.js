@@ -36,6 +36,7 @@ import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
 import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
+import HistoriaPagesave from './components/js/historia_pagesave';
 
 const authorizedRoutes = [
   // General pages accessible to all users
@@ -60,6 +61,8 @@ const authorizedRoutes = [
   {path: '/libri/:Isbn',element : <UpdateLibri/>},
   { path: '/Vform', element: <VForm/>},
   { path: '/menaxhimiP', element: <MenaxhimiP/>},
+  { path: '/pagesa', element: <Pagesa/>},
+  { path: '/historia_pagesave', element: <HistoriaPagesave/>},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },

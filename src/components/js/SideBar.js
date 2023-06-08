@@ -16,8 +16,9 @@ import MainF from './MainFeed';
 import PagesaForm from './pagesaForm';
 import Porosia from './porosia';
 import Pdashboard from './porosiaDashboard';
+import HistoriaPagesave from './historia_pagesave'
 
-function SideBar(){
+function SideBar() {
   // const [libri,setLibri] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function SideBar(){
   // }, []);
 
 
-  
+
   const [selectedComponent, setSelectedComponent] = useState("Ldashboard");
 
   const handleLinkClick = (component) => {
@@ -47,13 +48,15 @@ function SideBar(){
       case "MainF":
         return <MainF />;
       case "Pagesa":
-        return<PagesaForm/>
+        return <PagesaForm />
       case "Porosia":
-        return<Porosia/>
+        return <Porosia />
+        case "historia_pagesave":
+        return <HistoriaPagesave />
       case "Pdashboard":
-          return<Pdashboard/>
+        return <Pdashboard />
       default:
-        return <Ldashboard/>;
+        return <Ldashboard />;
     }
   };
 
@@ -68,7 +71,7 @@ function SideBar(){
 
   const handleLogout = () => {
     axios
-     .get('http://localhost:8081/logout')
+      .get('http://localhost:8081/logout')
       .then((res) => {
         if (res.status === 200) {
           navigate('/');
@@ -97,7 +100,7 @@ function SideBar(){
             <ul className="nav flex-column">
               <li className="nav-item">
                 <Link className="nav-link active" to="/">
-                  <FaHome/>Home
+                  <FaHome />Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -122,8 +125,7 @@ function SideBar(){
                   <FaCogs />Tabelat
                 </Link>
                 <div
-                  className={`dropdown-menu ${
-                    selectedComponent === "Ldashboard" ? "show" : ""
+                  className={`dropdown-menu ${selectedComponent === "Ldashboard" ? "show" : ""
                     }`}
                   aria-labelledby="servicesDropdown"
                 >
@@ -134,50 +136,62 @@ function SideBar(){
                   >
                     <FaBook /> Librat
                   </Link>
-                <Link
-                  className="dropdown-item"
-                  onClick={() => handleLinkClick("PunetoretDashB")}
-                >
-                 <FaUsers/> Puntoret
-                </Link>
-                <Link
-                  className="dropdown-item"
-                  onClick={() => handleLinkClick("MenaxheriDashB")}
-                >
-                 <FaUsers/> Menaxheret
-                </Link>
-                <Link
-                to="#"
-                  className="dropdown-item"
-                  onClick={() => handleLinkClick("Pdashboard")}
-                >
-                 <FaUsers/> Porositë
-                </Link>
-              </div>
-            </li>
-            <li className="nav-item">
-                <Link  className="nav-link " 
-                
-                onClick={() => handleLinkClick("Porosia")}>
-                  <FaHome/>Porosia
+                  <Link
+                    className="dropdown-item"
+                    onClick={() => handleLinkClick("PunetoretDashB")}
+                  >
+                    <FaUsers /> Puntoret
+                  </Link>
+                  <Link
+                    className="dropdown-item"
+                    onClick={() => handleLinkClick("MenaxheriDashB")}
+                  >
+                    <FaUsers /> Menaxheret
+                  </Link>
+                  <Link
+                    to="#"
+                    className="dropdown-item"
+                    onClick={() => handleLinkClick("Pdashboard")}
+                  >
+                    <FaUsers /> Porositë
+                  </Link>
+                </div>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link "
+
+                  onClick={() => handleLinkClick("Porosia")}>
+                  <FaHome />Porosia
                 </Link>
               </li>
-             
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact" onClick={handleLogout}>
-                Logout
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="col-sm-9 content">
-          <div className="container mx-auto">{renderSelectedComponent()}</div>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={() => handleLinkClick("Pagesa")}>
+                  <FaMoneyBill /> Pagesa Manuale
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" onClick={() => handleLinkClick("historia_pagesave")}>
+                  <FaMoneyBill /> Historia e Pagesave
+                </Link>
+              </li>
+
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-sm-9 content">
+            <div className="container mx-auto">{renderSelectedComponent()}</div>
+          </div>
         </div>
       </div>
-    </div>
-  
-   
-  </>
+
+
+    </>
   );
 }
 
