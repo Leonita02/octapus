@@ -1,74 +1,74 @@
 import React from 'react';
-import Order from '../css/porosia.css';
+// import Order from '../css/porosia.css';
 import Nav from '../js/nav';
 import Footer from '../js/footer';
+import { useState,  } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
+
+
 function Porosia() {
+
+  const [numriBibliotekes,setnumriBibliotekes]=useState(0)
+  const [menaxheri,setMenaxheri]=useState("")
+  const [furnitori,setFurnitori]=useState("")
+  const [porosia,setPorosia]=useState("")
+  const navigate=useNavigate()
+
+  function handleSubmit(event){
+    event.preventDefault();
+    axios.post("http://localhost:8081/porosia",{numriBibliotekes, menaxheri, furnitori,porosia})
+    .then(res =>{
+        console.log(res);
+        navigate('/'); 
+    }).catch(err => console.log(err));
+}
+
   return (
     <>
     
-   <div><Nav/></div>
+ 
    <br></br>
    <br></br>
    <br></br>
-      <div className="container">
-        <h1>Porosia e Librave</h1>
+   <br></br>
+   <br></br>
+   <form onSubmit={handleSubmit}>
+   <div className="container">
+  <h1>Porosia e Librave</h1>
 
-        <div className="user-details">
-          <div className="input-box">
-            <span className="details">Titulli i Librit</span>
-            <input type="text" placeholder="Shto Titullin" id="emri" />
-          </div>
+  
+  <div className="user-details">
+  <div className="input-box">
+    <label htmlFor="numriBibliotekes" className="form-label">Numri i Bibliotekes</label>
+    <input type="number" className="form-control" id="numriBibliotekes" placeholder="Shto Numrin e Bibliotekes" onChange={e =>setnumriBibliotekes (e.target.value)}/>
+  </div>
 
-          <div className="input-box">
-            <span className="details">Autori</span>
-            <input type="text" placeholder="Shto Autorin" id="mbiemri" />
-          </div>
+  <div className="input-box">
+  <label htmlFor="menaxheri" className="form-label">Menaxheri</label>
+  <input type="text" className="form-control" id="menaxheri" placeholder="Shto Menaxherin" onChange={e =>setMenaxheri (e.target.value)} />
+</div>
 
-          <div className="input-box">
-            <span className="details">Sasia</span>
-            <input type="number" placeholder="Shto Sasinë e Librit" id="nr" />
-          </div>
+<div className="input-box">
+  <label htmlFor="furnitori" className="form-label">Furnitori</label>
+  <input type="text" className="form-control" id="furnitori" placeholder="Shto Furnitorin" onChange={e =>setFurnitori (e.target.value)}  />
+</div>
 
-          <div className="input-box">
-            <span className="details">Isbn</span>
-            <input type="text" placeholder="Shto Isbn" id="cardN" />
-          </div>
+<div className="input-box">
+  <label htmlFor="porosia" className="form-label">Porosia</label>
+  <input type="text" className="form-control" id="porosia" placeholder="Shto Porosinë" onChange={e =>setPorosia (e.target.value)}  />
+</div>
+   <br/>
 
-          <div className="input-box">
-            <span className="details">Biblioteka</span>
-            <input type="text" placeholder="Adresa-Qendra" id="address" />
-          </div>
-
-          <div>
-            <center>
-              <input type="submit" value="Porosit" className="button" onclick="valido()" />
-            </center>
-          </div>
-        </div>
-      </div>
-
-      {/* <script>
-        function valido() {
-            var numri = document.getElementById("nr").value;
-            var cardRegex = /^[0-9]{16}$/
-            var cardNumber = document.getElementById("cardN").value;
-            var adressRegex = /^[a-zA-Z]{5,30}$/
-            var adress = document.getElementById("adress").value;
-        
-            if(!nameRegex.test(name)){
-                    alert("Emri duhet te jete me i gjate se 3 karaktere!");
-            }else if(!lnameRegex.test(lname)){
-                alert("Mbiemri duhet te jete me i gjate se 4 karaktere!")
-            }else if(!nr.test(numri)){
-                alert("Numri duhet te jete me 9 karaktere!")
-            }else if(!cardRegex.test(cardNumber)){
-                alert("Shenoni numrin e cardes si duhet!")
-            }else if(!adressRegex.test(adress)){
-                alert("Shenoni Adresen tuaj!")
-            } 
-        }
-        
-      </script> */}
+    <div>
+      <center>
+        <button type="submit" className="btn btn-primary">Porosit</button>
+      </center>
+    </div>
+  </div>
+</div>
+  </form>
+      
     </>
   );
 }

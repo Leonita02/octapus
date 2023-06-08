@@ -27,8 +27,9 @@ function AddBook(){
           console.log(res);
           navigate('/'); // ose ne feed qetu duhet me bo kushtin me kshyr rolin kur te regjistrojme
       }).catch(err => console.log(err));
-
   }
+
+  
  return(
     <>
     

@@ -32,16 +32,19 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
-import Huazimi from './components/js/huazimi';
+import Romance from './components/js/Romance';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
-import Huazimet from './components/js/huazimetDshB';
+import Huazimet from './components/js/huazimetDshB';import Porosia from './components/js/porosia';
+import Pdashboard from './components/js/porosiaDashboard';
+
 const authorizedRoutes = [
   // General pages accessible to all users
   { path: '/', element: <HomePage /> },
   { path: '/feed', element: <Feed /> },
   { path: '/logIn', element: <LoginForm /> },
   { path: '/signup', element: <SignupForm /> },
+  { path: '/addBook', element: <AddBook /> },
   { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
   { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
   { path: '/wishList', element: <WishList /> },
@@ -53,6 +56,8 @@ const authorizedRoutes = [
   { path: '/Romance', element: <Romance/>},
   { path: '/Drame', element: <Drame/>},
   { path: '/AboutUs', element: <AboutPage/>},
+  { path: '/Porosia', element: <Porosia/>},
+  { path: '/porosiaDashboard', element: <Pdashboard/>},
   {path: '/libri/:Isbn',element : <UpdateLibri/>},
   { path: '/Vform', element: <VForm/>},
   { path: '/addBook', element: <AddBook/>},

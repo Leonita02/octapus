@@ -27,14 +27,22 @@ function Ldashboard(){
     }
   }
   
-    return <> <div className="col-md-12 mt-5">
+    return <>
+    <br/>
+    <br/>
+    
+     <div className="col-md-12 mt-5">
        
               
+     <button className="btn btn-primary text-white">
+      <Link to={`/addBook`} className="text-white text-decoration-none">
+        Shto Liber
+      </Link>
+    </button>
            <h1 className="text-center"> <i class="fas fa-book"></i>  <b>Invertari i Librave </b></h1>
          </div> 
-         <br></br>
     <table className="table caption-top bg-white rounded mt-2">
-    
+    <caption className='text-white fs-4'> Recent Orders</caption>
     <thead>
     <tr>
               <th>ISBN</th>

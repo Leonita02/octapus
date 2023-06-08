@@ -18,18 +18,19 @@ import PagesaForm from './pagesaForm';
 import MenaxhimiP from './menaxhimiP';
 import LexuesiDashB from './lexuesitDshB';
 import Huazimet from './huazimetDshB';
-import Popup from './Popup.js';
+import Popup from './Popup.js';import Porosia from './porosia';
+import Pdashboard from './porosiaDashboard';
 
 function SideBar(){
-  const [libri,setLibri] = useState([]);
+  // const [libri,setLibri] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get('http://localhost:8081/libri')
-    .then(res => setLibri(res.data))
-    .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:8081/libri')
+  //   .then(res => setLibri(res.data))
+  //   .catch(err => console.log(err));
+  // }, []);
 
 
   
@@ -51,27 +52,19 @@ function SideBar(){
         return <MainF />;
       case "Pagesa":
         return<PagesaForm/>
-      case "menaxhimiP":
-        return<MenaxhimiP/>
-      case "lexuesitDshB":
-        return<LexuesiDashB/>
-      case "huazimetDshB":
-          return<Huazimet/>
-      case "Popup":
-            return<Popup/>
       default:
         return <Ldashboard/>;
     }
   };
 
-  const handleDeleteL = async (Isbn) => {
-    try {
-      await axios.delete('http://localhost:8081/libri/' + Isbn);
-      window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDeleteL = async (Isbn) => {
+  //   try {
+  //     await axios.delete('http://localhost:8081/libri/' + Isbn);
+  //     window.location.reload();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleLogout = () => {
     axios
@@ -168,19 +161,22 @@ function SideBar(){
                  <FaSun /> Kërkesat e pushimeve
                 </Link>
                 <Link
+                to="#"
                   className="dropdown-item"
-                  onClick={() => handleLinkClick("Pagesa")}
+                  onClick={() => handleLinkClick("Pdashboard")}
                 >
-                 <FaCreditCard /> Pagesat
-                </Link>
-                <Link
-                  className="dropdown-item"
-                  onClick={() => handleLinkClick("huazimetDshB")}
-                >
-                 <i class="bi bi-book"></i>Lista e huazimeve
+                 <FaUsers/> Pagesat
                 </Link>
               </div>
             </li>
+            <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("Porosia")}>
+                  <FaHome/>Porosia
+                </Link>
+              </li>
+             
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleLogout}>
                 Logout
