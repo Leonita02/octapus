@@ -169,6 +169,20 @@ function SideBar() {
                   <FaHome/>Porosia
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("historia_pagesave")}>
+                 <FaMoneyBill/>Historia Pagesave
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("Pagesa")}>
+                 <FaMoneyBill/>Paguaj Manualisht
+                </Link>
+              </li>
              
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleLogout}>

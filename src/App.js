@@ -32,10 +32,11 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
-import Romance from './components/js/Romance';
+import Huazimi from './components/js/huazimi';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
-import Huazimet from './components/js/huazimetDshB';import Porosia from './components/js/porosia';
+import Huazimet from './components/js/huazimetDshB';
+import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
 import HistoriaPagesave from './components/js/historia_pagesave';
 
