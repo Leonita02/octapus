@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaTimesCircle ,FaSun} from 'react-icons/fa';
 
 function MenaxhimiP() {
   const [kerkesa, setKerkesa] = useState([]);
@@ -60,10 +60,10 @@ function MenaxhimiP() {
         <div className="row">
           <div
             className="col-md-12 mt-4"
-            style={{ backgroundColor: "#f8f9fa", border: "1px solid gray" }}
+            style={{ backgroundColor: "#f8f9fa"}}
           >
             <br />
-            <h1 className="text-center">Kërkesat për pushime</h1>
+            <h1 className="text-center"><b>Kërkesat për pushime</b>  <FaSun /></h1>
             <br />
           </div>
         </div>

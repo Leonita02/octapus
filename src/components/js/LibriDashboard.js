@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 function Ldashboard(){
@@ -26,10 +28,13 @@ function Ldashboard(){
   }
   
     return <> <div className="col-md-12 mt-5">
-           <h1 className="text-center">Invertari i Librave</h1>
+       
+              
+           <h1 className="text-center"> <i class="fas fa-book"></i>  <b>Invertari i Librave </b></h1>
          </div> 
+         <br></br>
     <table className="table caption-top bg-white rounded mt-2">
-    <caption className='text-white fs-4'> Recent Orders</caption>
+    
     <thead>
     <tr>
               <th>ISBN</th>

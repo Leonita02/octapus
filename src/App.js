@@ -32,10 +32,10 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
-import Romance from './components/js/Romance';
+import Huazimi from './components/js/huazimi';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
-
+import Huazimet from './components/js/huazimetDshB';
 const authorizedRoutes = [
   // General pages accessible to all users
   { path: '/', element: <HomePage /> },
@@ -55,6 +55,9 @@ const authorizedRoutes = [
   { path: '/AboutUs', element: <AboutPage/>},
   {path: '/libri/:Isbn',element : <UpdateLibri/>},
   { path: '/Vform', element: <VForm/>},
+  { path: '/addBook', element: <AddBook/>},
+  { path: '/huazimi', element: <Huazimi/>},
+  { path: '/huazimetDshB', element: <Huazimet/>},
   { path: '/menaxhimiP', element: <MenaxhimiP/>},
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },

@@ -1,4 +1,5 @@
 import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaPowerOff, FaMoneyBill } from 'react-icons/fa';
+import {  FaUserCheck, FaSun, FaCreditCard } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/sideBar.css";
@@ -14,7 +15,10 @@ import Feed from './feed';
 import Dashboard from './dashboard';
 import MainF from './MainFeed';
 import PagesaForm from './pagesaForm';
-
+import MenaxhimiP from './menaxhimiP';
+import LexuesiDashB from './lexuesitDshB';
+import Huazimet from './huazimetDshB';
+import Popup from './Popup.js';
 
 function SideBar(){
   const [libri,setLibri] = useState([]);
@@ -47,6 +51,14 @@ function SideBar(){
         return <MainF />;
       case "Pagesa":
         return<PagesaForm/>
+      case "menaxhimiP":
+        return<MenaxhimiP/>
+      case "lexuesitDshB":
+        return<LexuesiDashB/>
+      case "huazimetDshB":
+          return<Huazimet/>
+      case "Popup":
+            return<Popup/>
       default:
         return <Ldashboard/>;
     }
@@ -86,6 +98,7 @@ function SideBar(){
 
   return (
     <>
+    
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-3 sidebar">
@@ -129,23 +142,42 @@ function SideBar(){
                   >
                     <FaBook /> Librat
                   </Link>
+                  <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("lexuesitDshB")}
+                >
+                 <FaUsers/> Lexuesit
+                </Link>
                 <Link
                   className="dropdown-item"
                   onClick={() => handleLinkClick("PunetoretDashB")}
                 >
-                 <FaUsers/> Puntoret
+                 <FaUserCheck /> Puntoret
                 </Link>
+                
                 <Link
                   className="dropdown-item"
                   onClick={() => handleLinkClick("MenaxheriDashB")}
                 >
-                 <FaUsers/> Menaxheret
+                 <FaUserCheck /> Menaxheret
+                </Link>
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("menaxhimiP")}
+                >
+                 <FaSun /> Kërkesat e pushimeve
                 </Link>
                 <Link
                   className="dropdown-item"
                   onClick={() => handleLinkClick("Pagesa")}
                 >
-                 <FaUsers/> Pagesat
+                 <FaCreditCard /> Pagesat
+                </Link>
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("huazimetDshB")}
+                >
+                 <i class="bi bi-book"></i>Lista e huazimeve
                 </Link>
               </div>
             </li>
@@ -154,6 +186,7 @@ function SideBar(){
                 Logout
               </Link>
             </li>
+          
           </ul>
         </div>
         <div className="col-sm-9 content">
