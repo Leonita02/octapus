@@ -52,6 +52,8 @@ const romanceRoute = require('./LibriRomance');
 const userInfoRoute = require('./userInfo');
 const pagesatRoute = require('./pagesaRepo');
 const porosiaRoute = require('./porosia');const menaxhimiPRoute=require('./menaxhimiP');
+const huazimiRoute=require('./huazimi');
+const renewRoute=require('./renew');
 
 
 
@@ -79,7 +81,7 @@ app.use('/search', searchRoute);
 app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
-app.use('/pagesat',pagesatRoute);
+app.use('/pagesaRepo',pagesaRepo);
 
 
 app.listen(8081, () => {

@@ -88,7 +88,7 @@ function ProfilePage(){
                   id="fotoProfili"
                 />
                 <div className="card-body">
-                <h5 className="card-title"><b>ID : {userData.Personi_ID}</b></h5>
+                <h5 className="card-title"><b>Nr. Rendorë: {userData.Personi_ID}</b></h5>
                   <h5 className="card-title"><b>{userData.Emri} {userData.Mbiemri}</b></h5>
                   <p className="card-text">Email: {userData.Email}</p>
                   <p className="card-text">Nr. Telefoni: {userData.Nr_Tel}</p>

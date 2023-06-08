@@ -32,9 +32,10 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
+import Romance from './components/js/Romance';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
-import Porosia from './components/js/porosia';
+import Huazimet from './components/js/huazimetDshB';import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
 import HistoriaPagesave from './components/js/historia_pagesave';
 
@@ -60,6 +61,9 @@ const authorizedRoutes = [
   { path: '/porosiaDashboard', element: <Pdashboard/>},
   {path: '/libri/:Isbn',element : <UpdateLibri/>},
   { path: '/Vform', element: <VForm/>},
+  { path: '/addBook', element: <AddBook/>},
+  { path: '/huazimi', element: <Huazimi/>},
+  { path: '/huazimetDshB', element: <Huazimet/>},
   { path: '/menaxhimiP', element: <MenaxhimiP/>},
   { path: '/pagesa', element: <Pagesa/>},
   { path: '/historia_pagesave', element: <HistoriaPagesave/>},

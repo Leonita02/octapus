@@ -10,7 +10,14 @@ function MenaxheriDashB(){
   const [menaxheri,setMenaxheri] = useState([]) 
   useEffect(()=>{
     axios.get('http://localhost:8081/menaxheri')
-    .then(res => setMenaxheri(res.data))
+    .then((res) =>{
+      const formattedMenaxheri = res.data.map((request) => ({
+        ...request,
+        Datelindja: new Date(request.Datelindja).toLocaleDateString(),
+        
+      }));
+      setMenaxheri(formattedMenaxheri);
+    })
     .catch(err => console.log(err));
 
   }
@@ -38,12 +45,12 @@ function MenaxheriDashB(){
     <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
-        <h1 className="text-center"><b>Menaxherët e Bibliotekës</b></h1>
+        <h1 className="text-center"><b>Menaxherët e Bibliotekës</b> <i class="fas fa-user-check"></i></h1>
       </div>
     </div>
     <div className="row">
       <div className="col-md-12">
-        <Link to='/SignupForm' className="btn btn-success"><b>Regjistro menaxherë të ri +</b></Link>
+        <Link to='/signup' className="btn btn-success"><b>Regjistro menaxherë të ri +</b></Link>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -71,7 +78,7 @@ function MenaxheriDashB(){
                   <td>{data.username}</td>
                   <td>
                     
-                  <button className='btn btn-primary' ><Link to ={ `/menaxheri/${data.Personi_ID}`} >Përmirëso</Link></button> 
+                  <button className='btn btn-primary' ><Link to ={ `/menaxheri/${data.Personi_ID}`} className="text-white" style={{textDecoration:"none"}}>Përmirëso</Link></button> 
                     {/* <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button> */}
                   </td>
                 </tr>)

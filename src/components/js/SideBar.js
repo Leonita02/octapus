@@ -1,4 +1,5 @@
 import { FaHome, FaInfoCircle, FaCogs, FaEnvelope, FaBook, FaUsers, FaPowerOff, FaMoneyBill } from 'react-icons/fa';
+import {  FaUserCheck, FaSun, FaCreditCard } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/sideBar.css";
@@ -14,7 +15,10 @@ import Feed from './feed';
 import Dashboard from './dashboard';
 import MainF from './MainFeed';
 import PagesaForm from './pagesaForm';
-import Porosia from './porosia';
+import MenaxhimiP from './menaxhimiP';
+import LexuesiDashB from './lexuesitDshB';
+import Huazimet from './huazimetDshB';
+import Popup from './Popup.js';import Porosia from './porosia';
 import Pdashboard from './porosiaDashboard';
 import HistoriaPagesave from './historia_pagesave'
 
@@ -94,6 +98,7 @@ function SideBar() {
 
   return (
     <>
+    
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-3 sidebar">
@@ -136,62 +141,50 @@ function SideBar() {
                   >
                     <FaBook /> Librat
                   </Link>
-                  <Link
-                    className="dropdown-item"
-                    onClick={() => handleLinkClick("PunetoretDashB")}
-                  >
-                    <FaUsers /> Puntoret
-                  </Link>
-                  <Link
-                    className="dropdown-item"
-                    onClick={() => handleLinkClick("MenaxheriDashB")}
-                  >
-                    <FaUsers /> Menaxheret
-                  </Link>
-                  <Link
-                    to="#"
-                    className="dropdown-item"
-                    onClick={() => handleLinkClick("Pdashboard")}
-                  >
-                    <FaUsers /> Porositë
-                  </Link>
-                </div>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link "
-
-                  onClick={() => handleLinkClick("Porosia")}>
-                  <FaHome />Porosia
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("PunetoretDashB")}
+                >
+                 <FaUsers/> Puntoret
+                </Link>
+                <Link
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("MenaxheriDashB")}
+                >
+                 <FaUsers/> Menaxheret
+                </Link>
+                <Link
+                to="#"
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("Pdashboard")}
+                >
+                 <FaUsers/> Porositë
+                </Link>
+              </div>
+            </li>
+            <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("Porosia")}>
+                  <FaHome/>Porosia
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" onClick={() => handleLinkClick("Pagesa")}>
-                  <FaMoneyBill /> Pagesa Manuale
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" onClick={() => handleLinkClick("historia_pagesave")}>
-                  <FaMoneyBill /> Historia e Pagesave
-                </Link>
-              </li>
-
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact" onClick={handleLogout}>
-                  Logout
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-sm-9 content">
-            <div className="container mx-auto">{renderSelectedComponent()}</div>
-          </div>
+             
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact" onClick={handleLogout}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="col-sm-9 content">
+          <div className="container mx-auto">{renderSelectedComponent()}</div>
         </div>
       </div>
-
-
-    </>
+    </div>
+  
+   
+  </>
   );
 }
 

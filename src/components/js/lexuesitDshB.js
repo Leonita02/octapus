@@ -10,7 +10,14 @@ function LexuesiDashB(){
   const [lexuesi,setLexuesi] = useState([]) 
   useEffect(()=>{
     axios.get('http://localhost:8081/clientRepo')
-    .then(res => setLexuesi(res.data))
+    .then((res) =>{
+      const formattedLexuesi = res.data.map((request) => ({
+        ...request,
+        Datelindja: new Date(request.Datelindja).toLocaleDateString(),
+        
+      }));
+      setLexuesi(formattedLexuesi);
+    })
     .catch(err => console.log(err));
 
   }
@@ -19,7 +26,7 @@ function LexuesiDashB(){
     return <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
-        <h1 className="text-center"><b>Lexuesit</b></h1>
+        <h1 className="text-center"> <b>Lexuesit</b>  <i class="fas fa-users"></i> </h1>
       </div>
     </div>
     <div className="row">

@@ -10,7 +10,14 @@ function PunetoretDashB(){
   const [punetori,setPunetori] = useState([]) 
   useEffect(()=>{
     axios.get('http://localhost:8081/punetori')
-    .then(res => setPunetori(res.data))
+    .then((res) =>{
+      const formattedPunetori = res.data.map((request) => ({
+        ...request,
+        Datelindja: new Date(request.Datelindja).toLocaleDateString(),
+        
+      }));
+      setPunetori(formattedPunetori);
+    })
     .catch(err => console.log(err));
 
   }
@@ -36,7 +43,7 @@ function PunetoretDashB(){
     return <div className="container mx-auto">
     <div className="row">
       <div className="col-md-12 mt-5">
-        <h1 className="text-center"><b>Punëtorët e Bibliotekës</b></h1>
+        <h1 className="text-center"><b>Punëtorët e Bibliotekës</b> <i class="fas fa-user-check"></i></h1>
       </div>
     </div>
     <div className="row">
@@ -50,7 +57,7 @@ function PunetoretDashB(){
               <th>Email</th>
               <th>Datelindja</th>
               <th>Qyteti</th>
-              <th>Paga</th>
+              {/* <th>Paga</th> */}
               <th>Numri telefonit</th>
               <th>Username</th>
             </tr>
@@ -64,12 +71,12 @@ function PunetoretDashB(){
                   <td>{data.Email}</td>
                   <td>{data.Datelindja}</td>
                   <td>{data.Qyteti}</td>
-                  <td>{data.Paga}</td>
+                  {/* <td>{data.Paga}</td> */}
                   <td>{data.Nr_Tel}</td>
                   <td>{data.username}</td>
                   <td>
                     
-                  <button className='btn btn-primary' ><Link to ={ `/punetori/${data.Personi_ID}`} >Përmirëso</Link></button> 
+                  <button className='btn btn-primary' ><Link to ={ `/punetori/${data.Personi_ID}`}  className="text-white" style={{textDecoration:"none"}}>Përmirëso</Link></button> 
                     {/* <button className = 'btn btn-danger' onClick={e => handleDelete(data.Personi_ID)}>Delete</button> */}
                   </td>
                 </tr>)
