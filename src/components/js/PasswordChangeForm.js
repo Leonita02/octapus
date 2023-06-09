@@ -59,7 +59,7 @@ export default function PasswordChangeForm() {
         event.preventDefault();
 
         if (values.password === '' || values.changePassword === '' || values.confirm_password === '') {
-            alert('Please fill all the required fields!');
+            alert('Ju lutem plotësoni fushat!');
             return;
         }
 

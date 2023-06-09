@@ -55,20 +55,57 @@ import { useCookies } from 'react-cookie';
 export default function Login() {
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    Username: '',
-    Password: '',
+    username: '',
+    password: '',
   });
   const [errors, setErrors] = useState({});
   const [, setCookies] = useCookies(['username', 'roleId', 'accessToken']);
 
   const handleInput = (event) => {
-    setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+   const {name,value} = event.target;
+   let error = null;
+
+   switch(name){
+    case 'username':
+      if(!value.trim()){
+        error = 'Fusha nuk duhet te jete e zbrazet!';
+      }
+      break;
+    case 'password':
+      if (!value.trim()) {
+        error = 'Fusha nuk duhet te jete e zbrazet!';
+    }
+    break;
+    default:
+      break;
+   }
+
+   setValues((prev) => ({ ...prev, [name]: value }));
+   setErrors((prev) => ({ ...prev, [name]: error }));
+
+
   };
 
   const [cookies, setCookie] = useCookies(['accessToken']);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+   
+ 
+    if (values.username === '' || values.password === '') {
+      alert('Ju lutem plotësoni fushat!');
+      return;
+  }
+
+   // Checking if there are any errors
+   const hasErrors = Object.values(errors).some((error) => error !== null);
+
+   if (hasErrors) {
+    console.log('Form contains errors:', errors);
+    return;
+}
+
     axios
       .post('http://localhost:8081/login', values, {
         withCredentials: true,
@@ -111,11 +148,27 @@ export default function Login() {
                     <h2> Log In</h2>
                     <span> Enjoy The Service</span>
                     <form action="" onSubmit={handleSubmit} id='form' className='flex flex-col'>
-                        <input type="text" placeholder='Username' onChange={handleInput} name='username' />
-                        {errors.username && <span className='text-danger'>{errors.username}</span>}
+                        <input 
+                        type="text"
+                        className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                         placeholder='Username'
+                          onChange={handleInput} 
+                          name='username'
+                          id = 'username'
+                          required />
+                        {errors.username && <div className="invalid-feedback">{errors.username}</div>}
 
-                        <input type="text" placeholder='Password' onChange={handleInput} name='password' />
-                        {errors.password && <span className='text-danger'>{errors.password}</span>}
+                        <input
+                         type="password" 
+                         className={`form-control ${errors.changePassword ? 'is-invalid' : ''}`}
+                        id ='password'
+                         placeholder='Password'
+                          onChange={handleInput}
+                           name='password'
+                           value ={values.password}
+                           required 
+                           />
+                        {errors.changePassword && <div className="invalid-feedback">{errors.changePassword}</div>}
 
                         <button type='submit' className='btnn w-100'>Kyqu</button>
                         <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
