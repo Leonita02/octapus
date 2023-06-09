@@ -39,6 +39,7 @@ import Huazimet from './components/js/huazimetDshB';
 import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
 import HistoriaPagesave from './components/js/historia_pagesave';
+import PasswordChangeForm from './components/js/PasswordChangeForm';
 
 const authorizedRoutes = [
   // General pages accessible to all users
@@ -68,6 +69,8 @@ const authorizedRoutes = [
   { path: '/menaxhimiP', element: <MenaxhimiP/>},
   { path: '/pagesa', element: <Pagesa/>},
   { path: '/historia_pagesave', element: <HistoriaPagesave/>},
+  { path: '/changePassword',  element:<PasswordChangeForm/>},
+
   // Authorized pages for specific roles
   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },

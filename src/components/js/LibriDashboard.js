@@ -39,7 +39,7 @@ function Ldashboard(){
         Shto Liber
       </Link>
     </button>
-           <h1 className="text-center"> <i class="fas fa-book"></i>  <b>Invertari i Librave </b></h1>
+           <h1 className="text-center"> <i className="fas fa-book"></i>  <b>Invertari i Librave </b></h1>
          </div> 
     <table className="table caption-top bg-white rounded mt-2">
     <caption className='text-white fs-4'> Recent Orders</caption>

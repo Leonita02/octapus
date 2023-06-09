@@ -1,28 +1,31 @@
 import '../css/profilePage.css';
-//import foto from '../ImagesOfProject/fotoM.jpeg';
 import fotoProfili from '../ImagesOfProject/prodilePiic.png';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import fotoFavs from '../ImagesOfProject/fotoFav.png';
 import WishCard from './WishCard';
 import addWishList from '../ImagesOfProject/addWishList.png';
 import logout from '../ImagesOfProject/logout img.png';
 import Nav from './nav';
 import { useNavigate } from 'react-router';
-import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useEffect } from 'react';
 import {useState} from 'react';
 import {useCookies} from 'react-cookie';
+import PasswordChangeForm from './PasswordChangeForm';
+import { Link } from "react-router-dom";
 
-import Button from 'react-bootstrap/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faListAlt, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 
 
 
 
 function ProfilePage(){
-    const navigate = useNavigate(); // funksioni per me te dergu me add-> wishLista 
+    const navigate = useNavigate();
+    const [cookies] = useCookies(['userId', 'roleId']);
+
+    // Access the user ID and role ID from cookies
+    const userId = cookies.userId;
+    const roleId = cookies.roleId;
+    const [userData, setUserData] = useState(null);
+    const [historiaL, setHistoriaL] = useState(null); // funksioni per me te dergu me add-> wishLista 
     function navigateToWishList() {
         navigate('/wishList');
     }
@@ -30,16 +33,27 @@ function ProfilePage(){
         navigate('/pagesa');
     }
     const [showBookHistory, setShowBookHistory] = useState(false);
-
-    const handleBookHistoryClick = () => {
-      setShowBookHistory(!showBookHistory);
+    const handleBookHistoryClick = (item) => {
+      if (item === 'Change Password') {
+        navigate('/changePassword');
+      } else {
+        setShowBookHistory(!showBookHistory);
+      }
     };
-    const [cookies] = useCookies(['userId', 'roleId']);
 
-    // Access the user ID and role ID from cookies
-    const userId = cookies.userId;
-    const roleId = cookies.roleId;
-    const [userData, setUserData] = useState(null);
+    // const handleBookHistoryClick = () => {
+    //   setShowBookHistory(!showBookHistory);
+   
+    // };
+    useEffect(() => {
+      // Make the GET request to fetch wishlist data based on userId
+      axios.get(`http://localhost:8081/historiaLibrave?userId=${userId}`)
+        .then(res => {
+          setHistoriaL(res.data);
+        })
+        .catch(err => console.log(err));
+    }, [userId]);
+    
 
    
     useEffect(() => {
@@ -54,6 +68,13 @@ function ProfilePage(){
           console.log(error);
         });
     }, [userId]);
+
+
+
+
+
+
+    
 
     const handleLogout = () => {
       axios
@@ -98,10 +119,10 @@ function ProfilePage(){
               <div className="card bg-light rounded-3 mb-4 account-settings" style={{ cursor: 'pointer' }}>
                 <div className="card-header bg-dark text-white">Account Settings</div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    <i className="bi bi-key me-2"></i>
-                    Change Password
-                  </li>
+                <Link to="/changePassword" className="list-group-item">
+                  <i className="bi bi-key me-2"></i>
+                       Change Password
+                </Link>
                   <li className="list-group-item">
                     <i className="bi bi-person-lines-fill me-2"></i>
                     Update Contact Information
@@ -135,44 +156,40 @@ function ProfilePage(){
               </div>
             </div>
             <div className="col-md-8">
-              {/* Book History */}
-              <div className="card bg-light rounded-3 mb-4">
-                <div className="card-header bg-custom text-white">Historia e librave të huazuar</div>
-                <div className="card-body">
-                  <button
-                    className="btn btn-costum mb-3"
-                    onClick={handleBookHistoryClick}
-                  >
-                    {showBookHistory ? 'Mbyll historinë' : 'Shfaq historinë e librave'}
-                  </button>
-                  {showBookHistory && (
-                    <div className="row">
-                      <div className="col-md-6">
-                        {/* Book Wish Cards */}
-                        <div className="card bg-white mb-3">
-                          <div className="card-body">
-                            <h6 className="card-title">Book Title 1</h6>
-                            <p className="card-text">Author: Author Name</p>
-                            <p className="card-text">Category: Fiction</p>
-                            {/* Add more book wish card details */}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        {/* Book history Cards */}
-                        <div className="card bg-white mb-3">
-                          <div className="card-body">
-                            <h6 className="card-title">Book Title 2</h6>
-                            <p className="card-text">Author: Author Name</p>
-                            <p className="card-text">Category: Non-Fiction</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+      {/* Book History */}
+      <div className="card bg-light rounded-3 mb-4 test">
+        <div className="card-header bg-custom text-white">Historia e librave të huazuar</div>
+        <div className="card-body">
+          <button className="btn btn-costum mb-3" onClick={handleBookHistoryClick}>
+            {showBookHistory ? 'Mbyll historinë' : 'Shfaq historinë e librave'}
+          </button>
+          {showBookHistory && (
+            <div className="row">
+              {historiaL.map(data => (
+               <div className="col-md-6" key={data.id}>
+               {/* Book Wish Cards */}
+               <div className="card bg-white mb-3">
+                 <div className="card-body">
+                   <div className="row">
+                     <div className="col-md-6">
+                       <h6 className="card-title">{data.Titulli}</h6>
+                       <p className="card-text">Author: {data.Autori}</p>
+                       <p className="card-text">Category: {data.Zhanri}</p>
+                       {/* Add more book wish card details */}
+                     </div>
+                     <div className="col-md-6">
+                     <img src={require(`../ImagesOfProject/${data.Url}`)} alt="Book Cover" style={{ maxWidth: '50%', height: 'auto' }} />
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+              ))}
             </div>
+          )}
+        </div>
+      </div>
+    </div>
             <div className="cards">
               <h3>Wish-Cards</h3>
               <WishCard />

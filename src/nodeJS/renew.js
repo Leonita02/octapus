@@ -8,7 +8,11 @@ router.put("/:id", (req, res) => {
   
     // Convert returnDate to a Date object if it's not already
     const formattedDate = typeof returnDate === 'string' ? new Date(returnDate) : returnDate;
-    
+
+    if (isNaN(formattedDate)) {
+      return res.status(400).json({ error: "Invalid return date." });
+      
+    }
     // Format the return date as yyyy-mm-dd
     const formattedDateString = formattedDate.toISOString().slice(0, 10);
   
