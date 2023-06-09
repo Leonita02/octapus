@@ -2,11 +2,8 @@ import React from 'react'
 import bgimg from '../ImagesOfProject/img44.jpeg';
 import '../css/LoginForm.css';
 import { Link } from 'react-router-dom';
-// import Validation from './LoginValidation';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
