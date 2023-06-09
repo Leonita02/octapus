@@ -4,28 +4,93 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
-function Huazimi() {
-  const [isbn, setIsbn] = useState('');
-  const [personi, setPersoni] = useState('');
-  const [dataHuazimit, setDataHuazimit] = useState('');
-  const [dataKthimit, setDataKthimit] = useState('');
+export default function Huazimi() {
+  // const [isbn, setIsbn] = useState('');
+  // const [personi, setPersoni] = useState('');
+  // const [dataHuazimit, setDataHuazimit] = useState('');
+  // const [dataKthimit, setDataKthimit] = useState('');
   const navigate = useNavigate();
+  const [values, setValues] = useState({
+    isbn: '',
+    personi: '',
+    dataHuazimit: '',
+    dataKthimit: ''
+  });
 
-  function handleSubmit(event) {
+  const [errors, setErrors] = useState({});
+
+
+  function handleInput(event) {
+    const { name, value } = event.target;
+    let error = null;
+
+    //REGEX validation
+    const isbnRegex = /^\d{10}$/; // ISBN should be exactly 10 digits
+    const personiRegex = /^\d+$/; // ID should be numeric
+
+
+    switch (name) {
+      case 'isbn':
+        if (!value.trim()) {
+          error = 'Fusha nuk duhet te jete e zbrazet!';
+        }
+        else if (!isbnRegex.test(value)) {
+          error = 'isbn jo valide!';
+        }
+        break;
+      case 'personi':
+        if (!value.trim()) {
+          error = 'Fusha nuk duhet te jete e zbrazet!';
+        }
+        else if (!personiRegex.test(value)) {
+          error = 'ID jo valide!';
+        }
+        break;
+      case 'dataHuazimit':
+        if (!value.trim()) {
+          error = 'Fusha nuk duhet te jete e zbrazet!';
+          break;
+        }
+      case 'dataKthimit':
+        if (!value.trim()) {
+          error = 'Fusha nuk duhet te jete e zbrazet!'
+        }
+        break;
+      default:
+        break;
+    }
+    setValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleSubmit = (event)=>{
     event.preventDefault();
-    axios
-      .post('http://localhost:8081/huazimi', {
-        isbn,
-        personi,
-        dataHuazimit,
-        dataKthimit,
-      })
-      .then((res) => {
-        console.log(res);
-        navigate('/sidebar');
-      })
-      .catch((err) => console.log(err));
-  }
+
+    if (values.isbn === '' || values.personi === '' || values.dataHuazimit === '' || values.dataKthimit === '') {
+      alert('Ju lutem plotësoni fushat!');
+      return;
+    }
+    const hasErrors = Object.values(errors).some((error) => error !== null);
+
+    if(hasErrors){
+      console.log('Form contains errors',errors);
+    }
+  
+  axios
+    .post('http://localhost:8081/huazimi', {
+      isbn:values.isbn,
+      personi:values.personi,
+      dataHuazimit:values.dataHuazimit,
+      dataKthimit:values.dataKthimit
+    })
+    .then((res) => {
+      console.log(res);
+      navigate('/sidebar');
+    })
+    .catch((err) => console.log(err));
+
+  };
+
 
   return (
     <>
@@ -44,37 +109,42 @@ function Huazimi() {
                 <b>Huazimi i librit</b>
               </h1>
               <hr className="my-4" />
-              <form onSubmit={handleSubmit}>
+              <form >
                 <div className="form-group mb-4">
                   <label htmlFor="isbn">ISBN e librit:</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.isbn ? 'is-invalid' : ''}`}
                     id="isbn"
-                    value={isbn}
-                    onChange={(e) => setIsbn(e.target.value)}
+                    value={values.isbn}
+                    name='isbn'
+                    onChange={handleInput}
                     required
                   />
+                   {errors.isbn && <div className="invalid-feedback">{errors.isbn}</div>}
                 </div>
                 <div className="form-group mb-4">
                   <label htmlFor="personi">ID e Lexuesit:</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.personi ? 'is-invalid' : ''}`}
                     id="personi"
-                    value={personi}
-                    onChange={(e) => setPersoni(e.target.value)}
+                    value={values.personi}
+                    name='personi'
+                    onChange={handleInput}
                     required
                   />
+                   {errors.personi && <div className="invalid-feedback">{errors.personi}</div>}
                 </div>
                 <div className="form-group mb-4">
                   <label htmlFor="dataHuazimit">Data e Huazimit</label>
                   <input
                     type="date"
-                    className="form-control"
+                    className={`form-control ${errors.dataHuazimit ? 'is-invalid' : ''}`}
                     id="dataHuazimit"
-                    value={dataHuazimit}
-                    onChange={(e) => setDataHuazimit(e.target.value)}
+                    value={values.dataHuazimit}
+                    name='dataHuazimit'
+                    onChange={handleInput}
                     required
                   />
                 </div>
@@ -82,18 +152,20 @@ function Huazimi() {
                   <label htmlFor="dataKthimit">Data e Kthimit</label>
                   <input
                     type="date"
-                    className="form-control"
+                    className={`form-control ${errors.dataKthimit ? 'is-invalid' : ''}`}
                     id="dataKthimit"
-                    value={dataKthimit}
-                    onChange={(e) => setDataKthimit(e.target.value)}
+                    value={values.dataKthimit}
+                    name='dataKthimit'
+                    onChange={handleInput}
                     required
                   />
+                    {errors.dataKthimit && <div className="invalid-feedback">{errors.dataKthimit}</div>}
                 </div>
                 <div className="text-center">
-                    <button type="submit" className="btn btn-success">
-                      Regjistro huazimin
-                    </button>
-                 
+                <button className="btn btn-primary btn-lg btn-block custom-button pb-5 col-3" type="submit" onClick={handleSubmit}>
+                    Regjistro huazimin
+                  </button>
+
                   <br />
                   <br />
                 </div>
@@ -106,4 +178,4 @@ function Huazimi() {
   );
 }
 
-export default Huazimi;
+

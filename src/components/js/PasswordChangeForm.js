@@ -39,11 +39,11 @@ export default function PasswordChangeForm() {
                 break;
             case 'confirm_password':
                 if (!value.trim()) {
-                    error = 'This field is required.';
+                    error = 'Fusha nuk duhet te jete e zbrazet!';
                 } else if (!passwordRegex.test(value)) {
-                    error = 'Invalid password.';
+                    error = 'Fjalëkalim jo valid!';
                 } else if (value !== values.changePassword) {
-                    error = 'The passwords do not match.';
+                    error = 'Fjalëkalimi nuk përkon!';
                 }
                 break;
             default:
@@ -62,7 +62,7 @@ export default function PasswordChangeForm() {
             alert('Ju lutem plotësoni fushat!');
             return;
         }
-
+        
         // Checking if there are any errors
         const hasErrors = Object.values(errors).some((error) => error !== null);
 
