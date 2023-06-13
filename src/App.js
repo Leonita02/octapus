@@ -36,7 +36,8 @@ import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
-import Huazimet from './components/js/huazimetDshB';import Porosia from './components/js/porosia';
+import Huazimet from './components/js/huazimetDshB';
+import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
 import Huazimi from './components/js/huazimi';
 import Feed from './components/js/feed';
@@ -60,6 +61,7 @@ function App() {
         <Route path="/feed" element={<Feed/>} />
         <Route path="/profilePage" element={<ProfilePage/>} />
         <Route path = "/Romance" element={<Romance/>}/>
+        
         <Route path = "/Drame" element={<Drame/>}/>
         <Route path = "/bookPage/:id" element={<BookPage/>}/>
         <Route path = "/wishlist" element={<WishList/>}/>

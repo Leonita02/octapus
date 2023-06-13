@@ -16,6 +16,8 @@ import LexuesiDashB from './lexuesitDshB';
 import PorosiaDashboard from './porosiaDashboard';
 import MenaxhimiP from './menaxhimiP';
 import Huazimet from './huazimetDshB';
+import Popup from './Popup.js';import Porosia from './porosia';
+import Pdashboard from './porosiaDashboard';
 import Pagesa from './pagesa';
 import Porosia from './porosia';
 import { useCookies } from 'react-cookie';
@@ -26,7 +28,6 @@ import WLdashboard from './WLdashboard';
 import DashboardM from './dashboardM';
 import Rezervimet from './rezervimetDshb';
 import PopupP from './popUpP';
-
 
 const SideBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
@@ -53,32 +54,34 @@ const SideBar = () => {
       case "PagesaForm":
         return IsAuthorized(['2','3'], userRole) ? <PagesaForm /> : <p>Unauthorized Access :/</p>;
       case "Pagesa":
+        return<PagesaForm/>
         return IsAuthorized(['1','2','3'], userRole) ? <Pagesa/> : <p>Unauthorized Access :/</p>;
-      case "LexuesitDshB":
-        return IsAuthorized(['1','2','3'], userRole) ? <LexuesiDashB /> : <p>Unauthorized Access :/</p>;
-        case "menaxhimiP":
-        return IsAuthorized(['1'], userRole) ? <MenaxhimiP /> : <p>Unauthorized Access :/</p>;
-      case "huazimetDshB":
-          return IsAuthorized(['1','2','3'], userRole) ? <Huazimet/> : <p>Unauthorized Access :/</p>;
-      case "PorosiaDashboard":
-            return IsAuthorized(['1'], userRole) ? <PorosiaDashboard/> : <p>Unauthorized Access :/</p>;
-      case "porosia":
-            return IsAuthorized(['2'], userRole) ? <Porosia/> : <p>Unauthorized Access :/</p>;
-      case "SignupForm":
-         return IsAuthorized(['1'], userRole) ? <SignupForm/> : <p>Unauthorized Access :/</p>;
-      case "WLdashboard":
-          return IsAuthorized(['2'], userRole) ? <WLdashboard/> : <p>Unauthorized Access :/</p>;
-       case "VForm":
-          return IsAuthorized(['2','3'], userRole) ? <VForm/> : <p>Unauthorized Access :/</p>;
-      case "rezervimetDshb":
-            return IsAuthorized(['2','3'], userRole) ? <Rezervimet/> : <p>Unauthorized Access :/</p>;
-      case "LibriDashboard":
-          return IsAuthorized(['1', '2', '3'], userRole) ? <LibriDashboard /> : <p>Unauthorized Access :/</p>;
-      case "dashboardM":
-      default:
-        return IsAuthorized(['1', '2', '3'], userRole) ? <DashboardM/> : <p>Unauthorized Access :/</p>;
-    }
-  };
+        case "LexuesitDshB":
+          return IsAuthorized(['1','2','3'], userRole) ? <LexuesiDashB /> : <p>Unauthorized Access :/</p>;
+          case "menaxhimiP":
+          return IsAuthorized(['1'], userRole) ? <MenaxhimiP /> : <p>Unauthorized Access :/</p>;
+        case "huazimetDshB":
+            return IsAuthorized(['1','2','3'], userRole) ? <Huazimet/> : <p>Unauthorized Access :/</p>;
+        case "PorosiaDashboard":
+              return IsAuthorized(['1'], userRole) ? <PorosiaDashboard/> : <p>Unauthorized Access :/</p>;
+        case "porosia":
+              return IsAuthorized(['2'], userRole) ? <Porosia/> : <p>Unauthorized Access :/</p>;
+        case "SignupForm":
+           return IsAuthorized(['1'], userRole) ? <SignupForm/> : <p>Unauthorized Access :/</p>;
+        case "WLdashboard":
+            return IsAuthorized(['2'], userRole) ? <WLdashboard/> : <p>Unauthorized Access :/</p>;
+         case "VForm":
+            return IsAuthorized(['2','3'], userRole) ? <VForm/> : <p>Unauthorized Access :/</p>;
+        case "rezervimetDshb":
+              return IsAuthorized(['2','3'], userRole) ? <Rezervimet/> : <p>Unauthorized Access :/</p>;
+        case "LibriDashboard":
+            return IsAuthorized(['1', '2', '3'], userRole) ? <LibriDashboard /> : <p>Unauthorized Access :/</p>;
+        case "dashboardM":
+        default:
+          return IsAuthorized(['1', '2', '3'], userRole) ? <DashboardM/> : <p>Unauthorized Access :/</p>;
+      }
+    };
+     
 
  
   const handleLogout = () => {
@@ -229,8 +232,27 @@ const SideBar = () => {
                 <Link className="nav-link" onClick={() => handleLinkClick("SignupForm")}>
                   <FaUser /> Regjistro punëtorë të rinjë
                 </Link>
+                <Link
+                to="#"
+                  className="dropdown-item"
+                  onClick={() => handleLinkClick("Pdashboard")}
+                >
+                 <FaUsers/> Pagesat
+                </Link>
+              
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" onClick={() => handleLinkClick("SignupForm")}>
+                  <FaUser /> Regjistro punëtorë të rinjë
+                </Link>
               </li>
-             
+              <li className="nav-item">
+                <Link  className="nav-link " 
+                
+                onClick={() => handleLinkClick("historia_pagesave")}>
+                 <FaMoneyBill/>Historia Pagesave
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" onClick={() => handleLinkClick("PagesaForm")}>
                   <FaMoneyBill /> Pagesa Manuale
@@ -254,19 +276,23 @@ const SideBar = () => {
               <li id='bell' className="nav-item" style={{ fontSize: '18px' }}>
                   <PopupP />  Njoftimet
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact" onClick={handleLogout}>
-                  Logout
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-sm-9 content">
-            <div className="container mx-auto">{renderSelectedComponent()}</div>
-          </div>
+             
+            <li className="nav-item">
+              <Link className="nav-link" to="/contact" onClick={handleLogout}>
+                Logout
+              </Link>
+            </li>
+          
+          </ul>
+        </div>
+        <div className="col-sm-9 content">
+          <div className="container mx-auto">{renderSelectedComponent()}</div>
         </div>
       </div>
-    </>
+    </div>
+  
+   
+  </>
   );
 };
 

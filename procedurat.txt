@@ -46,3 +46,31 @@ BEGIN
   -- Insert a row into UserData with the inserted user_id
   INSERT INTO useri (username, password, personi_ID, roli_id) VALUES (username, password, personi_ID, 2);
 END
+
+
+Procedura per regjistrimin e pagesave:
+emri:save_payment
+BEGIN
+    DECLARE email_count INT;
+    DECLARE personiId INT;
+
+    -- Check if email exists in the personi table
+    SELECT COUNT(*) INTO email_count
+    FROM personi
+    WHERE email = p_email;
+
+    IF email_count = 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Email does not exist in the personi table.';
+    ELSE
+        -- Get the personiId for the provided email
+        SELECT personi_id INTO personiId
+        FROM personi
+        WHERE email = p_email
+        LIMIT 1;
+
+        -- Insert the payment information into the pagesa table
+        INSERT INTO pagesa (data_pageses, email, emriKarteles, nrKarteles, personi_id, qyteti, shuma)
+        VALUES (CURDATE(), p_email, NULL, NULL, personiId, p_qyteti, p_shuma);
+    END IF;
+END

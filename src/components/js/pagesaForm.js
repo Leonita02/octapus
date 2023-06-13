@@ -70,7 +70,7 @@ export default function PagesaForm() {
     event.preventDefault();
 
     if (values.email === '' || values.qyteti === '') {
-      alert('Please fill the required fields!');
+      alert('Ju lutem plotësoni fushat!');
       return;
     }
 

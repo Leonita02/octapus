@@ -6,8 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(
@@ -34,9 +33,6 @@ app.use(
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require('./Stripe/StripeCon');
-
-
-
 const connection = require('./db_connection');
 const personiRoute = require('./personi');
 const libriRoute = require('./libri');
@@ -56,26 +52,18 @@ const porosiaRoute = require('./porosia');
 const menaxhimiPRoute=require('./menaxhimiP');
 const huazimiRoute=require('./huazimi');
 const renewRoute=require('./renew');
-const popupLRoute=require('./popupL');
-const popupPunRoute=require('./popupPun');
-const popupPRoute = require('./popupP');
-const qoutesRoute=require('./quotes');
-const menaxhimiRRoute=require('./menaxhimiR');
-const statisticsRoute=require('./statistics');
-const rezervimetRoute=require('./rezervimet');
 
 
 
 
-//Dont use json body format for stripe api
 app.use((req, res, next) => {
-  if (req.originalUrl === "/stripe/api/webhook" || req.originalUrl ==="/login" || req.originalUrl ==="/clientRepo") {
+  console.log({ OriginalURL: req.originalUrl })
+  if (req.originalUrl === "/stripe/api/webhook") {
     next();
   } else {
     express.json()(req, res, next);
   }
 });
-
 
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
@@ -90,6 +78,12 @@ app.use('/search', searchRoute);
 app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
+app.use('/pagesaRepo',pagesaRepo);
+app.use('/huazimi', huazimiRoute);
+app.use('/renew', renewRoute);
+app.use('/pagesat', pagesatRoute);
+app.use('/historiaLibrave', historiaLRoute);
+app.use('/passwordChange', ChangePasswordRoute);
 app.use('/pagesat',pagesatRoute);
 app.use('/popupL',popupLRoute);
 app.use('/porosia',porosiaRoute);
@@ -104,12 +98,10 @@ app.use('/wishD',wishDRoute);
 app.use('/statistics',statisticsRoute);
 app.use('/rezervimet',rezervimetRoute);
 
+
 app.listen(8081, () => {
   console.log('Server is listening on port 8081');
 });
 
 
 
-//This has been cut from package.json
-    // "test": "echo \"Error: no test specified\" && exit 1",
-    // "start": "nodemon db_connection.js"
