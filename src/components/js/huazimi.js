@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 
 function Huazimi(){
 
@@ -24,6 +25,20 @@ function Huazimi(){
           
       }).catch(err => console.log(err));
 
+    }
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['1','2','3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
     }
  return(
     <>
@@ -93,10 +108,10 @@ function Huazimi(){
             />
           </div>
           <div className="text-center">
-            <Link to="/sideBar">
+         
             <button type="submit" className="btn btn-success">
               Regjistro huazimin
-            </button></Link>
+            </button>
             <br></br>   
             <br></br>
           </div>

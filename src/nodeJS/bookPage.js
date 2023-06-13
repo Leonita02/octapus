@@ -20,4 +20,30 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  const { userId,id } = req.body;
+
+  // Ensure that the userId is received correctly
+  console.log("userId from request body:", userId);// Access the user ID from cookies
+
+  // Perform the necessary logic with the retrieved userId
+
+  // Example: Insert the values into the wishlist table using SQL query
+  const sql = "INSERT INTO rezervimet (Isbn,Useri_ID) VALUES (?, ?)";
+  const values = [id, userId];
+
+  connection.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error inserting into rezervimet" });
+    }
+    return res.json({ message: "Rezervimi item added successfully" });
+  });
+});
+
+
+
+
+
+
 module.exports=router;

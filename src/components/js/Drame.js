@@ -7,6 +7,7 @@ import Kategorite from './Kategorite';
 import '../css/Kategorite.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 export default function Drame(){
     const navigate = useNavigate();
@@ -14,6 +15,9 @@ export default function Drame(){
       navigate(`/bookPage/${isbn}`);
     };
     const [isSearching, setIsSearching] = useState(false);
+    const [cookies] = useCookies(['userId', 'roleId']);
+
+    
 
   const handleSetIsSearching = (value) => {
     setIsSearching(value);
@@ -27,6 +31,21 @@ export default function Drame(){
     .catch(err => console.log(err));
 
   })
+
+ 
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['4'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
 
     return(
         <>

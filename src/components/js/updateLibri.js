@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import {useState} from 'react';
 import '../css/addBook.css';
 import { useEffect } from "react";
+import { useCookies } from 'react-cookie';
 
 
 
@@ -32,6 +33,20 @@ export default function UpdateLibri() {
             
         }).catch(err => console.log(err));
 
+    }
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized([ '3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
     }
 
     

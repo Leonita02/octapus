@@ -9,7 +9,11 @@ import '../css/MainFeed.css';
 function StaticCards(){
     return  <>
     
+   
             <center>
+              <br></br>
+              <h3 className="border-bottom" style={{ borderBottomWidth: "10px", borderBottomStyle: "solid", borderBottomColor: "black" }}>TITUJT MË TË FUNDIT</h3>
+
     <div  className="flip-card"> 
     <div className="flip-card-inner">
       <div className="flip-card-front">

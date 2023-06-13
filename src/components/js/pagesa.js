@@ -6,6 +6,7 @@ import { handleButtonClick } from './pagesaStripe';
 import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import {useCookies} from 'react-cookie';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Pagesa() {
@@ -20,6 +21,21 @@ function Pagesa() {
       .then(res => setPagesat(res.data))
       .catch(err => console.log(err));
   }, []);
+
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized([ '1','2','3'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
   return (
     <>

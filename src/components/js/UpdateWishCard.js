@@ -6,11 +6,13 @@ import wishList from '../css/wishList.css';
 import { useNavigate, useParams } from 'react-router';
 import { useState } from 'react';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 export default function WishL() {
     const{Wish_ID}=useParams()
     const [titulli, setTitulli] = useState("")
     const [autori, setAutori] = useState("")
+    const [cookies] = useCookies(['userId', 'roleId']);
 
     const navigate = useNavigate();
     
@@ -24,6 +26,20 @@ export default function WishL() {
             }).catch(err => console.log(err));
 
     }
+    const isAuthorized = (allowedRoles) => {
+        const userRole = cookies.roleId;
+        return allowedRoles.includes(userRole);
+      };
+    
+      if (!isAuthorized(['4'])) {
+        return (
+          <div>
+            <h1>Unauthorized Access</h1>
+            {/* Additional unauthorized access handling */}
+          </div>
+        );
+      }
+
     return (
         <>
             <div><Nav /></div>

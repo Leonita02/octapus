@@ -46,9 +46,9 @@ function WishCard(){
               <h4 className="card-title">"{data.Titulli}"</h4>
             </div>
             <div className="comment-footer">
-            <button className="btn m-2 btn-danger border border-danger" onClick={() => handleDelete(data.Wish_ID)}>Delete</button>
+            {/* <button className="btn m-2 btn-danger border border-danger" onClick={() => handleDelete(data.Wish_ID)}>Delete</button>
               <button className="btn m-2 border border-primary"><Link to={`/wishList/${data.Wish_ID}`} style={{ color: 'black', textDecoration: 'none' }}>Edit</Link></button>
-    
+     */}
             </div>
           </div>
         </div>

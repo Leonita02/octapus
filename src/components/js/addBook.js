@@ -2,12 +2,12 @@ import '../css/addBook.css';
 // import Nav from './nav';
 import React from 'react';
 import axios from 'axios';
-
+import { useCookies } from 'react-cookie';
 import {useState} from 'react';
 import { useNavigate } from 'react-router';
 
 function AddBook(){
-
+ 
   const [isbn,setIsbn]=useState("")
     const [titulli,setTitulli]=useState("")
     const [Autori,setAutori]=useState("")
@@ -19,6 +19,21 @@ function AddBook(){
     const [zhanri,setZhanri]=useState("")
     const [rafti,setRafti]=useState(0)
     const navigate=useNavigate()
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized([ '3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
+  
 
     function handleSubmit(event){
       event.preventDefault();

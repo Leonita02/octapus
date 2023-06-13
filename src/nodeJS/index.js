@@ -7,7 +7,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(
@@ -41,6 +41,7 @@ const connection = require('./db_connection');
 const personiRoute = require('./personi');
 const libriRoute = require('./libri');
 const wishListRoute = require('./wishList');
+const wishDRoute=require('./wishD');
 const clientRepoRoute = require('./clientRepo');
 const loginRoute = require('./login');
 const punetoriRoute = require('./punetori');
@@ -51,16 +52,24 @@ const bookPageRoute = require('./bookPage');
 const romanceRoute = require('./LibriRomance');
 const userInfoRoute = require('./userInfo');
 const pagesatRoute = require('./pagesaRepo');
-const porosiaRoute = require('./porosia');const menaxhimiPRoute=require('./menaxhimiP');
+const porosiaRoute = require('./porosia');
+const menaxhimiPRoute=require('./menaxhimiP');
 const huazimiRoute=require('./huazimi');
 const renewRoute=require('./renew');
+const popupLRoute=require('./popupL');
+const popupPunRoute=require('./popupPun');
+const popupPRoute = require('./popupP');
+const qoutesRoute=require('./quotes');
+const menaxhimiRRoute=require('./menaxhimiR');
+const statisticsRoute=require('./statistics');
+const rezervimetRoute=require('./rezervimet');
 
 
 
 
 //Dont use json body format for stripe api
 app.use((req, res, next) => {
-  if (req.originalUrl === "/stripe/api/webhook") {
+  if (req.originalUrl === "/stripe/api/webhook" || req.originalUrl ==="/login" || req.originalUrl ==="/clientRepo") {
     next();
   } else {
     express.json()(req, res, next);
@@ -81,8 +90,19 @@ app.use('/search', searchRoute);
 app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
-app.use('/pagesaRepo',pagesaRepo);
-
+app.use('/pagesat',pagesatRoute);
+app.use('/popupL',popupLRoute);
+app.use('/porosia',porosiaRoute);
+app.use('/huazimi',huazimiRoute);
+app.use('/renew',renewRoute);
+app.use('/popupP',popupPRoute);
+app.use('/popupPun',popupPunRoute);
+app.use('/quotes',qoutesRoute);
+app.use('/menaxhimiP',menaxhimiPRoute);
+app.use('/menaxhimiR',menaxhimiRRoute);
+app.use('/wishD',wishDRoute);
+app.use('/statistics',statisticsRoute);
+app.use('/rezervimet',rezervimetRoute);
 
 app.listen(8081, () => {
   console.log('Server is listening on port 8081');

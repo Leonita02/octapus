@@ -120,42 +120,105 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./db_connection');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-router.post('/', (req, res) => {
+// router.post('/', (req, res) => {
+//   const username = req.body.username;
+//   const password = req.body.password;
+
+//   const query = `SELECT * FROM useri WHERE username='${username}' AND password='${password}'`;
+//   console.log('Query:', query);
+//   connection.query(query, [req.body.username, req.body.password], (err, result) => {
+//     if (err) return res.status(500).json(err);
+//     if (result.length === 0) return res.status(404).json("User not found");
+
+//     const token = jwt.sign(
+//       { 
+//         id: result[0].Useri_ID,
+//       },
+//       "secret-key"
+//     );
+
+//     res.cookie('accessToken', token, { httpOnly: true, secure: false, sameSite: 'none' });
+
+//     // Store the accessToken in the session data
+//     req.session.accessToken = token;
+//     req.session.user = {
+//       id : result[0].Useri_ID,
+//       username: result[0].Username,
+//       roleId: result[0].Roli_ID,
+//       personiId : result[0].Personi_ID
+//     };
+//     console.log('Stored username:', result[0].Username);
+//     console.log('Stored roleId:', result[0].Roli_ID);
+//     console.log('Session:', req.session);
+
+//     // Include userId in the response data
+//     res.status(200).json({ username: result[0].Username, roleId: result[0].Roli_ID, userId: result[0].Useri_ID });
+//   });
+// });
+router.post('/', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-
-  const query = `SELECT * FROM useri WHERE username='${username}' AND password='${password}'`;
+  console.log('PAssword',password);
+  
+  const query = `SELECT * FROM useri WHERE username='${username}'`;
   console.log('Query:', query);
-  connection.query(query, [req.body.username, req.body.password], (err, result) => {
-    if (err) return res.status(500).json(err);
-    if (result.length === 0) return res.status(404).json("User not found");
+  
+  connection.query(query, [req.body.username], async (err, result) => {
+    if (err) {
+      console.error('Error:', err);
+      return res.status(500).json(err);
+    }
+    
+    if (result.length === 0) {
+      console.log('User not found:', username);
+      return res.status(404).json("User not found");
+    }
+    
+    const dbPw = result[0].Password;
+    console.log('Hashed password:', dbPw);
 
-    const token = jwt.sign(
-      { 
+  
+    const isPasswordValid = await bcrypt.compare(password, dbPw);
+
+    const encryptedPw = await bcrypt.hash(password, 10);
+    console.log({db: dbPw, password, encryptedPw });
+
+    console.log('Is password valid:', isPasswordValid);
+    
+    if (isPasswordValid) {
+      const token = jwt.sign(
+        { 
+          id: result[0].Useri_ID,
+        },
+        "secret-key"
+      );
+      
+      res.cookie('accessToken', token, { httpOnly: true, secure: false, sameSite: 'none' });
+      
+      // Store the accessToken in the session data
+      req.session.accessToken = token;
+      req.session.user = {
         id: result[0].Useri_ID,
-      },
-      "secret-key"
-    );
-
-    res.cookie('accessToken', token, { httpOnly: true, secure: false, sameSite: 'none' });
-
-    // Store the accessToken in the session data
-    req.session.accessToken = token;
-    req.session.user = {
-      id : result[0].Useri_ID,
-      username: result[0].Username,
-      roleId: result[0].Roli_ID,
-      personiId : result[0].Personi_ID
-    };
-    console.log('Stored username:', result[0].Username);
-    console.log('Stored roleId:', result[0].Roli_ID);
-    console.log('Session:', req.session);
-
-    // Include userId in the response data
-    res.status(200).json({ username: result[0].Username, roleId: result[0].Roli_ID, userId: result[0].Useri_ID });
+        username: result[0].username,
+        roleId: result[0].Roli_ID,
+        personiId: result[0].Personi_ID
+      };
+      console.log('Stored username:', result[0].username);
+      console.log('Stored roleId:', result[0].Roli_ID);
+      console.log('Session:', req.session);
+      
+      // Include userId in the response data
+      res.status(200).json({ username: result[0].username, roleId: result[0].Roli_ID, userId: result[0].Useri_ID });
+    } else {
+      console.log('Invalid credentials:', username);
+      res.status(401).json("Invalid credentials");
+    }
   });
 });
+
+
 
 router.get('/', (req, res) => {
   const user = req.session.user;

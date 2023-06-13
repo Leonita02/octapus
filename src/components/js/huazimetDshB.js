@@ -6,10 +6,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import {useCookies} from 'react-cookie';
 
 
 function Huazimet() {
     const [huazimet, setHuazimet] = useState([]);
+    
+  
   
     useEffect(() => {
       axios.get('http://localhost:8081/huazimi')
@@ -23,6 +26,20 @@ function Huazimet() {
         })
         .catch(err => console.log(err));
     }, []);
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['1','2','3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
   
     function handleStatusChange(index, newStatus) {
         const updatedHuazimet = [...huazimet];
@@ -67,7 +84,7 @@ function Huazimet() {
         <>
         <br/>
         <br/>
-        <Link to="/huazimi" className="btn btn-success">Go Home</Link>
+        <Link to="/huazimi" className="btn btn-success">Shto</Link>
         <div className="col-md-12 mt-5">
           <h1 className="text-center">
             <i className="fas fa-book"></i> <b>Huazimet e librave</b> <i className="fas fa-user"></i>

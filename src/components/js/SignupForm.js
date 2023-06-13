@@ -3,67 +3,10 @@ import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import {useState} from 'react';
+import { useCookies } from 'react-cookie';
 
 
 export default function SignupForm() {
-
-    // const navigate = useNavigate();
-    // const [values, setValues] = useState({
-    //   emri: '',
-    //   mbiemri: '',
-    //   email: '',
-    //   datelindja: '',
-    //   qyteti: '',
-    //   paga: 0,
-    //   nr_tel: 0,
-    //   username: '',
-    //   password: '',
-    // });
-    // const [errors, setErrors] = useState({});
-  
-    // const handleInput = (event) => {
-    //   setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-    // };
-  
-    // const handleSubmitP = async (event) => {
-    //   event.preventDefault();
-  
-    //   try {
-    //     const hashedPassword = await bcrypt.hash(values.password, 10);
-  
-    //     const newUser = { ...values, password: hashedPassword };
-  
-    //     axios
-    //       .post('http://localhost:8081/punetori/', newUser)
-    //       .then((res) => {
-    //         // navigate('/logIn');
-    //       })
-    //       .catch((err) => console.log(err));
-    //   } catch (error) {
-    //     console.error('Error hashing password:', error);
-    //   }
-    // };
-  
-    // const handleSubmitM = async (event) => {
-    //   event.preventDefault();
-  
-    //   try {
-    //     const hashedPassword = await bcrypt.hash(values.password, 10);
-  
-    //     const newUser = { ...values, password: hashedPassword };
-  
-    //     axios
-    //       .post('http://localhost:8081/menaxheri/', newUser)
-    //       .then((res) => {
-    //         navigate('/menaxheriDshB');
-    //       })
-    //       .catch((err) => console.log(err));
-    //   } catch (error) {
-    //     console.error('Error hashing password:', error);
-    //   }
-    // };
-
-
     const navigate = useNavigate();
     const [values,setValues] = useState({
         emri:'',
@@ -88,7 +31,7 @@ export default function SignupForm() {
 
                 axios.post('http://localhost:8081/punetori/' ,values)
                 .then(res => {
-                    // navigate('/logIn');
+                    navigate('/sideBar');
                 })
                 .catch(err => console.log(err));
 
@@ -101,10 +44,24 @@ export default function SignupForm() {
         
                         axios.post('http://localhost:8081/menaxheri/' ,values)
                         .then(res => {
-                             navigate('/menaxheriDshB');
+                             navigate('/sideBar');
                         })
                         .catch(err => console.log(err));
         
+                    }
+                    const [cookies] = useCookies(['userId', 'roleId']);
+                    const isAuthorized = (allowedRoles) => {
+                      const userRole = cookies.roleId;
+                      return allowedRoles.includes(userRole);
+                    };
+                  
+                    if (!isAuthorized([ '1'])) {
+                      return (
+                        <div>
+                          <h1>Unauthorized Access</h1>
+                          {/* Additional unauthorized access handling */}
+                        </div>
+                      );
                     }
  
 
@@ -146,7 +103,7 @@ export default function SignupForm() {
                         <input type="text" placeholder='Username' id='username' name='username'  onChange={handleInput}/>
                         {errors.username && <span className='text-danger'>{errors.username}</span>}
 
-                        <input type="text" placeholder='Password' id='password' name='password' onChange={handleInput}/>
+                        <input type="password" placeholder='Password' id='password' name='password' onChange={handleInput}/>
                         {errors.password && <span className='text-danger'>{errors.password}</span>}
 
                         <button className='butn' type='submit' onClick={handleSubmitP}>Regjistro si Punetorë</button>

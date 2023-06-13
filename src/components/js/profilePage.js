@@ -57,9 +57,9 @@ function ProfilePage(){
 
     const handleLogout = () => {
       axios
-       .get('http://localhost:8081/logout')
+        .get('http://localhost:8081/logout')
         .then((res) => {
-          if (res.status === 200) {
+          if (res.data.message === "Logout successful.") {
             navigate('/');
           } else {
             alert('Error');
@@ -69,7 +69,21 @@ function ProfilePage(){
           console.log(err);
           alert('Error');
         });
-    }; 
+    };
+  
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['4'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
     return (
       <div>
       <Nav />

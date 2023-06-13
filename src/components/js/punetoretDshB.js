@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 
 function PunetoretDashB(){
@@ -22,6 +23,20 @@ function PunetoretDashB(){
 
   }
   )
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized([ '1'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 //   const handleDelete = async(Personi_ID)=>{
 //     try{
 //       await axios.delete('http://localhost:8081/personi/' + Personi_ID)
@@ -48,7 +63,7 @@ function PunetoretDashB(){
     </div>
     <div className="row">
       <div className="col-md-12">
-        <Link to='/SignupForm' className="btn btn-success"><b>Regjistro punëtorë të ri +</b></Link>
+        {/* <Link to='/SignupForm' className="btn btn-success"><b>Regjistro punëtorë të ri +</b></Link> */}
         <table className="table table-hover">
           <thead>
             <tr>

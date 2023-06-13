@@ -70,7 +70,7 @@ export default function ClientSignUpForm() {
 
                 axios.post('http://localhost:8081/clientRepo/' ,values)
                 .then(res => {
-                    navigate('/logIn');
+                    navigate('/LoginForm');
                 })
                 .catch(err => console.log(err));
 

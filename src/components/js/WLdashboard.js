@@ -4,17 +4,34 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 
 function WLdashboard() {
     const [wishList, setWishList] = useState([])
+    const [cookies] = useCookies(['userId', 'roleId']);
+
+
     useEffect(() => {
-        axios.get('http://localhost:8081/wishList')
+        axios.get('http://localhost:8081/wishD')
             .then(res => setWishList(res.data))
             .catch(err => console.log(err));
 
     }
     )
+    const isAuthorized = (allowedRoles) => {
+        const userRole = cookies.roleId;
+        return allowedRoles.includes(userRole);
+      };
+    
+      if (!isAuthorized([ '2'])) {
+        return (
+          <div>
+            <h1>Unauthorized Access</h1>
+            {/* Additional unauthorized access handling */}
+          </div>
+        );
+      }
 
     const handleDeleteW = async (Wish_ID) => {
         try {
@@ -24,8 +41,14 @@ function WLdashboard() {
             console.log(err);
         }
     }
+   
 
-    return <div className="container mx-auto">
+    // Access the user ID and role ID from cookies
+   
+   
+    return (
+    <>
+     <div className="container mx-auto">
         <div className="row">
             <div className="col-md-12 mt-5">
                 <h1 className="text-center">Kerkesat e lexuesve (wishList)</h1>
@@ -61,6 +84,8 @@ function WLdashboard() {
             </div>
         </div>
     </div>
+    </>
+    );
 }
 
 export default WLdashboard;

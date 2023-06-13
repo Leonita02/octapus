@@ -5,6 +5,7 @@ import Footer from '../js/footer';
 import { useState,  } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useCookies } from 'react-cookie';
 
 
 function Porosia() {
@@ -14,6 +15,20 @@ function Porosia() {
   const [furnitori,setFurnitori]=useState("")
   const [porosia,setPorosia]=useState("")
   const navigate=useNavigate()
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['2'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
   function handleSubmit(event){
     event.preventDefault();
