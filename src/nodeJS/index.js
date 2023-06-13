@@ -56,8 +56,6 @@ const ChangePasswordRoute = require('./passwordChange');
 
 
 
-//JSON eshte me kete kusht mos e shtoni ose fshini
-//Dont use json body format for stripe api
 app.use((req, res, next) => {
   console.log({ OriginalURL: req.originalUrl })
   if (req.originalUrl === "/stripe/api/webhook") {
@@ -66,7 +64,6 @@ app.use((req, res, next) => {
     express.json()(req, res, next);
   }
 });
-
 
 app.use('/personi', personiRoute);
 app.use('/libri', libriRoute);
@@ -94,6 +91,3 @@ app.listen(8081, () => {
 
 
 
-//This has been cut from package.json
-    // "test": "echo \"Error: no test specified\" && exit 1",
-    // "start": "nodemon db_connection.js"
