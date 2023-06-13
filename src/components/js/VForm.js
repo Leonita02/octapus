@@ -35,6 +35,7 @@ function VF() {
         axios.post("http://localhost:8081/menaxhimiP", { dataFillimit, dataMbarimit,arsyeja, userId })
           .then(res => {
             console.log(res);
+            alert("Kerkesa u dergua me sukses");
             
           })
           .catch(err => console.error(err));

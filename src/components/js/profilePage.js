@@ -133,7 +133,7 @@ function ProfilePage(){
               <div className="card bg-light rounded-3 mb-4 account-settings" style={{ cursor: 'pointer' }}>
                 <div className="card-header bg-dark text-white">Account Settings</div>
                 <ul className="list-group list-group-flush">
-                <Link to="/changePassword" className="list-group-item">
+                <Link to="/PasswordChangeForm" className="list-group-item">
                   <i className="bi bi-key me-2"></i>
                        Change Password
                 </Link>

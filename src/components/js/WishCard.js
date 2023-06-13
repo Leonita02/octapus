@@ -43,7 +43,7 @@ function WishCard(){
             </div>
             <div className="comment-body p-3">
               <h4 className="card-title">{data.Autori}</h4>
-              <h4 className="card-title">"{data.Titulli}"</h4>
+              <h4 className="card-title">{data.Titulli}</h4>
             </div>
             <div className="comment-footer">
             {/* <button className="btn m-2 btn-danger border border-danger" onClick={() => handleDelete(data.Wish_ID)}>Delete</button>

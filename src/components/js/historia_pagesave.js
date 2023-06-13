@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Pagesa() {
   const navigate = useNavigate();
   const [cookies] = useCookies(['userId', 'roleId']);
-  const userId = cookies.userId;
+const userId=cookies.userId;
 
   function navigateToPagesa() {
     navigate('/logIn');
@@ -27,13 +27,26 @@ function Pagesa() {
         setPagesat(formattedPagesa);
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, []);
 
   function calculateExpirationDate(paymentDate) {
     const dateObject = new Date(paymentDate);
     const expirationDate = new Date(dateObject);
     expirationDate.setFullYear(dateObject.getFullYear() + 1);
     return expirationDate;
+  }
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['1'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
   }
 
   return (

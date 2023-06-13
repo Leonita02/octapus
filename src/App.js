@@ -47,6 +47,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './components/js/LoginForm';
 import ProtectedRoutes from './components/js/protectedRoutes';
 import LibriDashboard from './components/js/LibriDashboard';
+import PasswordChangeForm from './components/js/PasswordChangeForm';
+
 
 
 function App() {
@@ -61,7 +63,8 @@ function App() {
         <Route path="/feed" element={<Feed/>} />
         <Route path="/profilePage" element={<ProfilePage/>} />
         <Route path = "/Romance" element={<Romance/>}/>
-        
+        <Route path = "/pagesa" element={<Pagesa/>}/>
+        <Route path = "/PasswordChangeForm" element={<PasswordChangeForm/>}/>
         <Route path = "/Drame" element={<Drame/>}/>
         <Route path = "/bookPage/:id" element={<BookPage/>}/>
         <Route path = "/wishlist" element={<WishList/>}/>

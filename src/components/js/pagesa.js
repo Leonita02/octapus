@@ -42,7 +42,7 @@ function Pagesa() {
     return allowedRoles.includes(userRole);
   };
 
-  if (!isAuthorized([ '1','2','3'])) {
+  if (!isAuthorized([ '4'])) {
     return (
       <div>
         <h1>Unauthorized Access</h1>

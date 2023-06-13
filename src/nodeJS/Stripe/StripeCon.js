@@ -88,7 +88,6 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
 
         console.log({ paymentData });
 
-        //p_email, qyteti,shuma
 
         const p_email = stripeWebhookData.customer_details.email;
         const qyteti = stripeWebhookData.customer_details.address.city;
@@ -99,71 +98,19 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
         
         connection.query(sqlProcedureCommand, [p_email, qyteti, shuma], (err, results) => {
             if (err) {
-                console.log('Error:', err); // log the error, if any
-                //return res.json({ succeeded: false, message: "Email nuk ekziston!" });
+                console.log('Error:', err); 
                 res.status(500).end();
             }
-            console.log('results:', results); // log the query results
+            console.log('results:', results); 
             res.status(200).end();
-            //return res.json({ succeeded: true, message: "Payment completed successfully!" });
+          
         });
         
     }
 });
 
-// console.log({session, email: session.customer_details.email});
-// const username = req.session.username;
 
-//  // Query the database to get the Person_ID associated with the username
-//  const sql = "SELECT Person_ID FROM useri WHERE username = ?";
-
-
-
-// connection.query(sql, values, (err, result) => {
-//     if (err) {
-//       console.error('Error inserting data into pagesa table:', err);
-//       return res.status(500).json({ error: 'Internal Server Error' });
-//     }
-
-//     console.log('Data inserted into pagesa table:', result);
-
-//     // Respond with a success status
-//     res.status(200).end();
-//   });
-// } else {
-//   // Handle other event types if needed
-//   console.log('Unhandled event type:', event.type);
-//   res.status(200).end();
 
 
 module.exports = router;
 
-
-// router.post('/', async (req, res) => {
-//     try {
-//         // Retrieve the username from the session
-//         const username = req.session.username;
-
-//         // Query the database to get the Person_ID associated with the username
-//         const sql = "SELECT Person_ID FROM useri WHERE username = ?";
-//         connection.query(sql, [username], (err, results) => {
-//             if (err) {
-//                 console.error('Error retrieving Person_ID from useri table:', err);
-//                 return res.status(500).json({ error: 'Internal Server Error' });
-//             }
-
-//             if (results.length === 0) {
-//                 console.error('No user found with the provided username');
-//                 return res.status(400).json({ error: 'Invalid username' });
-//             }
-
-//             const personId = results[0].Person_ID;
-
-//             // Rest of the code to save the data in the pagesa table using the retrieved Person_ID
-//             // ...
-
-//         });
-//     } catch (e) {
-//         res.status(500).json({ error: e.message });
-//     }
-// });

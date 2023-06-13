@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import {useState} from 'react';
+import {useCookies} from 'react-cookie';
 
 
 export default function SignupForm() {

@@ -46,7 +46,7 @@ function LexuesiDashB(){
     </div>
     <div className="row">
       <div className="col-md-12">
-        <Link to='/ClientSignUpForm' className="btn btn-success"><b>Regjistro lexuesi të ri +</b></Link>
+        <Link to='/ClientSignUp' className="btn btn-success"><b>Regjistro lexuesi të ri +</b></Link>
         <table className="table table-hover">
           <thead>
             <tr>

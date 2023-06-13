@@ -29,7 +29,7 @@ import WishList from './wishList';
 import UpdateWishCard from './UpdateWishCard';
 import DashboardM from './dashboardM';
 import Rezervimet from './rezervimetDshb';
-
+import HistoriaPagesav from './historia_pagesave';
 
 const ProtectedRoutes = () => {
   const [cookies] = useCookies(['userId', 'roleId']);
@@ -64,6 +64,7 @@ const ProtectedRoutes = () => {
   const updatewishAllowedRoles = ['4'];
   const dashboardAllowedRoles=['1','2','3'];
   const rezervimetAllowedRoles=['2','3'];
+  const historiaPagesavAllowedRoles = ['1'];
 
 
 
@@ -75,7 +76,8 @@ const ProtectedRoutes = () => {
     &&!isAuthorized(porosiaDAllowedRoles, cookies) && !isAuthorized(porosiaAllowedRoles, cookies) && !isAuthorized(signupFormAllowedRoles, cookies)
     && !isAuthorized(updateLibriAllowedRoles, cookies) && !isAuthorized(updateMenaxheriAllowedRoles, cookies) && !isAuthorized(updatePunetoriAllowedRoles, cookies) && !isAuthorized(formaPushAllowedRoles, cookies)
     && !isAuthorized(wishListAllowedRoles, cookies)   && !isAuthorized(feedAllowedRoles, cookies)   && !isAuthorized(profilePAllowedRoles, cookies) && !isAuthorized(RomanceAllowedRoles, cookies) && !isAuthorized(DrameAllowedRoles, cookies) &&
-    !isAuthorized(BookPageAllowedRoles, cookies) && !isAuthorized(wishAllowedRoles, cookies) && !isAuthorized(updatewishAllowedRoles, cookies) && !isAuthorized(dashboardAllowedRoles, cookies) && !isAuthorized(rezervimetAllowedRoles, cookies))) {
+    !isAuthorized(BookPageAllowedRoles, cookies) && !isAuthorized(wishAllowedRoles, cookies) && !isAuthorized(updatewishAllowedRoles, cookies) && !isAuthorized(dashboardAllowedRoles, cookies) && !isAuthorized(rezervimetAllowedRoles, cookies)
+    && !isAuthorized(historiaPagesavAllowedRoles, cookies))) {
       navigate('/LoginForm');
     }
   }, [cookies, navigate]);
@@ -105,6 +107,7 @@ const ProtectedRoutes = () => {
       <Route path='/menaxheri/:Personi_ID' element={<UpdateMenaxheri/>}/>
       <Route path='/punetori/:Personi_ID' element={<UpdatePunetori/>}/>
       <Route path='/VForm' element={<VForm/>}/>
+      <Route path='/historia_pagesave' element={<HistoriaPagesav/>}/>
       <Route path ='/WLdashboard' element ={<WLdashboard/>}/>
       <Route path="/dashboardM" element={<DashboardM />} />
       <Route path="/rezervimetDshb" element={<Rezervimet/>} />

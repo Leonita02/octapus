@@ -50,9 +50,17 @@ const userInfoRoute = require('./userInfo');
 const pagesatRoute = require('./pagesaRepo');
 const porosiaRoute = require('./porosia');
 const menaxhimiPRoute=require('./menaxhimiP');
+const menaxhimiRRoute=require('./menaxhimiR');
 const huazimiRoute=require('./huazimi');
 const renewRoute=require('./renew');
-
+const historiaLRoute=require('./historiaLibrave');
+const ChangePasswordRoute=require('./passwordChange');
+const popupLRoute=require('./popupL');
+const popupPRoute=require('./popupP');
+const popupPunRoute=require('./popupPun');
+const quotesRoute=require('./quotes');
+const statisticsRoute=require('./statistics');
+const rezervimetRoute=require('./rezervimet');
 
 
 
@@ -78,20 +86,18 @@ app.use('/search', searchRoute);
 app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
-app.use('/pagesaRepo',pagesaRepo);
 app.use('/huazimi', huazimiRoute);
 app.use('/renew', renewRoute);
 app.use('/pagesat', pagesatRoute);
 app.use('/historiaLibrave', historiaLRoute);
 app.use('/passwordChange', ChangePasswordRoute);
-app.use('/pagesat',pagesatRoute);
 app.use('/popupL',popupLRoute);
 app.use('/porosia',porosiaRoute);
 app.use('/huazimi',huazimiRoute);
 app.use('/renew',renewRoute);
 app.use('/popupP',popupPRoute);
 app.use('/popupPun',popupPunRoute);
-app.use('/quotes',qoutesRoute);
+app.use('/quotes',quotesRoute);
 app.use('/menaxhimiP',menaxhimiPRoute);
 app.use('/menaxhimiR',menaxhimiRRoute);
 app.use('/wishD',wishDRoute);

@@ -16,7 +16,7 @@ import LexuesiDashB from './lexuesitDshB';
 import PorosiaDashboard from './porosiaDashboard';
 import MenaxhimiP from './menaxhimiP';
 import Huazimet from './huazimetDshB';
-import Popup from './Popup.js';import Porosia from './porosia';
+import Popup from './Popup.js';
 import Pdashboard from './porosiaDashboard';
 import Pagesa from './pagesa';
 import Porosia from './porosia';
@@ -28,7 +28,7 @@ import WLdashboard from './WLdashboard';
 import DashboardM from './dashboardM';
 import Rezervimet from './rezervimetDshb';
 import PopupP from './popUpP';
-
+import HistoriaPagesav from './historia_pagesave';
 const SideBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
   const cookies = useCookies();
@@ -53,9 +53,8 @@ const SideBar = () => {
         return <MainF />;
       case "PagesaForm":
         return IsAuthorized(['2','3'], userRole) ? <PagesaForm /> : <p>Unauthorized Access :/</p>;
-      case "Pagesa":
-        return<PagesaForm/>
-        return IsAuthorized(['1','2','3'], userRole) ? <Pagesa/> : <p>Unauthorized Access :/</p>;
+        case "historia_pagesave":
+          return IsAuthorized(['1'], userRole) ? <HistoriaPagesav /> : <p>Unauthorized Access :/</p>;
         case "LexuesitDshB":
           return IsAuthorized(['1','2','3'], userRole) ? <LexuesiDashB /> : <p>Unauthorized Access :/</p>;
           case "menaxhimiP":
@@ -82,7 +81,7 @@ const SideBar = () => {
       }
     };
      
-
+    const userRole = cookies.roleId;
  
   const handleLogout = () => {
     axios
@@ -190,7 +189,7 @@ const SideBar = () => {
                       <FaUsers /> Huazimet e Lexuesve
                     </Link>
                   )}
-                   {IsAuthorized(['2','3'], cookies.roleId) && (
+                   {IsAuthorized(['1','2','3'], cookies.roleId) && (
                     <Link
                       to="#"
                       className={`dropdown-item ${selectedComponent === "rezervimetDshb" ? "active" : ""}`}
@@ -199,7 +198,7 @@ const SideBar = () => {
                       <FaBook /> Rezervimet nga lexuesit
                     </Link>
                   )}
-                  {IsAuthorized(['1'], cookies.roleId) && (
+                  {/* {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       to="#"
                       className={`dropdown-item ${selectedComponent === "Pagesa" ? "active" : ""}`}
@@ -207,7 +206,7 @@ const SideBar = () => {
                     >
                       <FaMoneyBill /> Pagesat
                     </Link>
-                  )}
+                  )} */}
                    {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       to="#"
@@ -228,19 +227,7 @@ const SideBar = () => {
                   )} */}
                 </div>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" onClick={() => handleLinkClick("SignupForm")}>
-                  <FaUser /> Regjistro punëtorë të rinjë
-                </Link>
-                <Link
-                to="#"
-                  className="dropdown-item"
-                  onClick={() => handleLinkClick("Pdashboard")}
-                >
-                 <FaUsers/> Pagesat
-                </Link>
               
-            </li>
             <li className="nav-item">
                 <Link className="nav-link" onClick={() => handleLinkClick("SignupForm")}>
                   <FaUser /> Regjistro punëtorë të rinjë
@@ -273,9 +260,11 @@ const SideBar = () => {
                   <FaSun /> Apliko për pushime
                 </Link>
               </li>
+              {IsAuthorized(['2','3'], cookies.roleId) && (
               <li id='bell' className="nav-item" style={{ fontSize: '18px' }}>
                   <PopupP />  Njoftimet
               </li>
+              )}
              
             <li className="nav-item">
               <Link className="nav-link" to="/contact" onClick={handleLogout}>
