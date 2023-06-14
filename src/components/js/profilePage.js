@@ -78,9 +78,9 @@ function ProfilePage(){
 
     const handleLogout = () => {
       axios
-       .get('http://localhost:8081/logout')
+        .get('http://localhost:8081/logout')
         .then((res) => {
-          if (res.status === 200) {
+          if (res.data.message === "Logout successful.") {
             navigate('/');
           } else {
             alert('Error');
@@ -90,7 +90,21 @@ function ProfilePage(){
           console.log(err);
           alert('Error');
         });
-    }; 
+    };
+  
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['4'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
     return (
       <div>
       <Nav />
@@ -119,7 +133,7 @@ function ProfilePage(){
               <div className="card bg-light rounded-3 mb-4 account-settings" style={{ cursor: 'pointer' }}>
                 <div className="card-header bg-dark text-white">Account Settings</div>
                 <ul className="list-group list-group-flush">
-                <Link to="/changePassword" className="list-group-item">
+                <Link to="/PasswordChangeForm" className="list-group-item">
                   <i className="bi bi-key me-2"></i>
                        Change Password
                 </Link>

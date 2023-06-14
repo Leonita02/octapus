@@ -10,13 +10,18 @@ router.get('/', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.log(err);
-      res.sendStatus(500);
-    } else {
-      res.clearCookie('accessToken');
-      res.sendStatus(200);
+      return res.status(500).json({ error: "Failed to logout." });
     }
+
+    res.clearCookie('accessToken');
+    res.clearCookie('username');
+    res.clearCookie('userId');
+    res.clearCookie('roleId');
+
+   
+
+    return res.json({ message: "Logout successful." });
+
   });
 });
-
-
 module.exports = router;

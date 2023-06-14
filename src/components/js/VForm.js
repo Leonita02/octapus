@@ -15,7 +15,19 @@ function VF() {
 
     // Access the user ID and role ID from cookies
     const userId = cookies.userId;
-    const roleId = cookies.roleId;
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['2', '3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -23,6 +35,7 @@ function VF() {
         axios.post("http://localhost:8081/menaxhimiP", { dataFillimit, dataMbarimit,arsyeja, userId })
           .then(res => {
             console.log(res);
+            alert("Kerkesa u dergua me sukses");
             
           })
           .catch(err => console.error(err));

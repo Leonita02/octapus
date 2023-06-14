@@ -5,13 +5,17 @@ import Kategorite from './Kategorite';
 import '../css/Kategorite.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
-export default function Drame() {
-  const navigate = useNavigate();
-  const navigateToBook = (isbn) => {
-    navigate(`/bookPage/${isbn}`);
-  };
-  const [isSearching, setIsSearching] = useState(false);
+export default function Drame(){
+    const navigate = useNavigate();
+    const navigateToBook = (isbn) => {
+      navigate(`/bookPage/${isbn}`);
+    };
+    const [isSearching, setIsSearching] = useState(false);
+    const [cookies] = useCookies(['userId', 'roleId']);
+
+    
 
   const handleSetIsSearching = (value) => {
     setIsSearching(value);
@@ -26,14 +30,29 @@ export default function Drame() {
 
   })
 
-  return (
-    <>
-      <>
-        <Nav />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+ 
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized(['4'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
+
+    return(
+        <>
+            <>
+      <Nav />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
         <br></br>
         <center>
           <SearchBar setIsSearching={handleSetIsSearching} />

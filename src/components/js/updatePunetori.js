@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import {useState} from 'react';
 import '../css/SignupForm.css';
+import {useCookies } from 'react-cookie';
 
 
 
@@ -17,6 +18,21 @@ export default function UpdatePunetori() {
     const [paga,setPaga]=useState(0);
     const [numri_telefonit,setNrTelefonit]=useState(0);
     const navigate=useNavigate();
+
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized([ '1'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
   
     if (!Personi_ID) {
         console.log('Personi_ID is undefined or empty');

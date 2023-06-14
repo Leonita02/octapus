@@ -114,14 +114,24 @@ export default function ClientSignUpForm() {
             return;
         }
 
-        axios
-            .post('http://localhost:8081/clientRepo/', values)
-            .then((res) => {
-                navigate('/logIn');
-            })
-            .catch((err) => 
-                console.log(err));
-    };
+                axios.post('http://localhost:8081/clientRepo/' ,values)
+                .then(res => {
+                    navigate('/LoginForm');
+                })
+                .catch(err => console.log(err));
+
+            }
+    // }
+//MOS I FSHINI QITO KOMENTE!!!!
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log(values); // add this line to log the values object
+    //     axios.post('http://localhost:8081/clientRepo/', values)
+    //       .then((res) => {
+    //         navigate('/logIn');
+    //       })
+    //       .catch((err) => console.log(err));
+    //   };
 
         return (
             <>

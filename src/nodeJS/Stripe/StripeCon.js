@@ -88,6 +88,7 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
 
         console.log({ paymentData });
 
+
         const p_email = stripeWebhookData.customer_details.email;
         const qyteti = stripeWebhookData.customer_details.address.city;
         const shuma = `${Number(stripeWebhookData.amount_subtotal / 100)}€`;
@@ -97,15 +98,21 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
         
         connection.query(sqlProcedureCommand, [p_email, qyteti, shuma], (err, results) => {
             if (err) {
+                console.log('Error:', err); 
                 console.log('Error:', err);
                 res.status(500).end();
             }
             console.log('results:', results); 
+            console.log('results:', results); 
             res.status(200).end();
+          
         });
         
     }
 });
+
+
+
 
 module.exports = router;
 

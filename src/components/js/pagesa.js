@@ -3,7 +3,8 @@ import Nav from '../js/nav';
 import { useNavigate } from 'react-router';
 import { handleButtonClick } from './pagesaStripe';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
+
+import {useCookies} from 'react-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Pagesa() {
@@ -28,13 +29,28 @@ function Pagesa() {
       })
       .catch((err) => console.log(err));
   }, [userId]);
-
+  
   function calculateExpirationDate(paymentDate) {
     const dateObject = new Date(paymentDate);
     const expirationDate = new Date(dateObject);
     expirationDate.setFullYear(dateObject.getFullYear() + 1);
     return expirationDate;
   }
+  
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized([ '4'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
+
 
   return (
     <>

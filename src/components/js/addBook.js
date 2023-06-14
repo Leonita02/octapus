@@ -1,34 +1,37 @@
 import '../css/addBook.css';
 import React from 'react';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
-function AddBook() {
-  const [isbn, setIsbn] = useState('');
-  const [titulli, setTitulli] = useState('');
-  const [Autori, setAutori] = useState('');
-  const [vitiBotimit, setVitiBotimit] = useState(0);
-  const [shtepiaBotimit, setShtepiaBotimit] = useState('');
-  const [sasia, setSasia] = useState(0);
-  const [pershkrimi, setPershkrimi] = useState('');
-  const [url, setUrl] = useState('');
-  const [zhanri, setZhanri] = useState('');
-  const [rafti, setRafti] = useState(0);
-  const navigate = useNavigate();
+function AddBook(){
 
-
-  ///REGEX validimi
-const [isbnError, setIsbnError] = useState('');
-const [titulliError, setTitulliError] = useState('');
-const [AutoriError, setAutoriError] = useState('');
-const [vitiBotimitError, setVitiBotimitError] = useState('');
-const [shtepiaBotimitError, setShtepiaBotimitError] = useState('');
-const [sasiaError, setSasiaError] = useState('');
-const [pershkrimiError, setPershkrimiError] = useState('');
-const [urlError, setUrlError] = useState('');
-const [zhanriError, setZhanriError] = useState('');
-const [raftiError, setRaftiError] = useState('');
+  const [isbn,setIsbn]=useState("")
+    const [titulli,setTitulli]=useState("")
+    const [Autori,setAutori]=useState("")
+    const [vitiBotimit,setVitiBotimit]=useState(0)
+    const[shtepiaBotimit,setShtepiaBotimit] = useState("")
+    const [sasia,setSasia]=useState(0)
+    const [pershkrimi,setPershkrimi]=useState("")
+    const [url,setUrl]=useState("")
+    const [zhanri,setZhanri]=useState("")
+    const [rafti,setRafti]=useState(0)
+    const navigate=useNavigate()
+    const [cookies] = useCookies(['userId', 'roleId']);
+    const isAuthorized = (allowedRoles) => {
+      const userRole = cookies.roleId;
+      return allowedRoles.includes(userRole);
+    };
+  
+    if (!isAuthorized([ '3'])) {
+      return (
+        <div>
+          <h1>Unauthorized Access</h1>
+          {/* Additional unauthorized access handling */}
+        </div>
+      );
+    }
 
   function handleSubmit(event) {
     event.preventDefault();

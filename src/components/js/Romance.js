@@ -7,6 +7,7 @@ import Kategorite from './Kategorite';
 import '../css/Kategorite.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 export default function Romance(){
     const navigate = useNavigate();
@@ -27,6 +28,20 @@ export default function Romance(){
     .catch(err => console.log(err));
 
   })
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['4'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
     return(
         <>

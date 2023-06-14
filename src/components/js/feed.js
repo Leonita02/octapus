@@ -5,6 +5,7 @@ import MainF from './MainFeed';
 import axios from 'axios';
 import '../css/Kategorite.css';
 import Kategorite from './Kategorite';
+import { useCookies } from 'react-cookie';
 
 export default function Feed() {
   const [isSearching, setIsSearching] = useState(false);
@@ -13,6 +14,8 @@ export default function Feed() {
   const handleSetIsSearching = (value) => {
     setIsSearching(value);
   };
+
+ 
 
   useEffect(() => {
     fetchData();
@@ -29,6 +32,20 @@ export default function Feed() {
       console.error(error);
     }
   };
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['4'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
   return (
     <>

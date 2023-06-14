@@ -21,6 +21,11 @@
 #navi li {
   float: left;
   color: white;
+  margin-right: 20px; /* Add margin between li elements */
+}
+
+#navi li:last-child {
+  margin-right: 0; /* Remove margin from the last li element */
 }
 
 #navi li a {
@@ -57,3 +62,10 @@
   cursor: pointer;
 }
 
+#bell {
+  padding: 10px;
+  font-size: 25px;
+  display: flex; /* Add this to center the bell icon vertically */
+  align-items: center;
+  cursor: pointer;
+}

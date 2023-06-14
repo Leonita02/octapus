@@ -1,16 +1,18 @@
 
 import './App.css';
-import { BrowserRouter as Router} from 'react-router-dom';
-import {Route, useNavigate} from 'react-router';
-import {Routes} from 'react-router';
+
+import { useNavigate} from 'react-router';
+// import {Routes} from 'react-router';
+import { useCookies } from 'react-cookie';
 import {Navigate} from 'react-router-dom';
 import axios from 'axios';
+import { useAuthorization } from './components/js/authorization';
 import { useState } from 'react';
 import { useEffect } from 'react';
- import Dashboard from './components/js/dashboard';
+
  import HomePage from "./components/js/HomePage";
- import Feed from './components/js/feed';
- import LoginForm from './components/js/LoginForm';
+
+
  import ProfilePage from './components/js/profilePage';
 import BookPage from "./components/js/bookPage";
 import WishList from './components/js/wishList';
@@ -20,7 +22,7 @@ import AddBook from './components/js/addBook';
  import VForm from './components/js/VForm'
 import SignupForm from './components/js/SignupForm';
 import UpdatePunetori from './components/js/updatePunetori';
-import LibriDashboard from './components/js/LibriDashboard';
+
 import UpdateLibri from './components/js/updateLibri';
 import UpdateWishCard from './components/js/UpdateWishCard';
 import WLdashboard from './components/js/WLdashboard';
@@ -32,123 +34,153 @@ import SideBar from './components/js/SideBar';
 import LexuesiDashB from './components/js/lexuesitDshB';
 import Romance from './components/js/Romance';
 import MenaxhimiP from './components/js/menaxhimiP';
-import Huazimi from './components/js/huazimi';
 import Drame from './components/js/Drame';
 import AboutPage from './components/js/AboutUs';
 import Huazimet from './components/js/huazimetDshB';
 import Porosia from './components/js/porosia';
 import Pdashboard from './components/js/porosiaDashboard';
-import HistoriaPagesave from './components/js/historia_pagesave';
+import Huazimi from './components/js/huazimi';
+import Feed from './components/js/feed';
+import DashboardM from './components/js/dashboardM';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginForm from './components/js/LoginForm';
+import ProtectedRoutes from './components/js/protectedRoutes';
+import LibriDashboard from './components/js/LibriDashboard';
 import PasswordChangeForm from './components/js/PasswordChangeForm';
 
-const authorizedRoutes = [
-  // General pages accessible to all users
-  { path: '/', element: <HomePage /> },
-  { path: '/feed', element: <Feed /> },
-  { path: '/logIn', element: <LoginForm /> },
-  { path: '/signup', element: <SignupForm /> },
-  { path: '/addBook', element: <AddBook /> },
-  { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
-  { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
-  { path: '/wishList', element: <WishList /> },
-  { path: '/Romance', element: <Romance /> },
-  { path: 'profilePage', element: <ProfilePage /> },
-  { path: '/LibriDashboard', element: <LibriDashboard />},
-  { path: '/menaxheri', element: <MenaxheriDashB />},
-  { path: '/Sidebar', element: <SideBar />},
-  { path: '/Romance', element: <Romance/>},
-  { path: '/Drame', element: <Drame/>},
-  { path: '/AboutUs', element: <AboutPage/>},
-  { path: '/Porosia', element: <Porosia/>},
-  { path: '/porosiaDashboard', element: <Pdashboard/>},
-  {path: '/libri/:Isbn',element : <UpdateLibri/>},
-  { path: '/Vform', element: <VForm/>},
-  { path: '/addBook', element: <AddBook/>},
-  { path: '/huazimi', element: <Huazimi/>},
-  { path: '/huazimetDshB', element: <Huazimet/>},
-  { path: '/menaxhimiP', element: <MenaxhimiP/>},
-  { path: '/pagesa', element: <Pagesa/>},
-  { path: '/historia_pagesave', element: <HistoriaPagesave/>},
-  { path: '/changePassword',  element:<PasswordChangeForm/>},
-
-  // Authorized pages for specific roles
-  { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
-  { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },
-  { path: '/LibriDashboard', element: <LibriDashboard />, allowedRoles: ['1', '2'] },
-  { path: '/bookPage/:id', element: <BookPage /> ,allowedRoles: ['1','2','3','4']}
-];
 
 
-const handleUnauthorizedAccess = () => {
-  return (
-    <Navigate to="/" />
-  );
-};
 function App() {
   return (
     <Router>
       <Routes>
-        {authorizedRoutes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={<AuthorizationHandler element={route.element} allowedRoles={route.allowedRoles} />}
-          />
-        ))}
+     
+        <Route path="/LoginForm" element={<LoginForm />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aboutUs" element={<AboutPage />} />
+        <Route path="/ClientSignup" element={<ClientSignUpForm />} />
+        <Route path="/feed" element={<Feed/>} />
+        <Route path="/profilePage" element={<ProfilePage/>} />
+        <Route path = "/Romance" element={<Romance/>}/>
+        <Route path = "/pagesa" element={<Pagesa/>}/>
+        <Route path = "/PasswordChangeForm" element={<PasswordChangeForm/>}/>
+        <Route path = "/Drame" element={<Drame/>}/>
+        <Route path = "/bookPage/:id" element={<BookPage/>}/>
+        <Route path = "/wishlist" element={<WishList/>}/>
+        <Route path = "/wishList/:Wish_ID" element={<UpdateWishCard/>}/>
+
+        <Route path="/*" element={<ProtectedRoutes />} />
       </Routes>
     </Router>
   );
 }
 
-function AuthorizationHandler({ element, allowedRoles }) {
-  const [roleId, setRoleId] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkAuthentication = async () => {
-      try {
-        const response = await axios.get('http://localhost:8081/login', { withCredentials: true });
-        const { roleId } = response.data;
-
-        // Store the user's role in state
-        setRoleId(roleId);
-      } catch (error) {
-        console.log(error);
-        // Handle error
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    // Check if user is logged in before making the GET request
-    if (document.cookie.includes('accessToken')) {
-      checkAuthentication();
-    } else {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Perform authorization check when roleId or allowedRoles change
-    if (roleId !== null) {
-      const isAuthorized = allowedRoles ? allowedRoles.includes(roleId) : true;
-      console.log('isAuthorized:', isAuthorized);
-
-      if (!isAuthorized) {
-        handleUnauthorizedAccess();
-      }
-    }
-  }, [roleId, allowedRoles]);
-
-  if (isLoading) {
-    // Show a loading indicator or component while checking authentication
-    return <div>Loading...</div>;
-  }
-
-  return element;
-}
-
 export default App;
+// const authorizedRoutes = [
+//   // General pages accessible to all users
+//   { path: '/', element: <HomePage /> },
+//   { path: '/feed', element: <Feed /> },
+//   { path: '/logIn', element: <LoginForm /> },
+//   { path: '/signup', element: <SignupForm /> },
+//   { path: '/addBook', element: <AddBook /> },
+//   { path: '/wishList/:Wish_ID', element: <UpdateWishCard /> },
+//   { path: '/ClientSignUpForm', element: <ClientSignUpForm /> },
+//   { path: '/wishList', element: <WishList /> },
+//   { path: '/Romance', element: <Romance /> },
+//   { path: 'profilePage', element: <ProfilePage /> },
+//   { path: '/LibriDashboard', element: <LibriDashboard />},
+//   { path: '/menaxheri', element: <MenaxheriDashB />},
+//   { path: '/Sidebar', element: <SideBar />},
+//   { path: '/Romance', element: <Romance/>},
+//   { path: '/Drame', element: <Drame/>},
+//   { path: '/AboutUs', element: <AboutPage/>},
+//   { path: '/Porosia', element: <Porosia/>},
+//   { path: '/porosiaDashboard', element: <Pdashboard/>},
+//   {path: '/libri/:Isbn',element : <UpdateLibri/>},
+//   { path: '/Vform', element: <VForm/>},
+//   { path: '/addBook', element: <AddBook/>},
+//   { path: '/huazimi', element: <Huazimi/>},
+//   { path: '/huazimetDshB', element: <Huazimet/>},
+//   { path: '/menaxhimiP', element: <MenaxhimiP/>},
+//   // Authorized pages for specific roles
+//   { path: '/WLdashboard', element: <WLdashboard />, allowedRoles: ['1'] },
+//   { path: '/punetoretDshB', element: <PunetoretDashB />, allowedRoles: ['1', '3'] },
+//   { path: '/LibriDashboard', element: <LibriDashboard />, allowedRoles: ['1', '2'] },
+//   { path: '/bookPage/:id', element: <BookPage /> ,allowedRoles: ['1','2','3','4']}
+// ];
+
+
+// const handleUnauthorizedAccess = () => {
+//   return (
+//     <Navigate to="/" />
+//   );
+// };
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         {authorizedRoutes.map((route, index) => (
+//           <Route
+//             key={index}
+//             path={route.path}
+//             element={<AuthorizationHandler element={route.element} allowedRoles={route.allowedRoles} />}
+//           />
+//         ))}
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// function AuthorizationHandler({ element, allowedRoles }) {
+//   const [roleId, setRoleId] = useState(null);
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     const checkAuthentication = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:8081/login', { withCredentials: true });
+//         const { roleId } = response.data;
+
+//         // Store the user's role in state
+//         setRoleId(roleId);
+//       } catch (error) {
+//         console.log(error);
+//         // Handle error
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+
+//     // Check if user is logged in before making the GET request
+//     if (document.cookie.includes('accessToken')) {
+//       checkAuthentication();
+//     } else {
+//       setIsLoading(false);
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     // Perform authorization check when roleId or allowedRoles change
+//     if (roleId !== null) {
+//       const isAuthorized = allowedRoles ? allowedRoles.includes(roleId) : true;
+//       console.log('isAuthorized:', isAuthorized);
+
+//       if (!isAuthorized) {
+//         handleUnauthorizedAccess();
+//       }
+//     }
+//   }, [roleId, allowedRoles]);
+
+//   if (isLoading) {
+//     // Show a loading indicator or component while checking authentication
+//     return <div>Loading...</div>;
+//   }
+
+//   return element;
+// }
+
+// export default App;
 // import './App.css';
 // import { BrowserRouter as Router} from 'react-router-dom';
 // import {Route, useNavigate} from 'react-router';

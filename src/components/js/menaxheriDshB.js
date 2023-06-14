@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {useCookies} from 'react-cookie';
 
 
 function MenaxheriDashB(){
@@ -22,6 +23,21 @@ function MenaxheriDashB(){
 
   }
   )
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['1'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
+
 //   const handleDelete = async(Personi_ID)=>{
 //     try{
 //       await axios.delete('http://localhost:8081/personi/' + Personi_ID)

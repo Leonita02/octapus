@@ -1,14 +1,17 @@
 import FirstView from './firstView';
 import Footer from './footer';
+import axios from 'axios';
+import foto from '../ImagesOfProject/111.jfif';
 import StaticCards from './staticCards';
 function HomePage() {
     return (
         <>
-            <FirstView />
-            <StaticCards />
-            <Footer />
-        </>
-    );
+         <FirstView />
+         <br></br>
+        <StaticCards/>
+         <Footer />
+         </>
+      );
 }
 
 export default HomePage;

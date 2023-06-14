@@ -119,11 +119,11 @@ export default function Login() {
 
           // Redirect to the authorized route based on the role
           if (roleId === 1) {
-            navigate('/dashboard');
+            navigate('/sideBar');
           } else if (roleId === 2) {
-            navigate('/menaxheriDshB');
+            navigate('/sideBar');
           } else if (roleId === 3) {
-            navigate('/punetoretDshB');
+            navigate('/sideBar');
           } else if (roleId === 4) {
             navigate('/feed');
           }
@@ -168,7 +168,7 @@ export default function Login() {
                         {errors.changePassword && <div className="invalid-feedback">{errors.changePassword}</div>}
 
                         <button type='submit' className='btnn w-100'>Kyqu</button>
-                        <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignUpForm'>Regjistrohu</Link></button>
+                        <button className='btnn btn-default border w-100 rounded-0 text-decoration-none '><Link to='/ClientSignup'>Regjistrohu</Link></button>
                     </form>
                 </div>
                 <div className='col-2'>

@@ -1,10 +1,7 @@
-import React from 'react';
-// import Order from '../css/porosia.css';
-import Nav from '../js/nav';
-import Footer from '../js/footer';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useCookies } from 'react-cookie';
 
 function Porosia() {
   const [numriBibliotekes, setNumriBibliotekes] = useState('');
@@ -17,6 +14,21 @@ function Porosia() {
   const [porosiaError, setPorosiaError] = useState('');
   const navigate = useNavigate();
 
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['2'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -25,7 +37,7 @@ function Porosia() {
         .post('http://localhost:8081/porosia', { numriBibliotekes, menaxheri, furnitori, porosia })
         .then(res => {
           console.log(res);
-          navigate('/');
+          navigate('/sideBar');
         })
         .catch(err => console.log(err));
     }
@@ -33,7 +45,7 @@ function Porosia() {
 
   function validateForm() {
     const numriBibliotekesRegex = /^\d+$/;
-    const stringRegex = /^[a-zA-Z\s]+$/;
+    const stringRegex = /^[a-zA-Z0-9\s]+$/;
     let isValid = true;
 
     if (!numriBibliotekesRegex.test(numriBibliotekes)) {
@@ -152,8 +164,8 @@ function Porosia() {
                 value={porosia}
                 onChange={e => {
                   setPorosia(e.target.value);
-                  if (!/^[a-zA-Z\s]+$/.test(e.target.value)) {
-                    setPorosiaError('Porosia duhet te permbaje vetem shkronja dhe hapesira.');
+                  if (!/^[a-zA-Z0-9\s]+$/.test(e.target.value)) {
+                    setPorosiaError('Porosia duhet te permbaje vetem shkronja, numra dhe hapesira.');
                   } else {
                     setPorosiaError('');
                   }

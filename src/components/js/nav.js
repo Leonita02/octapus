@@ -8,26 +8,40 @@ import { useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 
 
-function Nav(){
-    const navigate = useNavigate(); // funksioni per me te dergu te profile page prej fotos se profilit 
-    function navigateToProfilePage(){
-        // navigate to profilePage
-        navigate('/profilePage');
-      };
- return  <header>
-    <nav id="navi">
-        <ul>
-            <li ><h1 className='emri'>OCTOPUS</h1></li>
+function Nav() {
+    const navigate = useNavigate();
+    const [notification, setNotification] = useState('');
+  
+    function navigateToProfilePage() {
+      navigate('/profilePage');
+    }
+  
+    return (
+      <header>
+        <nav id="navi">
+          <ul>
+            <li>
+              <h1 className='emri'>OCTOPUS</h1>
+            </li>
             <div id="top-right">
-              <li><Link to="/feed">Home</Link></li>
-              <li><a href="#">Contact</a></li>
-              <li ><Popup></Popup></li>
-              <li><img src={profile} onClick={navigateToProfilePage}></img></li>
+              <li>
+                <Link to="/feed">Home</Link>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <li id='bell'>
+                <Popup />
+              </li>
+              <li>
+                <img src={profile} onClick={navigateToProfilePage} />
+              </li>
             </div>
-        </ul>
-    </nav>
-</header>;
-}
+          </ul>
+        </nav>
+      </header>
+    );
+  }
 
 export default Nav;
 

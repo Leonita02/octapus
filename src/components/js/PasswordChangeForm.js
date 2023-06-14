@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import Nav from './nav';
 
 export default function PasswordChangeForm() {
     const [cookies] = useCookies(['userId']);
@@ -99,62 +100,81 @@ export default function PasswordChangeForm() {
                 console.error(err);
             });
     };
+    const isAuthorized = (allowedRoles) => {
+        const userRole = cookies.roleId;
+        return allowedRoles.includes(userRole);
+      };
+    
+      if (!isAuthorized([ '4'])) {
+        return (
+          <div>
+            <h1>Unauthorized Access</h1>
+            {/* Additional unauthorized access handling */}
+          </div>
+        );
+      }
 
 
     return (
+        <>
+        <Nav />
+  
         <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <div className="col-md-8">
-                <div className="card">
-                    <div className="card-body">
-                        <h2 className="card-title text-center mb-4">Ndërro Fjalëkalimin!</h2>
-                        <form className="needs-validation" noValidate>
-                            <div className="form-group">
-                                <label htmlFor="password">Fjalëkalimi</label>
-                                <input
-                                    type="password"
-                                    className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                                    id="password"
-                                    name="password"
-                                    value={values.password}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                {errors.password && <div className="invalid-feedback">{errors.password}</div>}
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="changePassword">Ndërro fjalëkalimin</label>
-                                <input
-                                    type="password"
-                                    className={`form-control ${errors.changePassword ? 'is-invalid' : ''}`}
-                                    id="changePassword"
-                                    name="changePassword"
-                                    value={values.changePassword}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                {errors.changePassword && <div className="invalid-feedback">{errors.changePassword}</div>}
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="confirm_password">Konfirmo fjalëkalimin</label>
-                                <input
-                                    type="password"
-                                    className={`form-control ${errors.confirm_password ? 'is-invalid' : ''}`}
-                                    id="confirm_password"
-                                    name="confirm_password"
-                                    value={values.confirm_password}
-                                    onChange={handleInput}
-                                    required
-                                />
-                                {errors.confirm_password && <div className="invalid-feedback">{errors.confirm_password}</div>}
-                            </div>
-                            <br />
-                            <button className="btn btn-primary btn-lg btn-block custom-button pb-5 col-3" type="submit" onClick={handleSubmitP}>
-                                Kliko
-                            </button>
-                        </form>
-                    </div>
-                </div>
+          <div className="col-md-6">
+            <div className="card border-dark">
+              <div className="card-body">
+                <h2 className="card-title text-center mb-4">Ndërro Fjalëkalimin!</h2>
+                <form className="needs-validation" noValidate>
+                  <div className="form-group">
+                    <label htmlFor="password">Fjalëkalimi</label>
+                    <input
+                      type="password"
+                      className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                      id="password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleInput}
+                      required
+                    />
+                    {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="changePassword">Ndërro fjalëkalimin</label>
+                    <input
+                      type="password"
+                      className={`form-control ${errors.changePassword ? 'is-invalid' : ''}`}
+                      id="changePassword"
+                      name="changePassword"
+                      value={values.changePassword}
+                      onChange={handleInput}
+                      required
+                    />
+                    {errors.changePassword && <div className="invalid-feedback">{errors.changePassword}</div>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="confirm_password">Konfirmo fjalëkalimin</label>
+                    <input
+                      type="password"
+                      className={`form-control ${errors.confirm_password ? 'is-invalid' : ''}`}
+                      id="confirm_password"
+                      name="confirm_password"
+                      value={values.confirm_password}
+                      onChange={handleInput}
+                      required
+                    />
+                    {errors.confirm_password && <div className="invalid-feedback">{errors.confirm_password}</div>}
+                  </div>
+                  <br />
+                  <div className="text-center">
+                    <button className="btn btn-primary btn-lg" type="submit" onClick={handleSubmitP}>
+                      Kliko
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </>
     );
 }

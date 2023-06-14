@@ -33,7 +33,19 @@ export default function WishL() {
           .catch(err => console.error(err));
       }
 
+      const isAuthorized = (allowedRoles) => {
+        const userRole = cookies.roleId;
+        return allowedRoles.includes(userRole);
+      };
     
+      if (!isAuthorized(['4'])) {
+        return (
+          <div>
+            <h1>Unauthorized Access</h1>
+            {/* Additional unauthorized access handling */}
+          </div>
+        );
+      }
 
     
     return (

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import bgimg from '../ImagesOfProject/img33.jpeg';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import {useCookies} from 'react-cookie';
+
 
 export default function SignupForm() {
     const navigate = useNavigate();
@@ -129,14 +131,14 @@ export default function SignupForm() {
             return;
         }
 
-        axios
-            .post('http://localhost:8081/punetori/', values)
-            .then((res) => {
-                // navigate('/logIn');
-            })
-            .catch((err) => console.log(err));
-    };
+                axios.post('http://localhost:8081/punetori/' ,values)
+                .then(res => {
+                    navigate('/sideBar');
+                })
+                .catch(err => console.log(err));
 
+            }
+            
     const handleSubmitM = (event) => {
         event.preventDefault();
         if (
@@ -163,10 +165,26 @@ export default function SignupForm() {
         axios
             .post('http://localhost:8081/menaxheri/', values)
             .then((res) => {
-                navigate('/menaxheriDshB');
+                navigate('/sideBar');
             })
             .catch((err) => console.log(err));
     };
+    const [cookies] = useCookies(['userId', 'roleId']);
+                    const isAuthorized = (allowedRoles) => {
+                      const userRole = cookies.roleId;
+                      return allowedRoles.includes(userRole);
+                    };
+                  
+                    if (!isAuthorized([ '1'])) {
+                      return (
+                        <div>
+                          <h1>Unauthorized Access</h1>
+                          {/* Additional unauthorized access handling */}
+                        </div>
+                      );
+                    }
+ 
+ 
 
     return (
         <>
@@ -300,8 +318,7 @@ export default function SignupForm() {
                         </button>
                         <button className='butn' type='submit' onClick={handleSubmitM}>
                             Regjistro si Menaxherë
-                        </button>
-                    </form>
+                        </button>                    </form>
                 </div>
             </div>
         </>

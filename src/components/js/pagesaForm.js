@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useCookies } from 'react-cookie';
 
 export default function PagesaForm() {
   const navigate = useNavigate();
@@ -13,11 +14,26 @@ export default function PagesaForm() {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
 
+
   useEffect(() => {
     if (successMessage === 'Pagesa u krye me sukses') {
       navigate('/sideBar');
     }
   }, [successMessage, navigate]);
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized([ '2','3'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
   const handleInput = (event) => {
     const { name, value } = event.target;

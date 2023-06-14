@@ -37,6 +37,7 @@ const connection = require('./db_connection');
 const personiRoute = require('./personi');
 const libriRoute = require('./libri');
 const wishListRoute = require('./wishList');
+const wishDRoute=require('./wishD');
 const clientRepoRoute = require('./clientRepo');
 const loginRoute = require('./login');
 const punetoriRoute = require('./punetori');
@@ -48,11 +49,18 @@ const romanceRoute = require('./LibriRomance');
 const userInfoRoute = require('./userInfo');
 const pagesatRoute = require('./pagesaRepo');
 const porosiaRoute = require('./porosia');
-const menaxhimiPRoute = require('./menaxhimiP');
-const huazimiRoute = require('./huazimi');
-const renewRoute = require('./renew');
-const historiaLRoute = require('./historiaLibrave');
-const ChangePasswordRoute = require('./passwordChange');
+const menaxhimiPRoute=require('./menaxhimiP');
+const menaxhimiRRoute=require('./menaxhimiR');
+const huazimiRoute=require('./huazimi');
+const renewRoute=require('./renew');
+const historiaLRoute=require('./historiaLibrave');
+const ChangePasswordRoute=require('./passwordChange');
+const popupLRoute=require('./popupL');
+const popupPRoute=require('./popupP');
+const popupPunRoute=require('./popupPun');
+const quotesRoute=require('./quotes');
+const statisticsRoute=require('./statistics');
+const rezervimetRoute=require('./rezervimet');
 
 
 
@@ -83,6 +91,18 @@ app.use('/renew', renewRoute);
 app.use('/pagesat', pagesatRoute);
 app.use('/historiaLibrave', historiaLRoute);
 app.use('/passwordChange', ChangePasswordRoute);
+app.use('/popupL',popupLRoute);
+app.use('/porosia',porosiaRoute);
+app.use('/huazimi',huazimiRoute);
+app.use('/renew',renewRoute);
+app.use('/popupP',popupPRoute);
+app.use('/popupPun',popupPunRoute);
+app.use('/quotes',quotesRoute);
+app.use('/menaxhimiP',menaxhimiPRoute);
+app.use('/menaxhimiR',menaxhimiRRoute);
+app.use('/wishD',wishDRoute);
+app.use('/statistics',statisticsRoute);
+app.use('/rezervimet',rezervimetRoute);
 
 
 app.listen(8081, () => {

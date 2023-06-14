@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {useCookies} from 'react-cookie';
 
 
 function LexuesiDashB() {
@@ -21,6 +22,20 @@ function LexuesiDashB() {
 
   }
   )
+  const [cookies] = useCookies(['userId', 'roleId']);
+  const isAuthorized = (allowedRoles) => {
+    const userRole = cookies.roleId;
+    return allowedRoles.includes(userRole);
+  };
+
+  if (!isAuthorized(['1','2','3'])) {
+    return (
+      <div>
+        <h1>Unauthorized Access</h1>
+        {/* Additional unauthorized access handling */}
+      </div>
+    );
+  }
 
   return <div className="container mx-auto">
     <div className="row">
@@ -30,7 +45,7 @@ function LexuesiDashB() {
     </div>
     <div className="row">
       <div className="col-md-12">
-        <Link to='/ClientSignUpForm' className="btn btn-success"><b>Regjistro lexuesi të ri +</b></Link>
+        <Link to='/ClientSignUp' className="btn btn-success"><b>Regjistro lexuesi të ri +</b></Link>
         <table className="table table-hover">
           <thead>
             <tr>

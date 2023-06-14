@@ -1,22 +1,47 @@
 const express=require('express');
 const router=express.Router();
 const connection=require('./db_connection');
+const bcrypt = require('bcrypt');
 
 
 
-router.post("/", (req, res) => {
-    const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
+// router.post("/", (req, res) => {
+//     const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
+//     const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
+//     console.log('req.body:', req.body); // log the request body
+//     connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, results) => {
+//           if (err) {
+//               console.log('Error:', err); // log the error, if any
+//               return res.json("Error");
+//           }
+//           console.log('results:', results); // log the query results
+//           return res.json(results);
+//       });
+//   });
+router.post("/", async (req, res) => {
+  const { emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password } = req.body;
+  
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10); // Hash the password with a salt of 10 rounds
+    
+    console.log({hashedPassword})
+
     const sqlProcedureCommand = `CALL register_new_user(?, ?, ?, ?, ?, ?, ?, ?)`;
-    console.log('req.body:', req.body); // log the request body
-    connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, password], (err, results) => {
-          if (err) {
-              console.log('Error:', err); // log the error, if any
-              return res.json("Error");
-          }
-          console.log('results:', results); // log the query results
-          return res.json(results);
-      });
-  });
+    
+    connection.query(sqlProcedureCommand, [emri, mbiemri, email, datelindja, qyteti, nr_tel, username, hashedPassword], (err, results) => {
+      if (err) {
+        console.log('Error:', err); // log the error, if any
+        return res.json("Error");
+      }
+      
+      console.log('results:', results); // log the query results
+      return res.json(results);
+    });
+  } catch (error) {
+    console.log('Error:', error); // log the error, if any
+    return res.json("Error");
+  }
+});
 
   router.get("/",(req,res)=>{
     const sql = "SELECT p.Personi_ID,p.Emri,p.Mbiemri,p.Email,p.Datelindja,p.Qyteti,p.Nr_Tel,u.username FROM Personi p inner join Useri u ON p.Personi_ID=u.Personi_ID and u.Roli_ID=4";
