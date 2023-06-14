@@ -1,5 +1,4 @@
 require('dotenv').config();
-// require('dotenv').config({ path: './Stripe/.env' });
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -31,7 +30,6 @@ app.use(
   })
 );
 
-console.log(process.env.STRIPE_PRIVATE_KEY);
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require('./Stripe/StripeCon');
 const connection = require('./db_connection');
@@ -88,7 +86,6 @@ app.use('/bookPage', bookPageRoute);
 app.use('/userInfo', userInfoRoute);
 app.use('/LibriRomance', romanceRoute);
 app.use('/huazimi', huazimiRoute);
-app.use('/renew', renewRoute);
 app.use('/pagesat', pagesatRoute);
 app.use('/historiaLibrave', historiaLRoute);
 app.use('/passwordChange', ChangePasswordRoute);
