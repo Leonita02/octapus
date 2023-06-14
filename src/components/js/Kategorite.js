@@ -50,39 +50,3 @@ export default function Kategorite() {
   );
 }
 
-// import axios from 'axios';
-// import { useState, } from 'react';
-// export default function Kategorite() {
-
-//   return (
-//     <>
-//       <div className="mt-5 kategorite">
-//         <ul className="d-flex" style={{ listStyleType: 'none', justifyContent: 'center', columnGap: '20px' }}>
-//           <li><button onClick={() => handleCategoryClick('Romance')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Romance</button></li>
-//           <li><button onClick={() => handleCategoryClick('Drama')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Drama</button></li>
-//           <li><button onClick={() => handleCategoryClick('Aksion')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Aksion</button></li>
-//           <li><button onClick={() => handleCategoryClick('Fantazi')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Fantazi</button></li>
-//           <li><button onClick={() => handleCategoryClick('Krim')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Krim</button></li>
-//           <li><button onClick={() => handleCategoryClick('Bestseller')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Bestseller</button></li>
-//           <li><button onClick={() => handleCategoryClick('Klasike')} style={{ textDecoration: 'none', color: 'grey', border: 'none', backgroundColor: 'transparent', cursor: 'pointer' }}>Klasikë</button></li>
-//         </ul>
-//       </div>
-
-//       {/* Render books */}
-//       {libri.map((data, i) => (
-//         <div key={i} className="flip-card" onClick={() => navigateToBook(data.Isbn)}> 
-//           <div className="flip-card-inner">
-//             <div className="flip-card-front">
-//                <img src={require(`../ImagesOfProject/${data.Url}`)} alt="Libri" /> 
-//             </div>
-//             <div className="flip-card-back">
-//               <h1>{data.Titulli}</h1>
-//               <p>{data.Autori}</p>
-//               <p>{data.Pershkrimi}</p>
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//     </>
-//   );
-// }

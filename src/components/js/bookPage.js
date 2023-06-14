@@ -1,9 +1,6 @@
- import Nav from './nav';
-//  import '../css/bookPage.css';
-import Foto from '../ImagesOfProject/crimeP.jpg';
+import Nav from './nav';
 import Footer from './footer';
 import { useEffect } from 'react';
-// import { useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -29,8 +26,6 @@ function BookPage() {
         console.error(error);
       }
     };
-
-    
     fetchBook();
   }, [id]);
 

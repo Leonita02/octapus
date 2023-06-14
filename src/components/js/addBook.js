@@ -119,13 +119,11 @@ function AddBook(){
         })
         .then((res) => {
           console.log(res);
-          navigate('/'); // or navigate to the feed page after successful submission
+          navigate('/'); 
         })
         .catch((err) => console.log(err));
     }
   }
-
-  // Rest of your component code
 
   return (
     <>

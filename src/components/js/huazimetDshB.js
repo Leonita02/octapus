@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Row from './row';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";

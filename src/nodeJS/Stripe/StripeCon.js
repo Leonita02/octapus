@@ -99,8 +99,10 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
         connection.query(sqlProcedureCommand, [p_email, qyteti, shuma], (err, results) => {
             if (err) {
                 console.log('Error:', err); 
+                console.log('Error:', err);
                 res.status(500).end();
             }
+            console.log('results:', results); 
             console.log('results:', results); 
             res.status(200).end();
           
@@ -113,4 +115,5 @@ router.post('/api/webhook', express.raw({ type: 'application/json' }), (req, res
 
 
 module.exports = router;
+
 

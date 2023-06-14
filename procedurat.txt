@@ -74,3 +74,9 @@ BEGIN
         VALUES (CURDATE(), p_email, NULL, NULL, personiId, p_qyteti, p_shuma);
     END IF;
 END
+
+
+
+
+this is the command that you should run on your cmd to make payment:
+" stripe listen --forward-to localhost:8081/stripe/api/webhook "

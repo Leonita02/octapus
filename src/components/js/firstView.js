@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function View() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function View() {
   function navigateToAboutPage() {
     navigate('/AboutUs');
   }
-
+  
   return (
     <>
       <div className="firstView">

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 export default function Huazimi() {
