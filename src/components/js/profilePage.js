@@ -62,7 +62,6 @@ function ProfilePage(){
         .then(response => {
           const responseData = response.data; // Response data is an array of objects
           setUserData(responseData[0]); // Access the first object in the array
-          console.log("Updated userData:", responseData[0]);//This must be deleted
         })
         .catch(error => {
           console.log(error);
