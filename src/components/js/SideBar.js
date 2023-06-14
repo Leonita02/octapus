@@ -50,7 +50,7 @@ const SideBar = () => {
       case "MenaxheriDashB":
         return IsAuthorized(['1'], userRole) ? <MenaxheriDashB /> : <p>Unauthorized Access :/</p>;
       case "MainF":
-        return <MainF />;
+        return  IsAuthorized(['1','2','3'], userRole) ?<MainF />: <p>Unauthorized Access</p>;
       case "PagesaForm":
         return IsAuthorized(['2','3'], userRole) ? <PagesaForm /> : <p>Unauthorized Access :/</p>;
         case "historia_pagesave":
