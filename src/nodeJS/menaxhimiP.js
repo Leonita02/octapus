@@ -34,6 +34,7 @@ router.get("/", (req, res) => {
       return res.json({ message: "Wishlist item added successfully" });
     });
   });
+  
 // metoda update per approve 
 router.put("/:id", (req, res) => {
   const mId = req.params.id;

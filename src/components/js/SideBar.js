@@ -165,7 +165,6 @@ const SideBar = () => {
                   >
                     <FaUserCheck /> Puntoret
                   </Link>
-                   )}
                   {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       className={`dropdown-item ${selectedComponent === "MenaxheriDashB" ? "active" : ""}`}
@@ -200,15 +199,7 @@ const SideBar = () => {
                       <FaBook /> Rezervimet nga lexuesit
                     </Link>
                   )}
-                  {/* {IsAuthorized(['1'], cookies.roleId) && (
-                    <Link
-                      to="#"
-                      className={`dropdown-item ${selectedComponent === "Pagesa" ? "active" : ""}`}
-                      onClick={() => handleLinkClick("Pagesa")}
-                    >
-                      <FaMoneyBill /> Pagesat
-                    </Link>
-                  )} */}
+                 
                    {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       to="#"
@@ -218,15 +209,7 @@ const SideBar = () => {
                       <FaMoneyBill /> Porositë e librave 
                     </Link>
                   )}
-                  {/* {IsAuthorized(['2'], cookies.roleId) && (
-                    <Link
-                      to="#"
-                      className={`dropdown-item ${selectedComponent === "WLdashboard" ? "active" : ""}`}
-                      onClick={() => handleLinkClick("WLdashboard")}
-                    >
-                      <FaHeart /> Lista e dëshirave 
-                    </Link>
-                  )} */}
+                 
                 </div>
               </li>
               
@@ -254,7 +237,7 @@ const SideBar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" onClick={() => handleLinkClick("WLdashboard")}>
-                  <FaMoneyBill /> Lista Deshirave
+                  <FaMoneyBill /> lista deshirave
                 </Link>
               </li>
               <li className="nav-item">

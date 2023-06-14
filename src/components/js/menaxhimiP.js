@@ -1,7 +1,6 @@
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
 import { FaCheckCircle, FaTimesCircle ,FaSun} from 'react-icons/fa';
 import {useCookies} from 'react-cookie';
