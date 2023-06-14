@@ -46,7 +46,7 @@ const SideBar = () => {
 
     switch (selectedComponent) {
       case "PunetoretDashB":
-        return IsAuthorized(['1'], userRole) ? <PunetoretDashB /> : <p>Unauthorized Access :/</p>;
+        return IsAuthorized(['1','2'], userRole) ? <PunetoretDashB /> : <p>Unauthorized Access :/</p>;
       case "MenaxheriDashB":
         return IsAuthorized(['1'], userRole) ? <MenaxheriDashB /> : <p>Unauthorized Access :/</p>;
       case "MainF":
@@ -158,12 +158,14 @@ const SideBar = () => {
                   >
                     <FaUsers /> Lexuesit
                   </Link>
+                  {IsAuthorized(['1','2'], cookies.roleId) && (
                   <Link
                     className={`dropdown-item ${selectedComponent === "PunetoretDashB" ? "active" : ""}`}
                     onClick={() => handleLinkClick("PunetoretDashB")}
                   >
                     <FaUserCheck /> Puntoret
                   </Link>
+                  )}
                   {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       className={`dropdown-item ${selectedComponent === "MenaxheriDashB" ? "active" : ""}`}
@@ -198,15 +200,7 @@ const SideBar = () => {
                       <FaBook /> Rezervimet nga lexuesit
                     </Link>
                   )}
-                  {/* {IsAuthorized(['1'], cookies.roleId) && (
-                    <Link
-                      to="#"
-                      className={`dropdown-item ${selectedComponent === "Pagesa" ? "active" : ""}`}
-                      onClick={() => handleLinkClick("Pagesa")}
-                    >
-                      <FaMoneyBill /> Pagesat
-                    </Link>
-                  )} */}
+                 
                    {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       to="#"
@@ -216,15 +210,7 @@ const SideBar = () => {
                       <FaMoneyBill /> Porositë e librave 
                     </Link>
                   )}
-                  {/* {IsAuthorized(['2'], cookies.roleId) && (
-                    <Link
-                      to="#"
-                      className={`dropdown-item ${selectedComponent === "WLdashboard" ? "active" : ""}`}
-                      onClick={() => handleLinkClick("WLdashboard")}
-                    >
-                      <FaHeart /> Lista e dëshirave 
-                    </Link>
-                  )} */}
+                 
                 </div>
               </li>
               
@@ -252,7 +238,7 @@ const SideBar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" onClick={() => handleLinkClick("WLdashboard")}>
-                  <FaMoneyBill /> lista deshirave
+                  <FaMoneyBill /> Lista deshirave
                 </Link>
               </li>
               <li className="nav-item">
