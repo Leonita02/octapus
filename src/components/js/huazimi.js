@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 
 export default function Huazimi() {
-  // const [isbn, setIsbn] = useState('');
-  // const [personi, setPersoni] = useState('');
-  // const [dataHuazimit, setDataHuazimit] = useState('');
-  // const [dataKthimit, setDataKthimit] = useState('');
   const navigate = useNavigate();
   const [values, setValues] = useState({
     isbn: '',

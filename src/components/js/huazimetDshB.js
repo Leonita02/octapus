@@ -1,11 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Row from './row';
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 function Huazimet() {

@@ -12,14 +12,14 @@ export function handleButtonClick() {
       }),
     })
       .then(res => {
-        // console.log(values);      
+     
         if (res.ok) return res.json();
         return res.json().then(json => Promise.reject(json));
         
       })
       .then(({ url }) => {
         console.log("Hi");
-        // console.log(url);
+      
         window.location = url;
       })
       .catch(e => {

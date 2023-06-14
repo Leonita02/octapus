@@ -70,7 +70,7 @@ function Pagesa() {
               <td>{pagesa.emriKarteles}</td>
               <td>{pagesa.nrKarteles}</td>
               <td>{pagesa.data_pageses}</td>
-              <td>{calculateExpirationDate(pagesa.data_pageses).toLocaleDateString()}</td> {/* Display expiration date */}
+              <td>{calculateExpirationDate(pagesa.data_pageses).toLocaleDateString()}</td> {/* Show expiration date */}
             </tr>
           ))}
         </tbody>

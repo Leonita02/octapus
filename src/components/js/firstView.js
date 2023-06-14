@@ -3,7 +3,7 @@ import '../css/firstView.css';
 import View1 from '../ImagesOfProject/twitter_header_photo_1.png';
 import View2 from '../ImagesOfProject/1.jpeg';
 import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function View() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function View() {
   function navigateToAboutPage() {
     navigate('/AboutUs');
   }
-
+  
   return (
     <>
       <div className="firstView">
