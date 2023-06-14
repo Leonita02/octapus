@@ -1,4 +1,5 @@
 require('dotenv').config();
+// require('dotenv').config({ path: './Stripe/.env' });
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -30,7 +31,7 @@ app.use(
   })
 );
 
-
+console.log(process.env.STRIPE_PRIVATE_KEY);
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require('./Stripe/StripeCon');
 const connection = require('./db_connection');

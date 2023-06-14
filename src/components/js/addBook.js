@@ -19,6 +19,16 @@ function AddBook(){
     const [rafti,setRafti]=useState(0)
     const navigate=useNavigate()
     const [cookies] = useCookies(['userId', 'roleId']);
+    const [isbnError, setIsbnError] = useState('');
+    const [titulliError, setTitulliError] = useState('');
+    const [AutoriError, setAutoriError] = useState('');
+    const [vitiBotimitError, setVitiBotimitError] = useState('');
+    const [shtepiaBotimitError, setShtepiaBotimitError] = useState('');
+    const [sasiaError, setSasiaError] = useState('');
+    const [pershkrimiError, setPershkrimiError] = useState('');
+    const [urlError, setUrlError] = useState('');
+    const [zhanriError, setZhanriError] = useState('');
+    const [raftiError, setRaftiError] = useState('');
     const isAuthorized = (allowedRoles) => {
       const userRole = cookies.roleId;
       return allowedRoles.includes(userRole);

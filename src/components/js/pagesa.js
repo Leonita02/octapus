@@ -3,6 +3,9 @@ import Nav from '../js/nav';
 import { useNavigate } from 'react-router';
 import { handleButtonClick } from './pagesaStripe';
 import axios from 'axios';
+import { FaCreditCard } from "react-icons/fa";
+import { AiOutlineCalendar } from "react-icons/ai";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 import {useCookies} from 'react-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -62,46 +65,54 @@ function Pagesa() {
       <br />
       <br />
       <br />
-      <div className="container">
-        <h2>Historia e Pagesave</h2>
+      
+      <div className="container" style={{ maxWidth: "800px" }}>
+  <h2 className="text-center mb-4"><b>Historia e Pagesave</b></h2>
 
-        <table className="table table-bordered">
-          <thead className="thead-dark">
+  <div className="table-responsive">
+    <table className="table table-bordered table-striped">
+      <thead className="thead-dark">
+        <tr>
+          <th>Emri</th>
+          <th>Mbiemri</th>
+          <th>Email</th>
+          <th>Qyteti</th>
+          <th>Data Pageses</th>
+          <th>Expiration Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pagesat.map((pagesa) => (
+          <React.Fragment key={pagesa.Pagesa_ID}>
             <tr>
-              <th>Emri</th>
-              <th>Mbiemri</th>
-              <th>Email</th>
-              <th>Qyteti</th>
-              <th>Emri i Karteles</th>
-              <th>Numri i Karteles</th>
-              <th>Data Pageses</th>
-              <th>Expiration Date</th> {/* New column */}
+              <td>{pagesa.Emri}</td>
+              <td>{pagesa.Mbiemri}</td>
+              <td>{pagesa.Email}</td>
+              <td>{pagesa.qyteti}</td>
+              <td>{pagesa.data_pageses}</td>
+              <td>{calculateExpirationDate(pagesa.data_pageses).toLocaleDateString()}</td>
             </tr>
-          </thead>
-          <tbody>
-            {pagesat.map((pagesa) => (
-              <React.Fragment key={pagesa.Pagesa_ID}>
-                <tr>
-                  <td>{pagesa.Emri}</td>
-                  <td>{pagesa.Mbiemri}</td>
-                  <td>{pagesa.Email}</td>
-                  <td>{pagesa.qyteti}</td>
-                  <td>{pagesa.emriKarteles}</td>
-                  <td>{pagesa.nrKarteles}</td>
-                  <td>{pagesa.data_pageses}</td>
-                  <td>{calculateExpirationDate(pagesa.data_pageses).toLocaleDateString()}</td> {/* Display expiration date */}
-                </tr>
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="text-center">
-        <h3>Paguani me formën më të shpejtë!</h3>
-        <button className="btn btn-primary" onClick={handleButtonClick}>
-          Paguaj
-        </button>
-      </div>
+          </React.Fragment>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {pagesat.length > 0 ? null : (
+    <div className="text-center">
+      <h4 className="mb-4">Nuk ka ndonjë pagesë të kryer</h4>
+      <RiErrorWarningLine size={48} />
+    </div>
+  )}
+
+  <div className="text-center mt-4">
+    <h3 className="mb-3">Paguani me formën më të shpejtë!</h3>
+    <button className="btn btn-primary btn-lg" onClick={handleButtonClick}>
+      Paguaj
+    </button>
+  </div>
+</div>
+
     </>
   );
 }
