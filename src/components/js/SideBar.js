@@ -54,7 +54,7 @@ const SideBar = () => {
       case "PagesaForm":
         return IsAuthorized(['2','3'], userRole) ? <PagesaForm /> : <p>Unauthorized Access :/</p>;
         case "historia_pagesave":
-          return IsAuthorized(['1'], userRole) ? <HistoriaPagesav /> : <p>Unauthorized Access :/</p>;
+          return IsAuthorized(['1','2','3'], userRole) ? <HistoriaPagesav /> : <p>Unauthorized Access :/</p>;
         case "LexuesitDshB":
           return IsAuthorized(['1','2','3'], userRole) ? <LexuesiDashB /> : <p>Unauthorized Access :/</p>;
           case "menaxhimiP":

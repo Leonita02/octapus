@@ -40,7 +40,7 @@ const userId=cookies.userId;
     return allowedRoles.includes(userRole);
   };
 
-  if (!isAuthorized(['1'])) {
+  if (!isAuthorized(['1','2','3'])) {
     return (
       <div>
         <h1>Unauthorized Access</h1>
