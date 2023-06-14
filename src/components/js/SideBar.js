@@ -165,6 +165,7 @@ const SideBar = () => {
                   >
                     <FaUserCheck /> Puntoret
                   </Link>
+                  )}
                   {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       className={`dropdown-item ${selectedComponent === "MenaxheriDashB" ? "active" : ""}`}
