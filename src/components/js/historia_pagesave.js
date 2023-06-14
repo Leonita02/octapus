@@ -40,7 +40,7 @@ const userId=cookies.userId;
     return allowedRoles.includes(userRole);
   };
 
-  if (!isAuthorized(['1'])) {
+  if (!isAuthorized(['1','2','3'])) {
     return (
       <div>
         <h1>Unauthorized Access</h1>
@@ -67,8 +67,8 @@ const userId=cookies.userId;
             <th>Mbiemri</th>
             <th>Email</th>
             <th>Qyteti</th>
-            <th>Emri i Karteles</th>
-            <th>Numri i Karteles</th>
+            {/* <th>Emri i Karteles</th>
+            <th>Numri i Karteles</th> */}
             <th>Data Pageses</th>
             <th>Expiration Date</th> {/* New column */}
           </tr>
@@ -80,8 +80,8 @@ const userId=cookies.userId;
               <td>{pagesa.Mbiemri}</td>
               <td>{pagesa.Email}</td>
               <td>{pagesa.qyteti}</td>
-              <td>{pagesa.emriKarteles}</td>
-              <td>{pagesa.nrKarteles}</td>
+              {/* <td>{pagesa.emriKarteles}</td>
+              <td>{pagesa.nrKarteles}</td> */}
               <td>{pagesa.data_pageses}</td>
               <td>{calculateExpirationDate(pagesa.data_pageses).toLocaleDateString()}</td> {/* Show expiration date */}
             </tr>

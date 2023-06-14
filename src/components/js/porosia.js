@@ -37,6 +37,7 @@ function Porosia() {
         .post('http://localhost:8081/porosia', { numriBibliotekes, menaxheri, furnitori, porosia })
         .then(res => {
           console.log(res);
+          alert('Porosia u shtua');
           navigate('/sideBar');
         })
         .catch(err => console.log(err));

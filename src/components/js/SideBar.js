@@ -46,15 +46,15 @@ const SideBar = () => {
 
     switch (selectedComponent) {
       case "PunetoretDashB":
-        return IsAuthorized(['1'], userRole) ? <PunetoretDashB /> : <p>Unauthorized Access :/</p>;
+        return IsAuthorized(['1','2'], userRole) ? <PunetoretDashB /> : <p>Unauthorized Access :/</p>;
       case "MenaxheriDashB":
         return IsAuthorized(['1'], userRole) ? <MenaxheriDashB /> : <p>Unauthorized Access :/</p>;
       case "MainF":
-        return <MainF />;
+        return IsAuthorized(['1','2','3'], userRole) ?  <MainF />: <p>Unauthorized Access :/</p>;
       case "PagesaForm":
         return IsAuthorized(['2','3'], userRole) ? <PagesaForm /> : <p>Unauthorized Access :/</p>;
         case "historia_pagesave":
-          return IsAuthorized(['1'], userRole) ? <HistoriaPagesav /> : <p>Unauthorized Access :/</p>;
+          return IsAuthorized(['1','2','3'], userRole) ? <HistoriaPagesav /> : <p>Unauthorized Access :/</p>;
         case "LexuesitDshB":
           return IsAuthorized(['1','2','3'], userRole) ? <LexuesiDashB /> : <p>Unauthorized Access :/</p>;
           case "menaxhimiP":
@@ -158,12 +158,14 @@ const SideBar = () => {
                   >
                     <FaUsers /> Lexuesit
                   </Link>
+                  {IsAuthorized(['1','2'], cookies.roleId) && (
                   <Link
                     className={`dropdown-item ${selectedComponent === "PunetoretDashB" ? "active" : ""}`}
                     onClick={() => handleLinkClick("PunetoretDashB")}
                   >
                     <FaUserCheck /> Puntoret
                   </Link>
+                   )}
                   {IsAuthorized(['1'], cookies.roleId) && (
                     <Link
                       className={`dropdown-item ${selectedComponent === "MenaxheriDashB" ? "active" : ""}`}
@@ -252,7 +254,7 @@ const SideBar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" onClick={() => handleLinkClick("WLdashboard")}>
-                  <FaMoneyBill /> lista deshirave
+                  <FaMoneyBill /> Lista Deshirave
                 </Link>
               </li>
               <li className="nav-item">

@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-console.log(process.env.STRIPE_PRIVATE_KEY);
+
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 const StripeCon = require('./Stripe/StripeCon');
 const connection = require('./db_connection');
@@ -95,7 +95,6 @@ app.use('/passwordChange', ChangePasswordRoute);
 app.use('/popupL',popupLRoute);
 app.use('/porosia',porosiaRoute);
 app.use('/huazimi',huazimiRoute);
-app.use('/renew',renewRoute);
 app.use('/popupP',popupPRoute);
 app.use('/popupPun',popupPunRoute);
 app.use('/quotes',quotesRoute);

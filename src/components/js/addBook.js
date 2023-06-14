@@ -119,7 +119,7 @@ function AddBook(){
         })
         .then((res) => {
           console.log(res);
-          navigate('/'); 
+          navigate('/sideBar'); 
         })
         .catch((err) => console.log(err));
     }

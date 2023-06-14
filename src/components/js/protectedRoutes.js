@@ -59,7 +59,7 @@ const ProtectedRoutes = () => {
   const profilePAllowedRoles = ['4'];
   const RomanceAllowedRoles = ['4'];
   const DrameAllowedRoles = ['4'];
-  const BookPageAllowedRoles = ['1','2','3','4'];
+  const BookPageAllowedRoles = ['4'];
   const wishAllowedRoles = ['4'];
   const updatewishAllowedRoles = ['4'];
   const dashboardAllowedRoles=['1','2','3'];
