@@ -92,7 +92,6 @@ app.use('/passwordChange', ChangePasswordRoute);
 app.use('/popupL',popupLRoute);
 app.use('/porosia',porosiaRoute);
 app.use('/huazimi',huazimiRoute);
-app.use('/renew',renewRoute);
 app.use('/popupP',popupPRoute);
 app.use('/popupPun',popupPunRoute);
 app.use('/quotes',quotesRoute);

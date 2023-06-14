@@ -133,6 +133,7 @@ export default function SignupForm() {
 
                 axios.post('http://localhost:8081/punetori/' ,values)
                 .then(res => {
+                    alert('Menaxheri u shtua me sukses');
                     navigate('/sideBar');
                 })
                 .catch(err => console.log(err));
@@ -165,6 +166,7 @@ export default function SignupForm() {
         axios
             .post('http://localhost:8081/menaxheri/', values)
             .then((res) => {
+                alert('Menaxheri u shtua me sukses');
                 navigate('/sideBar');
             })
             .catch((err) => console.log(err));
@@ -188,139 +190,155 @@ export default function SignupForm() {
 
     return (
         <>
-            <div className='register'>
-                <div className='col-2'>
-                    <img src={bgimg} alt='' />
-                </div>
-                <div className='col-1'>
-                    <h2>
-                        {' '}
-                        Regjistro <b>STAFIN</b>{' '}
-                    </h2>
-                    <span> Mirëse vini në Octopus</span>
-                    <form id='form' className='forma'>
-                        <input
-                            type='text'
-                            className={`form-control ${errors.emri ? 'is-invalid' : ''}`}
-                            placeholder='Emri'
-                            id='emri'
-                            name='emri'
-                            value={values.emri}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.emri && <span className='text-danger'>{errors.emri}</span>}
+           <div className="register">
+  <div className="col-12 col-md-6">
+    <h2>
+      Regjistro <b>STAFIN</b>
+    </h2>
+    <span>Mirëse vini në Octopus</span>
+    <form id="form" className="forma">
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.emri ? 'is-invalid' : ''}`}
+          placeholder="Emri"
+          id="emri"
+          name="emri"
+          value={values.emri}
+          onChange={handleInput}
+          required
+        />
+        {errors.emri && <span className="text-danger">{errors.emri}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.mbiemri ? 'is-invalid' : ''}`}
-                            placeholder='Mbiemri'
-                            id='mbiemri'
-                            name='mbiemri'
-                            value={values.mbiemri}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.mbiemri && <span className='text-danger'>{errors.mbiemri}</span>}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.mbiemri ? 'is-invalid' : ''}`}
+          placeholder="Mbiemri"
+          id="mbiemri"
+          name="mbiemri"
+          value={values.mbiemri}
+          onChange={handleInput}
+          required
+        />
+        {errors.mbiemri && <span className="text-danger">{errors.mbiemri}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                            placeholder='Email'
-                            id='email'
-                            name='email'
-                            value={values.email}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.email && <span className='text-danger'>{errors.email}</span>}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+          placeholder="Email"
+          id="email"
+          name="email"
+          value={values.email}
+          onChange={handleInput}
+          required
+        />
+        {errors.email && <span className="text-danger">{errors.email}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.datelindja ? 'is-invalid' : ''}`}
-                            placeholder='Datelindja'
-                            id='datelindja'
-                            name='datelindja'
-                            value={values.datelindja}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.datelindja && (
-                            <span className='text-danger'>{errors.datelindja}</span>
-                        )}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.datelindja ? 'is-invalid' : ''}`}
+          placeholder="Datelindja"
+          id="datelindja"
+          name="datelindja"
+          value={values.datelindja}
+          onChange={handleInput}
+          required
+        />
+        {errors.datelindja && (
+          <span className="text-danger">{errors.datelindja}</span>
+        )}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.qyteti ? 'is-invalid' : ''}`}
-                            placeholder='Qyteti'
-                            id='qyteti'
-                            name='qyteti'
-                            value={values.qyteti}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.qyteti && <span className='text-danger'>{errors.qyteti}</span>}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.qyteti ? 'is-invalid' : ''}`}
+          placeholder="Qyteti"
+          id="qyteti"
+          name="qyteti"
+          value={values.qyteti}
+          onChange={handleInput}
+          required
+        />
+        {errors.qyteti && <span className="text-danger">{errors.qyteti}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.paga ? 'is-invalid' : ''}`}
-                            placeholder='Paga'
-                            id='paga'
-                            name='paga'
-                            value={values.paga}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.paga && <span className='text-danger'>{errors.paga}</span>}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.paga ? 'is-invalid' : ''}`}
+          placeholder="Paga"
+          id="paga"
+          name="paga"
+          value={values.paga}
+          onChange={handleInput}
+          required
+        />
+        {errors.paga && <span className="text-danger">{errors.paga}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.nr_tel ? 'is-invalid' : ''}`}
-                            placeholder='Numri Telefonit'
-                            id='numri_telefonit'
-                            name='nr_tel'
-                            value={values.nr_tel}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.nr_tel && <span className='text-danger'>{errors.nr_tel}</span>}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.nr_tel ? 'is-invalid' : ''}`}
+          placeholder="Numri Telefonit"
+          id="numri_telefonit"
+          name="nr_tel"
+          value={values.nr_tel}
+          onChange={handleInput}
+          required
+        />
+        {errors.nr_tel && <span className="text-danger">{errors.nr_tel}</span>}
+      </div>
 
-                        <input
-                            type='text'
-                            className={`form-control ${errors.username ? 'is-invalid' : ''}`}
-                            placeholder='Username'
-                            id='username'
-                            name='username'
-                            value={values.username}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.username && (
-                            <span className='text-danger'>{errors.username}</span>
-                        )}
+      <div className="form-group mb-3">
+        <input
+          type="text"
+          className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+          placeholder="Username"
+          id="username"
+          name="username"
+          value={values.username}
+          onChange={handleInput}
+          required
+        />
+        {errors.username && (
+          <span className="text-danger">{errors.username}</span>
+        )}
+      </div>
 
-                        <input
-                            type='password'
-                            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                            placeholder='Password'
-                            id='password'
-                            name='password'
-                            value={values.password}
-                            onChange={handleInput}
-                            required
-                        />
-                        {errors.password && (
-                            <span className='text-danger'>{errors.password}</span>
-                        )}
+      <div className="form-group mb-3">
+        <input
+          type="password"
+          className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+          placeholder="Password"
+          id="password"
+          name="password"
+          value={values.password}
+          onChange={handleInput}
+          required
+        />
+        {errors.password && (
+          <span className="text-danger">{errors.password}</span>
+        )}
+      </div>
 
-                        <button className='butn' type='submit' onClick={handleSubmitP}>
-                            Regjistro si Punetorë
-                        </button>
-                        <button className='butn' type='submit' onClick={handleSubmitM}>
-                            Regjistro si Menaxherë
-                        </button>                    </form>
-                </div>
-            </div>
+      <button className="btn btn-primary" type="submit" onClick={handleSubmitP}>
+        Regjistro si Punetorë
+      </button>
+      <button className="btn btn-primary" type="submit" onClick={handleSubmitM}>
+        Regjistro si Menaxherë
+      </button>
+    </form>
+  </div>
+</div>
+
         </>
     );
 }

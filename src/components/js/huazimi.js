@@ -166,7 +166,7 @@ export default function Huazimi() {
                   {errors.dataKthimit && <div className="invalid-feedback">{errors.dataKthimit}</div>}
                 </div>
                 <div className="text-center">
-                  <button className="btn btn-primary btn-lg btn-block custom-button pb-5 col-3" type="submit" onClick={handleSubmit}>
+                  <button className="btn btn-primary btn-lg btn-block custom-button pb-2 col-4" type="submit" onClick={handleSubmit}>
                     Regjistro huazimin
                   </button>
                   <br />

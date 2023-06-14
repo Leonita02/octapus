@@ -1,13 +1,18 @@
 import './App.css';
-import { useNavigate } from 'react-router';
+
+import { useNavigate} from 'react-router';
+// import {Routes} from 'react-router';
 import { useCookies } from 'react-cookie';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuthorization } from './components/js/authorization';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import HomePage from "./components/js/HomePage";
-import ProfilePage from './components/js/profilePage';
+
+ import HomePage from "./components/js/HomePage";
+
+
+ import ProfilePage from './components/js/profilePage';
 import BookPage from "./components/js/bookPage";
 import WishList from './components/js/wishList';
 import Pagesa from './components/js/pagesa';
